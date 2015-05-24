@@ -1,9 +1,15 @@
 from django import forms
 
-from .models import Order
+from .models import Order, Component
 
 
 class OrderForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(OrderForm, self).__init__(*args, **kwargs)
+
+        for component in Component.objects.all():
+            self.fields["component_%s" % component.id] = forms.IntegerField(min_value=0, required=False)
+
     class Meta:
         model = Order
         fields = (
