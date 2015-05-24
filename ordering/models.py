@@ -42,6 +42,9 @@ class Order(models.Model):
 
     comment = models.TextField(null=True, blank=True)
 
+    def __unicode__(self):
+        return "order #%s for %s" % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick))
+
 
 class Component(models.Model):
     reference = models.CharField(max_length=255)
