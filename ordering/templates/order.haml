@@ -208,4 +208,8 @@
       $("input#id_wants_vpn").change(function() {
         $("#vpn_informations").toggle("slow");
       })
+
+      if ($("input#id_wants_vpn")[0].checked === true) {
+        $("#vpn_informations").show();
+      }
     })
