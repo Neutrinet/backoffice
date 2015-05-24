@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 
 def make_order(request):
-    pass
+    return render(request, "order.haml")
