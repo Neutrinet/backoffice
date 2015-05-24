@@ -21,6 +21,10 @@ class Order(models.Model):
     wants_vpn = models.BooleanField(default=False)
     wants_to_install_everything_himself = models.BooleanField(default=False)
 
+    # domain
+    wants_neutrinet_to_renew_the_domain = models.BooleanField(default=False)
+    domain_name = models.URLField(blank=True, null=False)
+
     # needed if the user wants the vpn
     street = models.CharField(max_length=255, null=True, blank=True)
     postal_code = models.CharField(max_length=255, null=True, blank=True)
