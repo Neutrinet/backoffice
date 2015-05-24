@@ -1,3 +1,16 @@
-from django.contrib import admin
+import reversion
 
-# Register your models here.
+from django.contrib import admin
+from .models import Order, Component
+
+
+class OrderAdmin(reversion.VersionAdmin):
+    pass
+
+
+class ComponentAdmin(reversion.VersionAdmin):
+    pass
+
+
+admin.site.register(Order, OrderAdmin)
+admin.site.register(Component, ComponentAdmin)
