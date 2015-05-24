@@ -193,14 +193,7 @@
           var price = parseFloat(node.attributes["data-price"].value);
           total_number += number;
           total_price += number * price;
-          console.log(number);
-          console.log(price);
-          console.log(total_number);
-          console.log(total_price);
         })
-        console.log("--")
-        console.log(total_number);
-        console.log(total_price);
         $("#estimated-price").html(parseFloat(Math.round(total_price * 100) / 100).toFixed(2));
         $("#number-of-components").html(total_number)
       }
