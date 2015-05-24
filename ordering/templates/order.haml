@@ -98,9 +98,55 @@
           The prices listed here are the prices we get when we make at least 10 orders, we also add 5€ as an estimation of the split shipment cost.
 
         %p
+          We have a special deal with Olimex to have better price. Our prices <b>include VAT</b> unlike Olimex website.
+
+        %p
           <b>The final price may vary from what appears here, it's only an estimation</b>, but, hopefully, this should quite close to reality.
 
-        -bootstrap_field form.components
+        %h4 Default pack for the cube
+        %table.table.table-bordered
+          %tr
+            %th Quantity
+            %th Name
+            %th Estimated price
+
+          -for component in default_components
+            %tr
+              %td
+                %input{type: "number", value: "1"}
+              %td
+                %a{href: "{{ component.url }}", target: "_blank"}
+                  =component
+              %td
+                =component.current_price
+                €
+
+        %h4 Other available components
+        %table.table.table-bordered
+          %tr
+            %th Quantity
+            %th Name
+            %th Estimated price
+
+          -for component in other_components
+            %tr
+              %td
+                %input{type: "number", value: "0"}
+              %td
+                %a{href: "{{ component.url }}", target: "_blank"}
+                  =component
+              %td
+                =component.current_price
+                €
+
+        %p
+          %b
+            Estimated total price:
+          37.50 €
+
+        %p
+          %i
+            Reminder: we'll send you the final price once we'll received all the shipments, you'll be invited to add as much as you think that this service (ordering and configuration and everything else) is worth it. We won't take any percentage on the base price.
 
       .well
         %h3 Additional comment (optional)

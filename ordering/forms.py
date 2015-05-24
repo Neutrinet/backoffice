@@ -26,8 +26,6 @@ class OrderForm(forms.ModelForm):
             'country',
             'birth_date',
 
-            'components',
-
             'estimated_price', # I should add it myself I think
 
             'comment'
