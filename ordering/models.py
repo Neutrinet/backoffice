@@ -63,5 +63,5 @@ class ComponentOrder(models.Model):
     order = models.ForeignKey(Order)
     component = models.ForeignKey(Component)
     number = models.PositiveIntegerField(default=1)
-    paid_price = models.DecimalField(max_digits=10, decimal_places=2)  # effectivly paid price
+    paid_price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)  # effectivly paid price
     received = models.PositiveIntegerField(default=0)
