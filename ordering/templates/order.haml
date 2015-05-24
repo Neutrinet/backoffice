@@ -124,7 +124,7 @@
           -for component in default_components
             %tr
               %td
-                %input{type: "number", value: "1"}
+                %input.component-number{type: "number", value: "1", id: "id_{{ component.id }}_number", name: "{{ component.id }}_number", data-price: "{{ component.current_price }}"}
               %td
                 %a{href: "{{ component.url }}", target: "_blank"}
                   =component
@@ -142,7 +142,7 @@
           -for component in other_components
             %tr
               %td
-                %input{type: "number", value: "0"}
+                %input.component-number{type: "number", value: "0", id: "id_{{ component.id }}_number", name: "{{ component.id }}_number", data-price: "{{ component.current_price }}"}
               %td
                 %a{href: "{{ component.url }}", target: "_blank"}
                   =component
@@ -153,7 +153,11 @@
         %p
           %b
             Estimated total price:
-          37.50 €
+          %span#estimated-price
+          €
+          for
+          %span#number-of-components
+          components
 
         %p
           %i
@@ -176,3 +180,30 @@
       %p
         %b
           Remember, we are only volunteers (and humans to), we don't make any profit on that, we do that to help you and because we believe in a better Internet.
+
+
+-block bootstrap3_extra_script
+  :javascript
+    $(function() {
+      var calculate_estimated_price = function() {
+        var total_price = 5;
+        var total_number = 0;
+        $("input.component-number").each(function(_, node) {
+          var number = parseInt(node.value);
+          var price = parseFloat(node.attributes["data-price"].value);
+          total_number += number;
+          total_price += number * price;
+          console.log(number);
+          console.log(price);
+          console.log(total_number);
+          console.log(total_price);
+        })
+        console.log("--")
+        console.log(total_number);
+        console.log(total_price);
+        $("#estimated-price").html(parseFloat(Math.round(total_price * 100) / 100).toFixed(2));
+        $("#number-of-components").html(total_number)
+      }
+      calculate_estimated_price()
+      $("input.component-number").change(calculate_estimated_price)
+    })
