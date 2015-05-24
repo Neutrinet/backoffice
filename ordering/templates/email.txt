@@ -10,12 +10,12 @@ Here are your choices:
 {% endif %}
 {% if order.wants_vpn %}Here are the information you've provided for the VPN:
 
-* Street: {{ order.street }}
-* Postal code: {{ order.postal_code }}
-* Town: {{ order.town }}
-* Birth place: {{ order.birthplace }}
-* Country: {{ order.get_country_display }}
-* Birth Date: {{ order.birth_date }}
+* Street: {{ order.street|default:"" }}
+* Postal code: {{ order.postal_code|default:"" }}
+* Town: {{ order.town|default:"" }}
+* Birth place: {{ order.birthplace|default:"" }}
+* Country: {{ order.get_country_display|default:"" }}
+* Birth Date: {{ order.birth_date|default:"" }}
 
 Please, make sure that those informations are correct, we need them to comply
 with the law.
