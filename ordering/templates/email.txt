@@ -20,6 +20,9 @@ Here are your choices:
 Please, make sure that those informations are correct, we need them to comply
 with the law.
 {% endif %}
+{% if order.comment %}And you have left us this comment:
+
+{{ order.comment }}{% endif %}
 
 And, most importantly, you have ordered:
 
