@@ -1,11 +1,17 @@
 import reversion
 
 from django.contrib import admin
-from .models import Order, Component
+from .models import Order, Component, ComponentOrder
+
+
+class ComponentOrderInline(admin.TabularInline):
+    model = ComponentOrder
+    extra = 1
 
 
 class OrderAdmin(reversion.VersionAdmin):
     readonly_fields = ('made_on',)
+    inlines = (ComponentOrderInline,)
     fieldsets = (
         (None, {
             'fields': ('made_on',)
