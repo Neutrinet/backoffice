@@ -200,6 +200,7 @@
         })
         $("#estimated-price").html(parseFloat(Math.round(total_price * 100) / 100).toFixed(2));
         $("#number-of-components").html(total_number)
+        $("#id_estimated_price").val(parseFloat(Math.round(total_price * 100) / 100).toFixed(2));
       }
       calculate_estimated_price()
       $("input.component-number").change(calculate_estimated_price)
