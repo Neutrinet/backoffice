@@ -50,6 +50,14 @@ def make_order(request):
             fail_silently=False,
         )
 
+        send_mail(
+            u'[cube order] Order #%s by %s %s (%s)' % (order.id, order.first_name, order.last_name, order.nick if order.nick else "no nick"),
+            get_template('admin_email.txt').render(Context({"order": order})),
+            'noreplay@neutrinet.be',
+            ['cube@neutrinet.be'],
+            fail_silently=False,
+        )
+
     return HttpResponseRedirect(reverse("success"))
 
 
