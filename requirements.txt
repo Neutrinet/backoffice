@@ -1,0 +1,10 @@
+django
+django-bootstrap3
+django-extensions
+django-debug-toolbar
+django-pdb
+hamlpy
+werkzeug
+django-reversion
+psycopg2
+django-admin-bootstrapped>=2.0
