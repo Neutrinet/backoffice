@@ -1,9 +1,121 @@
 -extends "bootstrap3/bootstrap3.html"
+-load bootstrap3
 
 -block bootstrap3_title
   Neutrinet Cube Ordering WebSite
 
+-block bootstrap3_extra_head
+  :css
+    h3 {
+      margin-top: 0px;
+    }
+
+    .well {
+      padding-bottom: 7px;
+    }
+
 -block bootstrap3_content
   .container
-    %h1 Neutrinet Cube Ordering WebSite
+    %h1 Neutrinet Cube Ordering Form
     %hr
+
+    %form
+      -csrf_token
+
+      .well
+        %h3 Contact informations
+
+        .row
+          .col-md-6
+            -bootstrap_field form.first_name
+          .col-md-6
+            -bootstrap_field form.last_name
+
+        .row
+          .col-md-6
+            -bootstrap_field form.email
+          .col-md-6
+            -bootstrap_field form.nick
+
+      .well
+        %h3 Preferences
+
+        -bootstrap_field form.wants_to_install_everything_himself
+
+      .well
+        %h3 Subscription to Neutrinet VPN (recommended)
+
+        %p
+          %i If you already have a VPN subscription you don't need to fill this section.
+
+        %p
+          One of the big advantage of the Internet Cube is that it's linked to a VPN that gives him a public ip address (it's like having a public phone number). It solves <b>a LOT</b> of problems and allows the Internet Cube to works in a <i>plug'n play</i> fashion. We <b>really</b> recommended you to take one, if you don't, we expect you to know what you are doing.
+
+        %p
+          By taking a VPN subscription you'll become a member of the Neutrinet ASBL/VZW, we have members, not subscribers, we are an association, not a commercial <abbr title="Internet Service Provider">ISP</abbr>.
+
+        %p
+          The price for the VPN subscription is a "free price" with a minimum of 8€/month. This includes your ASBL/VZW membership fee of 25€/year (split as 2€/month, you even win 1€!). If you have already paid your membership, the min price there is 6€/month.
+
+        %p
+          %b You need one VPN subscription per cube for which you want a public IP.
+
+        -bootstrap_field form.wants_vpn
+
+        %p
+          %i
+            The Belgium Telecom laws (and ASBL/VZW for the address part) requires us that we ask your for those informations. You need to fill this we correct informations.
+
+        .row
+          .col-md-6
+            -bootstrap_field form.street
+            -bootstrap_field form.postal_code
+            -bootstrap_field form.town
+            -bootstrap_field form.country
+          .col-md-6
+            -bootstrap_field form.birthplace
+            -bootstrap_field form.birth_date
+
+      .well
+        %h3 Domain name (optional)
+
+        %p
+          Your cube will be associated to a domain name, by default, YUNOHOST allows you to have a free domain name that ends with <i>.nohost.me</i>. If you want another domain name, we can take care of buying it for you
+
+        %p
+          The price will be split across your VPN subscription (for example, for a domain at 12€/year, this will add 1€/month to your VPN subscription). We are using <a href="https://gandi.net">Gandi</a> so check here to see how much it will cost (<b>V.T.A. is not included in the prices display by Gandi, it's 21%</b>).
+
+        %p
+          %b Make sure that the domain name you've chosed is available.
+
+        -bootstrap_field form.domain_name
+        -bootstrap_field form.wants_neutrinet_to_renew_the_domain
+
+      .well
+        %h3 Components
+
+        %p
+          The prices listed here are the prices we get when we make at least 10 orders, we also add 5€ as an estimation of the split shipment cost.
+
+        %p
+          <b>The final price may vary from what appears here, it's only an estimation</b>, but, hopefully, this should quite close to reality.
+
+        -bootstrap_field form.components
+
+      .well
+        %h3 Additional comment (optional)
+
+        -bootstrap_field form.comment
+
+      %center
+        %input.btn.btn-lg.btn-primary{type: "submit", value: "Confirm my order"}
+
+      %hr
+
+      %p
+        %i
+          For any questions or if you want to modify your order (please do it fast, if we pass the order on our side it will be too late!), you can join us on <a href="mailto:cube@neutrinet.be">cube@neutrinet.be</a> or on <i>irc.freenode.net#neutrinet</i> if you are using <a href="https://en.wikipedia.org/wiki/Internet_Relay_Chat">IRC</a>.
+
+      %p
+        %b
+          Remember, we are only volunteers (and humans to), we don't win any money on that, we do that to help you and because we believe in a better Internet.
