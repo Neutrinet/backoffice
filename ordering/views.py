@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.db import transaction
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 
 from .models import Component, ComponentOrder
 from .forms import OrderForm
@@ -39,4 +41,4 @@ def make_order(request):
 
     # TODO send email
 
-    return render(request, "success.haml", {"order": order})
+    return HttpResponseRedirect(reverse("success"))
