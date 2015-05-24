@@ -57,3 +57,9 @@ def email_debug(request, pk):
     return render(request, "email.txt", {
         "order": get_object_or_404(Order, pk=pk),
     })
+
+
+def admin_email_debug(request, pk):
+    return render(request, "admin_email.txt", {
+        "order": get_object_or_404(Order, pk=pk),
+    })

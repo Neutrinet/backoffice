@@ -1,0 +1,32 @@
+Hello,
+
+{{ order.first_name }} {{ order.last_name }} {% if order.nick %}({{ order.nick }}) {% endif %}has made an order.
+
+Here are they choices:
+
+{% if not order.wants_to_install_everything_himself %}* they've ask us to configure everything for they{% else %}* they have chosen to install everything{% endif %}
+{% if order.wants_vpn %}* they've decided to subscribe to our VPN offer{% else %}* they have chosen NOT to subscribe to our VPN offer{% endif %}
+{% if order.domain_name %}* they've ask us to take the domain name "{{ order.domain_name }}" and {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}to handle its renewal
+{% endif %}
+{% if order.wants_vpn %}Here are the information they've provided for the VPN:
+
+* Street: {{ order.street|default:"" }}
+* Postal code: {{ order.postal_code|default:"" }}
+* Town: {{ order.town|default:"" }}
+* Birth place: {{ order.birthplace|default:"" }}
+* Country: {{ order.get_country_display|default:"" }}
+* Birth Date: {{ order.birth_date|default:"" }}{% endif %}
+
+{% if order.comment %}And they have left us this comment:
+
+{{ order.comment }}{% endif %}
+
+And, most importantly, they have ordered:
+
+{% for co in order.componentorder_set.all %}* {{ co.number }} x {{ co.component }} for {{ co.number }} x {{ co.component.current_price }}
+{% endfor %}
+For an *estimated* total of {{ order.estimated_price }} €.
+
+We can contact him on this email address: {{ order.email }}
+
+<3

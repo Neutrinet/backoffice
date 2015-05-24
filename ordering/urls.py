@@ -12,4 +12,5 @@ urlpatterns = patterns('ordering.views',
 if settings.DEBUG:
     urlpatterns += patterns('ordering.views',
         url(r'^email_debug/(?P<pk>\d+)/$', 'email_debug', name='email_debug'),
+        url(r'^admin_email_debug/(?P<pk>\d+)/$', 'admin_email_debug', name='admin_email_debug'),
     )
