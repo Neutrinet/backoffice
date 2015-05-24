@@ -1,0 +1,46 @@
+Hello {{ order.first_name }} {{ order.last_name }},
+
+This email is a summary of the order you've made for a cube (or more).
+
+Here are your choices:
+
+{% if not order.wants_to_install_everything_himself %}* you've ask us to configure everything for you{% else %}* you have chosen to install everything by yourself{% endif %}
+{% if order.wants_vpn %}* you've decided to subscribe to our VPN offer{% else %}* you have chosen NOT to subscribe to our VPN offer{% endif %}
+{% if order.domain_name %}* you've ask us to take the domain name "{{ order.domain_name }}" for you and {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}to handle its renewal
+{% endif %}
+{% if order.wants_vpn %}Here are the information you've provided for the VPN:
+
+* Street: {{ street }}
+* Postal code: {{ postal_code }}
+* Town: {{ town }}
+* Birth place: {{ birthplace }}
+* Country: {{ country }}
+* Birth Date: {{ birth_date }}
+
+Please, make sure that those informations are correct, we need them to comply
+with the law.
+{% endif %}
+
+And, most importantly, you have ordered:
+
+{% for co in order.componentorder_set.all %}* {{ co.number }} x {{ co.component }} for {{ co.number }} x {{ co.component.current_price }}
+{% endfor %}
+For an *estimated* total of {{ order.estimated_price }} €.
+
+We will contact you once your order has arrived and inform you about when we
+can meet to finish the installation together and explain you how it works (it
+is very likely that this will be at our next meeting).
+
+Don't expect it to be immediate, we generally wait to have a certain number of
+order because we get reduced price if we order more material and to split the
+shipment cost. Also when we have the time to do that, we are doing this on our
+free time.
+
+If you are really in a hurry, you might want to do the ordering by yourself.
+
+If you have any questions, wants to modify your answer or cancel it, just drop
+us an email at cube@neutrinet.be
+
+Have a nice day,
+
+<3
