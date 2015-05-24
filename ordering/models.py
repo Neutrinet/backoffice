@@ -58,6 +58,7 @@ class Component(models.Model):
     current_price = models.DecimalField(max_digits=10, decimal_places=2)  # price costing right now (default is for ordering >= 10)
     url = models.URLField()
     estimated_shipment_time = models.PositiveSmallIntegerField(null=True, blank=True, help_text="in days")
+    in_default_pack = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.reference if not self.full_name else u"%s (%s)" % (self.full_name, self.reference)
@@ -69,4 +70,3 @@ class ComponentOrder(models.Model):
     number = models.PositiveIntegerField(default=1)
     paid_price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)  # effectivly paid price
     received = models.PositiveIntegerField(default=0)
-    in_default_pack = models.BooleanField(default=False)
