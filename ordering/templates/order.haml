@@ -74,15 +74,16 @@
           %i
             The Belgium Telecom laws (and ASBL/VZW for the address part) requires us that we ask your for those informations. You need to fill this we correct informations.
 
-        .row
-          .col-md-6
-            -bootstrap_field form.street
-            -bootstrap_field form.postal_code
-            -bootstrap_field form.town
-            -bootstrap_field form.country
-          .col-md-6
-            -bootstrap_field form.birthplace
-            -bootstrap_field form.birth_date
+        #vpn_informations{style: "display: none"}
+          .row
+            .col-md-6
+              -bootstrap_field form.street
+              -bootstrap_field form.postal_code
+              -bootstrap_field form.town
+              -bootstrap_field form.country
+            .col-md-6
+              -bootstrap_field form.birthplace
+              -bootstrap_field form.birth_date
 
       .well
         %h3 Domain name (optional)
@@ -202,4 +203,8 @@
       }
       calculate_estimated_price()
       $("input.component-number").change(calculate_estimated_price)
+
+      $("input#id_wants_vpn").change(function() {
+        $("#vpn_informations").toggle("slow");
+      })
     })
