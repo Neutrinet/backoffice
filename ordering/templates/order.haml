@@ -124,7 +124,7 @@
           -for component in default_components
             %tr
               %td
-                %input.component-number{type: "number", value: "1", id: "id_{{ component.id }}_number", name: "{{ component.id }}_number", data-price: "{{ component.current_price }}"}
+                %input.component-number{type: "number", value: "1", id: "id_component_{{ component.id }}_number", name: "component_{{ component.id }}_number", data-price: "{{ component.current_price }}"}
               %td
                 %a{href: "{{ component.url }}", target: "_blank"}
                   =component
@@ -142,7 +142,7 @@
           -for component in other_components
             %tr
               %td
-                %input.component-number{type: "number", value: "0", id: "id_{{ component.id }}_number", name: "{{ component.id }}_number", data-price: "{{ component.current_price }}"}
+                %input.component-number{type: "number", value: "0", id: "id_component_{{ component.id }}_number", name: "component_{{ component.id }}_number", data-price: "{{ component.current_price }}"}
               %td
                 %a{href: "{{ component.url }}", target: "_blank"}
                   =component

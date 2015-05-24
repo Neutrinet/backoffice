@@ -8,7 +8,7 @@ class OrderForm(forms.ModelForm):
         super(OrderForm, self).__init__(*args, **kwargs)
 
         for component in Component.objects.all():
-            self.fields["component_%s" % component.id] = forms.IntegerField(min_value=0, required=False)
+            self.fields["component_%s_number" % component.id] = forms.IntegerField(min_value=0)
 
     class Meta:
         model = Order
