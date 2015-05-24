@@ -25,6 +25,9 @@ class OrderAdmin(reversion.VersionAdmin):
         ('VPN informations', {
             'fields': (('street', 'postal_code'), ('town', 'country'), ('birthplace', 'birth_date'))
         }),
+        ('Domain Name', {
+            'fields': (('wants_neutrinet_to_renew_the_domain', 'domain_name'),)
+        }),
         ('Status informations', {
             'fields': (('estimated_price', 'real_price'), ('has_payed', 'price_payed'), ('member_has_been_give_order', 'we_have_received_the_order'))
         }),
