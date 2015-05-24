@@ -16,7 +16,7 @@ class Order(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 
-    email = models.EmailField(help_text="To be able to contact you to inform you that your order is here. We'll never send you unsolicited emails.")
+    email = models.EmailField(help_text="To be able to contact you to inform you that your order is here. We'll never send you unsolicited emails. You'll received a copy of your order by email.")
 
     wants_vpn = models.BooleanField(default=False, verbose_name="I want to apply to a VPN subscription  at Neutrinet for my cube (and therefor became a member of Neutrinet)")
     wants_to_install_everything_himself = models.BooleanField(default=False, verbose_name="Don't configure anything for me, I want to do everything by myself")
