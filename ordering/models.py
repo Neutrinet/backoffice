@@ -65,3 +65,4 @@ class ComponentOrder(models.Model):
     number = models.PositiveIntegerField(default=1)
     paid_price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)  # effectivly paid price
     received = models.PositiveIntegerField(default=0)
+    in_default_pack = models.BooleanField(default=False)
