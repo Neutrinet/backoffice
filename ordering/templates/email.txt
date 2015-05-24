@@ -14,7 +14,7 @@ Here are your choices:
 * Postal code: {{ order.postal_code }}
 * Town: {{ order.town }}
 * Birth place: {{ order.birthplace }}
-* Country: {{ order.country }}
+* Country: {{ order.get_country_display }}
 * Birth Date: {{ order.birth_date }}
 
 Please, make sure that those informations are correct, we need them to comply
