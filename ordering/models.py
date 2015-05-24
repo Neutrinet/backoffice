@@ -50,6 +50,9 @@ class Component(models.Model):
     url = models.URLField()
     estimated_shipment_time = models.PositiveSmallIntegerField(null=True, blank=True, help_text="in days")
 
+    def __unicode__(self):
+        return self.reference if not self.full_name else u"%s (%s)" % (self.full_name, self.reference)
+
 
 class ComponentOrder(models.Model):
     order = models.ForeignKey(Order)
