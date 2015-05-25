@@ -30,6 +30,10 @@
     %form{method: "POST"}
       -csrf_token
 
+      -if form.errors
+        .alert.alert-danger
+          You have made some errors, please correct them
+
       .well
         %h3 Contact informations
 
@@ -72,7 +76,7 @@
 
         %p
           %i
-            The Belgium Telecom laws (and ASBL/VZW for the address part) requires us that we ask your for this information. Please fill out the form correctly.
+            The Belgium Telecom laws (and ASBL/VZW for the address part) requires us to ask you theses informations. Please fill out the form above correctly.
 
         #vpn_informations{style: "display: none"}
           .row
@@ -89,10 +93,10 @@
         %h3 Domain name (optional)
 
         %p
-          Your cube will be associated to a domain name, by default, YUNOHOST allows you to have a free domain name that ends with <i>.nohost.me</i>. If you want another domain name, we can take care of buying it for you. If you already have a domain name or prefer a <i>.nohost.me</i>
+          Your cube will be associated to a domain name, by default, YUNOHOST allows you to have a free domain name that ends with <i>.nohost.me</i>. If you want another domain name, we can take care of buying it for you. If you already have a domain name or prefer a <i>.nohost.me</i>, you don't need to complete this field.
 
         %p
-          The price will be split across your VPN subscription (for example, for a domain at 12€/year, this will add 1€/month to your VPN subscription). We are using <a href="https://gandi.net">Gandi</a> so check here to see how much it will cost (<b>V.A.T. is not included in the prices display by Gandi, it's 21%</b>).
+          The price will be split across your VPN subscription (for example, for a domain at 12€/year, this will add 1€/month to your VPN subscription). We are using <a href="https://gandi.net">Gandi</a> so check here to see how much it will cost (<b>V.A.T. is not included in the prices displayed by Gandi, it's 21%</b>).
 
         %p
           %b Make sure that the domain name you've chosen is available.
@@ -107,10 +111,10 @@
         %h3 Components
 
         %p
-          The prices listed here are the prices we get making at least 10 orders, we also add 5€ as an estimation of the split shipment cost.
+          The prices listed here are the prices we will get if we order at least 10 units, we also add 5€ as an estimation of the split shipment cost.
 
         %p
-          We have a special deal with Olimex that allows for a lower price. Our prices <b>include VAT</b> unlike Olimex website.
+          We have a special deal with Olimex that allows for a lower price. Our prices <b>include VAT</b> unlike those on Olimex website.
 
         %p
           <b>The final price may vary from what is shown here, it's only an estimation</b>, but, hopefully, this should closely approximate the actual price.
@@ -165,8 +169,8 @@
 
         %p
           %i
-            Reminder: we'll send you the final price once we'll received all the shipments, you'll be invited to add as much as you think that this service (ordering and configuration and everything else) is worth it. We won't take any percentage on the base price.
-            Should you wish to cancel your order, please contact as immediately at 'cube at neutrinet dot be'.
+            Reminder: we'll send you the final price once we have received all the shipments, you'll be invited to add as much as you think that this service (ordering, configuration and everything else) is worth it. We won't take any percentage on the base price.
+            Should you wish to cancel your order, please contact us immediately at 'cube at neutrinet dot be'.
 
       .well
         %h3 Additional comment (optional)
