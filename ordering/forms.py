@@ -10,6 +10,8 @@ class OrderForm(forms.ModelForm):
         for component in Component.objects.all():
             self.fields["component_%s_number" % component.id] = forms.IntegerField(min_value=0)
 
+        self.fields["birth_date"].input_formats = ['%Y-%m-%d', '%d/%m/%Y', '%d/%m/%y']
+
     class Meta:
         model = Order
         fields = (
