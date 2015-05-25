@@ -31,7 +31,7 @@ class Order(models.Model):
     town = models.CharField(max_length=255, null=True, blank=True)
     birthplace = models.CharField(max_length=255, null=True, blank=True)
     country = models.CharField(max_length=2, choices=COUNTRIES, null=True, blank=True, help_text="If you don't see your country, please look for another ISP on <a href='http://db.ffdn.org'>db.ffdn.org</a>. If you still want to choose Neutrinet, please indicate your country in the comment section bellow.")
-    birth_date = models.DateField(null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True, help_text="Format: dd-mm-yyyy")
 
     # private
     has_payed = models.BooleanField(default=False)
