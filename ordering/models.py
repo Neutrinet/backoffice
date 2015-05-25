@@ -12,7 +12,7 @@ COUNTRIES = (
 class Order(models.Model):
     made_on = models.DateTimeField(auto_now_add=True)
 
-    nick = models.CharField(max_length=255, null=True, blank=True, verbose_name="Nick (optional)", help_text="remember that we know some of you better by nick than by civil name, help use make the association")
+    nick = models.CharField(max_length=255, null=True, blank=True, verbose_name="Nick (optional)", help_text="remember that we know some of you better by nick than by civil name, help us make the association")
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 
