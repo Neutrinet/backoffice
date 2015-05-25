@@ -38,7 +38,7 @@ class OrderAdmin(reversion.VersionAdmin):
 
 
 class ComponentAdmin(reversion.VersionAdmin):
-    pass
+    list_display = ('__unicode__', 'current_price', 'in_default_pack')
 
 
 admin.site.register(Order, OrderAdmin)
