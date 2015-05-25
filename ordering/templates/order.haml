@@ -30,6 +30,10 @@
     %form{method: "POST"}
       -csrf_token
 
+      -if form.errors
+        .alert.alert-danger
+          You have made some errors, please correct them
+
       .well
         %h3 Contact informations
 
