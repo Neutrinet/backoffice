@@ -1,14 +1,14 @@
 Hello {{ order.first_name }} {{ order.last_name }},
 
-This email is a summary of the order you've made for a cube (or more).
+We're happy to confirm your order for one or more cubes!
 
 Here are your choices:
 
-{% if not order.wants_to_install_everything_himself %}* you've ask us to configure everything for you{% else %}* you have chosen to install everything by yourself{% endif %}
-{% if order.wants_vpn %}* you've decided to subscribe to our VPN offer{% else %}* you have chosen NOT to subscribe to our VPN offer{% endif %}
-{% if order.domain_name %}* you've ask us to take the domain name "{{ order.domain_name }}" for you and {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}to handle its renewal
+{% if not order.wants_to_install_everything_himself %}* You've asked us to configure everything for you{% else %}* You have chosen to install everything by yourself{% endif %}
+{% if order.wants_vpn %}* You've decided to subscribe to our VPN service{% else %}* You have chosen NOT to subscribe to our VPN offer{% endif %}
+{% if order.domain_name %}* You've asked us to order your domain name "{{ order.domain_name }}" for you and {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}to handle its renewal
 {% endif %}
-{% if order.wants_vpn %}Here are the information you've provided for the VPN:
+{% if order.wants_vpn %}Here are your personal information you've provided for the VPN:
 
 * Street: {{ order.street|default:"" }}
 * Postal code: {{ order.postal_code|default:"" }}
@@ -17,8 +17,8 @@ Here are your choices:
 * Country: {{ order.get_country_display|default:"" }}
 * Birth Date: {{ order.birth_date|default:"" }}
 
-Please, make sure that those informations are correct, we need them to comply
-with the law.
+Please, make sure that these are correct, we need them in order to comply
+with the Belgian law.
 {% endif %}
 {% if order.comment %}And you have left us this comment:
 
@@ -32,16 +32,18 @@ For an *estimated* total of {{ order.estimated_price }} €.
 
 We will contact you once your order has arrived and inform you about when we
 can meet to finish the installation together and explain you how it works (it
-is very likely that this will be at our next meeting).
+is very likely that this will be at our next meeting, once every two weeks).
 
-Don't expect it to be immediate, we generally wait to have a certain number of
-order because we get reduced price if we order more material and to split the
-shipment cost. Also when we have the time to do that, we are doing this on our
-free time.
+Your order might take some time, we generally wait to have a certain number of
+orders, so we can group them to reduce price and to split the shipment costs.
+As soon we have received your material we will notify you and provide payment info.
+The actual software provisioning might take some extra time. Should you want to try
+and install it all yourself, do contact us and we will try and get your equipment to
+you as soon as possible. 
 
-If you are really in a hurry, you might want to do the ordering by yourself.
+If you are in a hurry, you might want to place the order by yourself.
 
-If you have any questions, wants to modify your answer or cancel it, just drop
+If you have any questions, want to modify your order or cancel it, just drop
 us an email at cube@neutrinet.be
 
 Have a nice day,
