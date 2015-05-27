@@ -1,50 +1,37 @@
 Hello {{ order.first_name }} {{ order.last_name }},
 
-We're happy to confirm your order for one or more cubes!
+We're happy to confirm your order for the Cube or related components!
 
-Here are your choices:
+Details:
 
-{% if not order.wants_to_install_everything_himself %}* You've asked us to configure everything for you{% else %}* You have chosen to install everything by yourself{% endif %}
-{% if order.wants_vpn %}* You've decided to subscribe to our VPN service{% else %}* You have chosen NOT to subscribe to our VPN offer{% endif %}
-{% if order.domain_name %}* You've asked us to order your domain name "{{ order.domain_name }}" for you and {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}to handle its renewal
+{% if not order.wants_to_install_everything_himself %}* You have chosen to get everything installed by US{% else %}* You have chosen to get everything installed by yourself{% endif %} ;
+{% if order.wants_vpn %}* You have subscribed to our VPN service{% else %}* You have NOT subscribed to our VPN service{% endif %} ;
+{% if order.domain_name %}* You have ordered "{{ order.domain_name }}" and does {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}want us to handle its renewal
+{% endif %} ;
+{% if order.wants_vpn %}Personal data (VPN):
+
+Please, make sure that these are correct, it is required to comply with the Belgian law.
+
+* Street: {{ order.street|default:"" }} ;
+* Postal code: {{ order.postal_code|default:"" }} ;
+* Town: {{ order.town|default:"" }} ;
+* Birth place: {{ order.birthplace|default:"" }} ;
+* Country: {{ order.get_country_display|default:"" }} ;
+* Birth Date: {{ order.birth_date|default:"" }} ;
 {% endif %}
-{% if order.wants_vpn %}Here are your personal information you've provided for the VPN:
-
-* Street: {{ order.street|default:"" }}
-* Postal code: {{ order.postal_code|default:"" }}
-* Town: {{ order.town|default:"" }}
-* Birth place: {{ order.birthplace|default:"" }}
-* Country: {{ order.get_country_display|default:"" }}
-* Birth Date: {{ order.birth_date|default:"" }}
-
-Please, make sure that these are correct, we need them in order to comply
-with the Belgian law.
-{% endif %}
-{% if order.comment %}And you have left us this comment:
+{% if order.comment %}Comment:
 
 {{ order.comment }}{% endif %}
 
-And, most importantly, you have ordered:
+Order:
 
 {% for co in order.componentorder_set.all %}* {{ co.number }} x {{ co.component }} for {{ co.number }} x {{ co.component.current_price }}
 {% endfor %}
-For an *estimated* total of {{ order.estimated_price }} €.
+For an *estimated* total price of {{ order.estimated_price }} €.
 
-We will contact you once your order has arrived and inform you about when we
-can meet to finish the installation together and explain you how it works (it
-is very likely that this will be at our next meeting, once every two weeks).
+As soon as your order arrives, we will contact you and inform you about either when we can meet to finish the installation together (it is very likely that this will take place during the next upcoming meeting — every two weeks) or when you can come to grab your components.
 
-Your order might take some time, we generally wait to have a certain number of
-orders, so we can group them to reduce price and to split the shipment costs.
-As soon we have received your material we will notify you and provide payment info.
-The actual software provisioning might take some extra time. Should you want to try
-and install it all yourself, do contact us and we will try and get your equipment to
-you as soon as possible. 
-
-If you are in a hurry, you might want to place the order by yourself.
-
-If you have any questions, want to modify your order or cancel it, just drop
-us an email at cube@neutrinet.be
+If you have any questions, want to modify your order or cancel it, just drop us an email at cube@neutrinet.be
 
 Have a nice day,
 
