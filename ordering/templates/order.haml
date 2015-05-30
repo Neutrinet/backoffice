@@ -2,7 +2,7 @@
 -load bootstrap3
 
 -block bootstrap3_title
-  Neutrinet Cube Ordering WebSite
+  Neutrinet Cube Ordering Website
 
 -block bootstrap3_extra_head
   :css
@@ -32,10 +32,10 @@
 
       -if form.errors
         .alert.alert-danger
-          You have made some errors, please correct them
+          You have made some mistakes, please correct them.
 
       .well
-        %h3 Contact informations
+        %h3 Contact information
 
         .row
           .col-md-6
@@ -55,30 +55,33 @@
         -bootstrap_field form.wants_to_install_everything_himself
 
       .well
-        %h3 Subscription to Neutrinet VPN (recommended)
+        %h3 Subscribe to a Neutrinet VPN (recommended)
 
         %p
-          %i If you already have a VPN subscription you don't need to fill this section.
+          %i You do not need to fill this section if you already have a VPN subscription.
 
         %p
-          One of the big advantages of the Internet Cube is that it can connect to a VPN giving it a public ip address (it's like having a public phone number). It solves <b>a LOT</b> of problems and allows the Internet Cube to works in a <i>plug'n play</i> fashion. We <b>really</b> recommended you to take one, if you don't, we expect you to know what you are doing.
+          You will need a VPN connection if you want your Cube to work in a <i>plug'n play</i> fashion. It is stongly recommended to use one, unless you know what you are doing.
+
+        %p Technically, the VPN connection will encrypt all your Cube's traffic, making it unreadable to your current <abbr title="Internet Service Provider">ISP</abbr>, and will give your Cube a static IP address that will make it easily reachable wherever you install it (roughly like a mobile phone number).
+
+        %hr
 
         %p
-          By taking a VPN subscription you'll become a member of the Neutrinet ASBL/VZW. It is important to note we have members, not subscribers, we are an association, not a commercial <abbr title="Internet Service Provider">ISP</abbr>.
+          Please note that Neutrinet is a non-profit ASBL/VZW. Therefore, by subscribing to the VPN service, you will become a <b>member</b> of Neutrinet. This membership grants you the right to vote and decide the future of Neutrinet. You will not be a customer, you will be Neutrinet.
 
         %p
-          You pay what you want for the VPN subscription, with a minimum of 8€/month. This includes your ASBL/VZW membership fee of 25€/year (split as 2€/month, you even win 1€!). If you have already paid your membership, the min price is 6€/month.
+          <b>You are free to consider how much your VPN subscription worth</b>, and how much you want to pay for it. We strongly recommend you to pay at least 6€/month, because we cannot currently afford to lower the service's price below. The mandatory membership fee costing 24€/year, we are all paying around 8€/month (6€ + 2€ for membership) for now. Of course, any additional support is really appreciated :-)
 
         %p
-          %b You need one VPN subscription per cube for which you want a public IP.
+          %i If you want to run multiple Cubes at the same time, you will need multiple VPN subscriptions.
 
         -bootstrap_field form.wants_vpn
 
-        %p
-          %i
-            The Belgium Telecom laws (and ASBL/VZW for the address part) requires us to ask you theses informations. Please fill out the form above correctly.
-
         #vpn_informations{style: "display: none"}
+          %p
+            The Belgium Telecom laws and our ASBL/VZW status requires us to ask you the following personal informations. It will obviously not be selled nor leaked.
+
           .row
             .col-md-6
               -bootstrap_field form.street
@@ -90,19 +93,19 @@
               -bootstrap_field form.birth_date
 
       .well
-        %h3 Domain name (optional)
+        %h3 Register a domain name (recommended)
 
         %p
-          Your cube will be associated to a domain name, by default, YUNOHOST allows you to have a free domain name that ends with <i>.nohost.me</i>. If you want another domain name, we can take care of buying it for you. If you already have a domain name or prefer a <i>.nohost.me</i>, you don't need to complete this field.
+          %i You do not need to fill this section if you already have registered domain name.
 
         %p
-          The price will be split across your VPN subscription (for example, for a domain at 12€/year, this will add 1€/month to your VPN subscription). We are using <a href="https://gandi.net">Gandi</a> so check here to see how much it will cost (<b>V.A.T. is not included in the prices displayed by Gandi, it's 21%</b>).
+          Your Cube will be associated to a domain name. It will enable you to receive emails at addresses like you@your-domain.org and to have your Cube accessible from https://your-domain.org.
 
         %p
-          %b Make sure that the domain name you've chosen is available.
+          By default, we can provide you a domain name for free ending with <i>.nohost.me</i>, but if you want a domain name of your own (ending with <i>.be</i>, <i>.net</i> or <i>.org</i> for example), it will add an extra 1€ to your VPN subscription monthly fee.
 
         %p
-          %i Also please take into account that we don't own nor have any relation to Gandi, so we can't be held accountable for their service (though they are very reliable).
+          The domain name will be registered on <a href="https://gandi.net">Gandi.net</a>. Also, <b>please ensure that the domain name you want is available there</b>.
 
         -bootstrap_field form.domain_name
         -bootstrap_field form.wants_neutrinet_to_renew_the_domain
@@ -111,15 +114,17 @@
         %h3 Components
 
         %p
-          The prices listed here are the prices we will get if we order at least 10 units, we also add 5€ as an estimation of the split shipment cost.
+          The prices listed below are the prices we can for a batch order of 10 units, we also add 5€ as an estimation of the split shipping fees.
 
         %p
-          We have a special deal with Olimex that allows for a lower price. Our prices <b>include VAT</b> unlike those on Olimex website.
+          We have a special deal with <a href="http://olimex.com">Olimex</a> that allow us to lower the prices. Prices below <b>include VAT</b> unlike those on Olimex.com website.
 
         %p
-          <b>The final price may vary from what is shown here, it's only an estimation</b>, but, hopefully, this should closely approximate the actual price.
+          %b The final price may vary slightly from what is shown below, it is only an estimation.
 
-        %h4 Default pack for the cube
+        %hr
+
+        %h4 Default pack for the Cube
         %table.table.table-bordered
           %tr
             %th Quantity
@@ -137,7 +142,7 @@
                 =component.current_price
                 €
 
-        %h4 Other available components
+        %h4 Extra components
         %table.table.table-bordered
           %tr
             %th Quantity
@@ -169,8 +174,11 @@
 
         %p
           %i
-            Reminder: we'll send you the final price once we have received all the shipments, you'll be invited to add as much as you think that this service (ordering, configuration and everything else) is worth it. We won't take any percentage on the base price.
-            Should you wish to cancel your order, please contact us immediately at 'cube at neutrinet dot be'.
+            Reminder: We will send you the final price once we have received enough orders (usually 10) to order from Olimex by our side. You will be free to add to this price as much as you think the service (batch ordering and Cube configuration) worth. Neutrinet does not charge any extra fee.
+
+        %p
+          %i
+            If you wish to cancel your order in the mean time, please contact us immediately at 'cube at neutrinet dot be'.
 
       .well
         %h3 Additional comment (optional)
@@ -184,11 +192,11 @@
 
     %p
       %i
-        For any questions or if you want to modify your order (please do it fast, if we pass the order on our side it will be too late!), you can join us on <a href="mailto:cube@neutrinet.be">cube@neutrinet.be</a> or on <i>irc.freenode.net#neutrinet</i> if you are using <a href="https://en.wikipedia.org/wiki/Internet_Relay_Chat">IRC</a>.
+        If you have any question or if you want to modify your order, please contact us as soon as you can on <a href="mailto:cube@neutrinet.be">cube@neutrinet.be</a> or on <i>irc.freenode.net#neutrinet</i>.
 
     %p
       %b
-        Remember, we are but volunteers (and humans too), we don't make any profit on selling you this equipment, we do that to help you and because we believe in a better Internet.
+        Please remember that we are humans and volunteers. We do not make any profit, we are helping you as well as we can and we are doing it on our free time only because we believe in a better Internet.
 
 
 -block bootstrap3_extra_script
