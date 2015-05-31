@@ -49,7 +49,7 @@ class Order(models.Model):
     comment = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
-        return "order #%s for %s made %s days ago" % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick), (datetime.now() - self.made_on.replace(tzinfo=None)).days)
+        return u"order #%s for %s made %s days ago" % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick), (datetime.now() - self.made_on.replace(tzinfo=None)).days)
 
 
 class Component(models.Model):
@@ -72,4 +72,4 @@ class ComponentOrder(models.Model):
     received = models.PositiveIntegerField(default=0)
 
     def __unicode__(self):
-        return "%s '%s' for %s" % (self.number, self.component, self.order)
+        return u"%s '%s' for %s" % (self.number, self.component, self.order)
