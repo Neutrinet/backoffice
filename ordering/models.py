@@ -18,11 +18,11 @@ class Order(models.Model):
 
     email = models.EmailField(help_text="We will never send you unwanted emails. You will only receive a copy of your order, and further information about it.")
 
-    wants_vpn = models.BooleanField(default=False, verbose_name="<i>I want to subscribe to the Neutrinet's VPN service and become a member of Neutrinet ASBL/VZW</i>")
-    wants_to_install_everything_himself = models.BooleanField(default=False, verbose_name="<i>Do not configure my Cube for me, I want to do it by myself</i>")
+    wants_vpn = models.BooleanField(default=False, verbose_name="I want to subscribe to the Neutrinet's VPN service and become a member of Neutrinet ASBL/VZW")
+    wants_to_install_everything_himself = models.BooleanField(default=False, verbose_name="Do not configure my Cube for me, I want to do it by myself")
 
     # domain
-    wants_neutrinet_to_renew_the_domain = models.BooleanField(default=False, verbose_name="<i>I want my domain to be renewed automatically every year.</i>", help_text="It is a common mistake to forget to renew a domain name every year. Check this box if you want Neutrinet to do it for you.")
+    wants_neutrinet_to_renew_the_domain = models.BooleanField(default=False, verbose_name="I want my domain to be renewed automatically every year.", help_text="It is a common mistake to forget to renew a domain name every year. Check this box if you want Neutrinet to do it for you.")
     domain_name = models.URLField(blank=True, null=False, verbose_name="Domain name")
 
     # needed if the user wants the vpn
