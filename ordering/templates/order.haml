@@ -2,7 +2,7 @@
 -load bootstrap3
 
 -block bootstrap3_title
-  Neutrinet Cube Ordering Website
+  Neutrinet Cube Ordering Form
 
 -block bootstrap3_extra_head
   :css
@@ -58,7 +58,7 @@
         %h3 Subscribe to a Neutrinet VPN (recommended)
 
         %p
-          %i You do not need to fill this section if you already have a VPN subscription.
+          %span.help-block You do not need to fill this section if you already have a VPN subscription.
 
         %p
           You will need a VPN connection if you want your Cube to work in a <i>plug'n play</i> fashion. It is stongly recommended to use one, unless you know what you are doing.
@@ -74,13 +74,13 @@
           <b>You are free to consider how much your VPN subscription worth</b>, and how much you want to pay for it. We strongly recommend you to pay at least 6€/month, because we cannot currently afford to lower the service's price below. The mandatory membership fee costing 24€/year, we are all paying around 8€/month (6€ + 2€ for membership) for now. Of course, any additional support is really appreciated :-)
 
         %p
-          %i If you want to run multiple Cubes at the same time, you will need multiple VPN subscriptions.
+          %span.help-block If you want to run multiple Cubes at the same time, you will need multiple VPN subscriptions.
 
         -bootstrap_field form.wants_vpn
 
         #vpn_informations{style: "display: none"}
           %p
-            The Belgium Telecom laws and our ASBL/VZW status requires us to ask you the following personal informations. It will obviously not be selled nor leaked.
+            %span.help-block The Belgium Telecom laws and our ASBL/VZW status requires us to ask you the following personal informations. It will obviously not be selled nor leaked.
 
           .row
             .col-md-6
@@ -96,35 +96,35 @@
         %h3 Register a domain name (recommended)
 
         %p
-          %i You do not need to fill this section if you already have registered domain name.
+          %span.help-block You do not need to fill this section if you already have registered domain name.
 
         %p
-          Your Cube will be associated to a domain name. It will enable you to receive emails at addresses like you@your-domain.org and to have your Cube accessible from https://your-domain.org.
+          Your Cube will be associated to a domain name. It will enable you to receive emails at addresses like <b>you@your-domain.org</b> and to have your Cube accessible from <b>https://your-domain.org</b>.
 
         %p
           By default, we can provide you a domain name for free ending with <i>.nohost.me</i>, but if you want a domain name of your own (ending with <i>.be</i>, <i>.net</i> or <i>.org</i> for example), it will add an extra 1€ to your VPN subscription monthly fee.
 
         %p
-          The domain name will be registered on <a href="https://gandi.net">Gandi.net</a>. Also, <b>please ensure that the domain name you want is available there</b>.
+          The domain name will be registered at <a href="https://gandi.net">Gandi.net</a>. Also, <b>please ensure that the domain name you want is available there</b>.
 
         -bootstrap_field form.domain_name
         -bootstrap_field form.wants_neutrinet_to_renew_the_domain
 
       .well
-        %h3 Components
+        %h3 Choose your components (required)
 
         %p
-          The prices listed below are the prices we can for a batch order of 10 units, we also add 5€ as an estimation of the split shipping fees.
+          The prices listed below are the prices we can get for a batch order of 10 units, we also add 5€ as an estimation of the split shipping fees.
 
         %p
-          We have a special deal with <a href="http://olimex.com">Olimex</a> that allow us to lower the prices. Prices below <b>include VAT</b> unlike those on Olimex.com website.
+          We have a special deal with <a href="http://olimex.com">Olimex</a> that allows us to lower the prices. Prices below <b>include VAT</b> unlike those on Olimex.com.
 
         %p
           %b The final price may vary slightly from what is shown below, it is only an estimation.
 
         %hr
 
-        %h4 Default pack for the Cube
+        %h4 Default components of the Cube
         %table.table.table-bordered
           %tr
             %th Quantity
@@ -141,6 +141,8 @@
               %td
                 =component.current_price
                 €
+
+        %hr
 
         %h4 Extra components
         %table.table.table-bordered
@@ -173,15 +175,15 @@
           -bootstrap_field form.estimated_price
 
         %p
-          %i
+          %span.help-block
             Reminder: We will send you the final price once we have received enough orders (usually 10) to order from Olimex by our side. You will be free to add to this price as much as you think the service (batch ordering and Cube configuration) worth. Neutrinet does not charge any extra fee.
 
         %p
-          %i
-            If you wish to cancel your order in the mean time, please contact us immediately at 'cube at neutrinet dot be'.
+          %span.help-block
+            If you wish to cancel your order in the mean time, please contact us immediately at <a href="mailto:cube@neutrinet.be">cube@neutrinet.be</a>.
 
       .well
-        %h3 Additional comment (optional)
+        %h3 Leave a comment (optional)
 
         -bootstrap_field form.comment
 
@@ -191,8 +193,8 @@
       %hr
 
     %p
-      %i
-        If you have any question or if you want to modify your order, please contact us as soon as you can on <a href="mailto:cube@neutrinet.be">cube@neutrinet.be</a> or on <i>irc.freenode.net#neutrinet</i>.
+      %span.help-block
+        If you have any question or if you want to modify your order, please contact us as soon as you can at <a href="mailto:cube@neutrinet.be">cube@neutrinet.be</a> or on <i>irc.freenode.net#neutrinet</i>.
 
     %p
       %b
