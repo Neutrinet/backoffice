@@ -23,7 +23,7 @@ class Order(models.Model):
 
     # domain
     wants_neutrinet_to_renew_the_domain = models.BooleanField(default=False, verbose_name="I want my domain to be renewed automatically every year.", help_text="It is a common mistake to forget to renew a domain name every year. Check this box if you want Neutrinet to do it for you.")
-    domain_name = models.URLField(blank=True, null=False, verbose_name="Domain name")
+    domain_name = models.CharField(max_length=255, blank=True, null=False, verbose_name="Domain name")
 
     # needed if the user wants the vpn
     street = models.CharField(max_length=255, null=True, blank=True)
