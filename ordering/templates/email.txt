@@ -6,7 +6,7 @@ Details:
 
 {% if not order.wants_to_install_everything_himself %}* You have chosen to get everything installed by US{% else %}* You have chosen to get everything installed by yourself{% endif %} ;
 {% if order.wants_vpn %}* You have subscribed to our VPN service{% else %}* You have NOT subscribed to our VPN service{% endif %} ;
-{% if order.domain_name %}* You have ordered "{{ order.domain_name }}" and does {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}want us to handle its renewal
+{% if order.domain_name %}* You have ordered "{{ order.domain_name }}" and asked us {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}to handle its renewal
 {% endif %} ;
 {% if order.wants_vpn %}Personal data (VPN):
 
