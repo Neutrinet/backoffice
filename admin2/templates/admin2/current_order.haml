@@ -45,7 +45,7 @@
               -for component in pack.list
                 %li= component.count_in_current_group_order
                   x
-                  =component
+                  =component.display_with_url|safe
 
       .col-md-6
         .well
@@ -61,7 +61,7 @@
               -for component in provider.list
                 %li= component.count_in_current_group_order
                   x
-                  =component
+                  =component.display_with_url|safe
 
             %p{style: "padding-left: 12px"} Total:
               -componentorder_sum provider.list

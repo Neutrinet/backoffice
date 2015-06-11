@@ -70,6 +70,9 @@ class Component(models.Model):
     def provider(self):
         return self.url.split("//")[1].split("/")[0].replace("www.", "").replace(".com", "")
 
+    def display_with_url(self):
+        return '<a href="%s">%s</a>' % (self.url, self)
+
     def __unicode__(self):
         return self.reference if not self.full_name else u"%s (%s)" % (self.full_name, self.reference)
 
