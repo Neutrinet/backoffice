@@ -135,7 +135,7 @@
     -for order in orders
       -if order.comment
         %p
-          %p Comment from
+          %b Comment from
             -if order.nick
               {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
             -else
