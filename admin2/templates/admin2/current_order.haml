@@ -185,7 +185,7 @@
     -for order in orders
       %pre
         To: {{ order.email }}
-        Cc: cube@worlddomination.be
+        Cc: cube@neutrinet.be
         Subject: [Neutrinet/Cube] Confirmation and payment information for your internetcu.be order #{{ order.id }}
 
         Hello {% if order.nick %}{{ order.nick }}{% else %}{{ order.first_name }}{% endif %},
