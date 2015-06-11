@@ -128,6 +128,26 @@
     %p Total:
       =new_vpn_subscription
 
+    %h3 Domains members wants us to register
+    %hr
+
+    %ul
+    -for order in orders
+      -if order.domain
+        %li
+          =order.domain
+          for
+            -if order.nick
+              {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
+            -else
+              {{ order.first_name }} {{ order.last_name }}
+            \-
+            =order.email
+          -if order.wants_neutrinet_to_renew_the_domain
+            %b
+              and he wants us to handle the renewing of his domain
+
+
     %h3 Comments
       %small made by members on their order
     %hr
