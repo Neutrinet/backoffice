@@ -1,4 +1,5 @@
 -extends "bootstrap3.html"
+-load admin2
 
 -block bootstrap3_title
   Neutrinet Cube Group Order Form Second Admin Interface
@@ -63,4 +64,4 @@
                   =component
 
             %p{style: "padding-left: 12px"} Total:
-              =provider.list|length
+              -componentorder_sum provider.list
