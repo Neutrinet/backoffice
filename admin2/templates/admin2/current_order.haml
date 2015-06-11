@@ -234,7 +234,6 @@
         * 1 x shipment for olimex{% mail_space 'shipment for olimex' %}1 x 1.25 = 1.25 €
 
         Total: € {{ order.real_price }}
-
         {% if order.wants_vpn %}
         As you have included a VPN subscription, which runs at 8 euro per
         month, you will need to create a recurring payment as soon as you
@@ -245,8 +244,7 @@
         your Cube. However, if this is not already the case and if you want,
         you can become a member of Neutrinet, and adding the membership fee
         (€ 25) to your payment and informing us of this awesome decision in
-        your reply email :)
-        {% endif %}
+        your reply email :){% endif %}
 
         It would be great if you can answer this email once you have made the
         bank transfer. A simple "Paid!" will do :)
