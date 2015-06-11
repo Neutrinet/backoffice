@@ -78,19 +78,21 @@
     %h3 Show who order from where
       %small to split shipment cost
 
-    -for provider_order in provider_order_list
-      %p
-        %b= provider_order.provider
+    .row
+      -for provider_order in provider_order_list
+        .col-md-4
+          %p
+            %b= provider_order.provider
 
-      %ul
-        -for order in provider_order.orders
-          %li
-            %a{href: "/admin/ordering/order/{{ order.id }}/"}
-              -if order.nick
-                {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
-              -else
-                {{ order.first_name }} {{ order.last_name }}
+          %ul
+            -for order in provider_order.orders
+              %li
+                %a{href: "/admin/ordering/order/{{ order.id }}/"}
+                  -if order.nick
+                    {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
+                  -else
+                    {{ order.first_name }} {{ order.last_name }}
 
 
-      %p{style: "padding-left: 12px"} Total:
-        =provider_order.orders.count
+          %p{style: "padding-left: 12px"} Total:
+            =provider_order.orders.count
