@@ -228,7 +228,6 @@
 
         And for the other details, here are you order and the final price next
         to each component:
-
         {% for componentorder in order.componentorder_set.all %}
         * {{ componentorder.number }} x {{ componentorder.component }}{% mail_space componentorder.component %}{{ componentorder.number }} x {{ componentorder.price }} = € {{ componentorder.total_price }}{% endfor %}
         * 1 x shipment for olimex{% mail_space 'shipment for olimex' %}1 x 1.25 = 1.25 €
