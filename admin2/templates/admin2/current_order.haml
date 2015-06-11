@@ -132,20 +132,20 @@
     %hr
 
     %ul
-    -for order in orders
-      -if order.domain_name
-        %li
-          =order.domain_name
-          for
-            -if order.nick
-              {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
-            -else
-              {{ order.first_name }} {{ order.last_name }}
-            \-
-            =order.email
-          -if order.wants_neutrinet_to_renew_the_domain
-            %b
-              and he wants us to handle the renewing of his domain
+      -for order in orders
+        -if order.domain_name
+          %li
+            =order.domain_name
+            for
+              -if order.nick
+                {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
+              -else
+                {{ order.first_name }} {{ order.last_name }}
+              \-
+              =order.email
+            -if order.wants_neutrinet_to_renew_the_domain
+              %b
+                and he wants us to handle the renewing of his domain
 
 
     %h3 Comments
