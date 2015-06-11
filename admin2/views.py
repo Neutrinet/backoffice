@@ -13,7 +13,7 @@ def current_order(request):
 
     provider_order_list = [{
         "provider": provider,
-        "orders": Order.get_current().filter(componentorder__component__url__icontains=provider),
+        "orders": Order.get_current().filter(componentorder__component__url__icontains=provider).distinct(),
     } for provider in providers]
 
     return render(request, "admin2/current_order.haml", {
