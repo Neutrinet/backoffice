@@ -186,53 +186,73 @@
       %pre
         To: {{ order.email }}
         Cc: cube@worlddomination.be
-        Subject: [Neutrinet/Cube] confirmation and payment information for your order #{{ order.id }} at https://cube.neutrinet.be
+        Subject: [Neutrinet/Cube] Confirmation and payment information for your internetcu.be order #{{ order.id }}
 
         Hello {% if order.nick %}{{ order.nick }}{% else %}{{ order.first_name }}{% endif %},
 
-        Good news, we are happy at Neutrinet to confirm the order you've made
-        at https://cube.neutrinet.be \o/
+        Good news, we are happy to confirm the order you've made
+        for https://cube.neutrinet.be! \o/
 
-        Now that the order is closed, we were able to calculate the cost, it
-        shouldn't be very far away from the estimated price.
+        Now that the group order is finished, we can calculate the cost, it
+        should approximate the estimated price.
 
-        Because the total cost of the group order is way higher than our
-        current treasury we need to ask you to paid before being able to do it.
+        Because we cannot pay for everyone in advance, we would like to ask you
+        to pay for your order now. Know that we will only be able to place
+        orders for which we have received payment.
 
         As a reminder, you are free to consider how much this service is worth
-        and how much you want and are able to pay for it (with only ask you a
-        minimum of the hardware cost). This service include the order
-        management, the cube configuration and everything around it that make
-        it possible. Anything above the minimum will be greatly appreciate and
-        will directly contribute to what Neutrinet will be able to do :)
+        and if you'd like to pay for it (we only ask you to pay the hardware
+        cost).  This service includes the order management, your cube
+        configuration and everything around it that make it possible. Anything
+        above the fixed price is greatly appreciated and directly contributes
+        to what Neutrinet will be able to do :)
 
-        Here are the bank transfer informations:
+        Here are the bank transfer details:
 
         Bank: RecordBank
         Name: Neutrinet ASBL
         IBAN: BE52 6528 3497 8409
         BIC: HBKABE22
 
-        Communication: cube ordering #{{ order.id }}
-        Amount: a minimum of {{ order.real_price }} €
+        Wire transfer note: cube ordering #{{ order.id }}
+        Amount: a minimum of € {{ order.real_price }}
 
-        As for the details of the minimum cost, the only shipment cost we have
-        are 25€ from olimex, the other providers offer free shipping. This
-        shipment cost is split by the number of orders (20) across everyone.
-        This represent 1.25€ per order.
+        We kindly ask to you to pay before June 18, we hope to place the orders
+        in the following week. If you are unable to pay the amount by this
+        date, please inform us as soon as possible by replying to this email.
+
+        As for the details of the minimum cost, the only shipping cost we have
+        is € 25 from Olimex, the other merchants offer free shipping. This
+        shipping cost is split by the number of orders (20) across everyone,
+        making it € 1.25 per order.
 
         And for the other details, here are you order and the final price next
         to each component:
 
         {% for componentorder in order.componentorder_set.all %}
-        * {{ componentorder.number }} x {{ componentorder.component }}{% mail_space componentorder.component %}{{ componentorder.number }} x {{ componentorder.price }} = {{ componentorder.total_price }} €{% endfor %}
+        * {{ componentorder.number }} x {{ componentorder.component }}{% mail_space componentorder.component %}{{ componentorder.number }} x {{ componentorder.price }} = € {{ componentorder.total_price }}{% endfor %}
         * 1 x shipment for olimex{% mail_space 'shipment for olimex' %}1 x 1.25 = 1.25 €
 
-        Total: {{ order.real_price }} €
+        Total: € {{ order.real_price }}
 
-        Since the total order depends on the payment of everyone, it would be
-        great if you could pay as soon as possible.
+        {% if order.wants_vpn %}
+        As you have included a VPN subscription, which runs at 8 euro per
+        month, you will need to create a recurring payment as soon as you
+        receive your Cube, or sooner. Remember that we will be able to increase
+        our VPN service quality when we will reach 30 subscriptions. So the
+        sooner, the better, right? :-){% else %}
+        You have indicated that you will not need a VPN subscription along with
+        your Cube. However, if this is not already the case and if you want,
+        you can become a member of Neutrinet, and adding the membership fee
+        (€ 25) to your payment and informing us of this awesome decision in
+        your reply email :)
+        {% endif %}
 
-        Thanks for your trust and everything else,
+        It would be great if you can answer this email once you have made the
+        bank transfer. A simple "Paid!" will do :)
+
+        Do not hesitate to contact us if you have any question.
+
+        Thanks for your trust and your support,
 
         <3
