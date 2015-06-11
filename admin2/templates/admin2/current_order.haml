@@ -128,6 +128,21 @@
     %p Total:
       =new_vpn_subscription
 
+    %h3 Comments
+      %small made by members on their order
+
+    -for order in orders
+      -if order.comment
+        %p
+          %p Comment from
+            -if order.nick
+              {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
+            -else
+              {{ order.first_name }} {{ order.last_name }}
+            \-
+            =order.email
+        .well= order.comment
+
     %h3 Emails
 
     -for order in orders
