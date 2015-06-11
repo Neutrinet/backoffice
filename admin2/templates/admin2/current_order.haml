@@ -23,38 +23,44 @@
         =total_estimated_price
 
     %h3 Number of ordered components
+    %hr
 
-    %h4 By pack
+    .row
+      .col-md-6
+        .well
+          %h4 By pack
 
-    -regroup components|dictsortreversed:"in_default_pack" by in_default_pack as in_pack
+          -regroup components|dictsortreversed:"in_default_pack" by in_default_pack as in_pack
 
-    -for pack in in_pack
-      -if pack.grouper
-        %p
-          %b Components in the default pack:
-      -else
-        %p
-          %b Other components:
+          -for pack in in_pack
+            -if pack.grouper
+              %p
+                %b Components in the default pack:
+            -else
+              %p
+                %b Other components:
 
-      %ul
-        -for component in pack.list
-          %li= component.count_in_current_group_order
-            x
-            =component
+            %ul
+              -for component in pack.list
+                %li= component.count_in_current_group_order
+                  x
+                  =component
 
-    %h4 By provider
+      .col-md-6
+        .well
+          %h4 By provider
 
-    -regroup components|dictsort:"provider" by provider as providers
+          -regroup components|dictsort:"provider" by provider as providers
 
-    -for provider in providers
-      %p
-        %b= provider.grouper
+          -for provider in providers
+            %p
+              %b= provider.grouper
 
-      %ul
-        -for component in provider.list
-          %li= component.count_in_current_group_order
-            x
-            =component
+            %ul
+              -for component in provider.list
+                %li= component.count_in_current_group_order
+                  x
+                  =component
 
-      %p{style: "padding-left: 12px"} Total:
-        =provider.list|length
+            %p{style: "padding-left: 12px"} Total:
+              =provider.list|length
