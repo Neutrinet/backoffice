@@ -24,6 +24,8 @@
 
     %h3 Number of ordered components
 
+    %h4 By pack
+
     -regroup components|dictsortreversed:"in_default_pack" by in_default_pack as in_pack
 
     -for pack in in_pack
@@ -39,3 +41,20 @@
           %li= component.count_in_current_group_order
             x
             =component
+
+    %h4 By provider
+
+    -regroup components|dictsort:"provider" by provider as providers
+
+    -for provider in providers
+      %p
+        %b= provider.grouper
+
+      %ul
+        -for component in provider.list
+          %li= component.count_in_current_group_order
+            x
+            =component
+
+      %p{style: "padding-left: 12px"} Total:
+        =provider.list|length
