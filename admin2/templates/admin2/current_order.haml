@@ -128,6 +128,19 @@
     %p Total:
       =new_vpn_subscription
 
+    %h3 Users that wants to configure everything by themselves
+    %hr
+
+    %ul
+      -for order in orders
+        -if order.wants_to_install_everything_himself
+          %li
+            %a{href: "/admin/ordering/order/{{ order.id }}/"}
+              -if order.nick
+                {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
+              -else
+                {{ order.first_name }} {{ order.last_name }}
+
     %h3 Domains members wants us to register
     %hr
 
