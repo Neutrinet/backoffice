@@ -133,9 +133,9 @@
 
     %ul
     -for order in orders
-      -if order.domain
+      -if order.domain_name
         %li
-          =order.domain
+          =order.domain_name
           for
             -if order.nick
               {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
