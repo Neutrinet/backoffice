@@ -11,4 +11,4 @@ def componentorder_sum(component_list):
 
 @register.simple_tag
 def mail_space(string):
-    return " " * (45 - len(unicode(string)))
+    return " " * (80 - len(unicode(string)))
