@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'reversion',
     'ordering',
+    'admin2',
 )
 
 MIDDLEWARE_CLASSES = (
