@@ -97,3 +97,20 @@
 
           %p{style: "padding-left: 12px"} Total:
             =provider_order.orders.count
+
+
+    %h3 New vpn subscriptions
+    %hr
+
+    %ul
+      -for order in orders
+        -if order.wants_vpn
+          %li
+            %a{href: "/admin/ordering/order/{{ order.id }}/"}
+              -if order.nick
+                {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
+              -else
+                {{ order.first_name }} {{ order.last_name }}
+
+    %p Total:
+      =new_vpn_subscription
