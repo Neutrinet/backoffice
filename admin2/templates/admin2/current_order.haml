@@ -74,3 +74,17 @@
 
           %p Grand total:
             -componentorder_sum components
+
+    %h3 Show who order from where
+      %small to split shipment cost
+
+    -for provider_order in provider_order_list
+      %p
+        %b= provider_order.provider
+
+      %ul
+        -for order in provider_order.orders
+          %li= order
+
+      %p{style: "padding-left: 12px"} Total:
+        =provider_order.orders.count
