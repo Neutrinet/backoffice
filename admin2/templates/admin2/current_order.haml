@@ -84,7 +84,12 @@
 
       %ul
         -for order in provider_order.orders
-          %li= order
+          %li
+            -if order.nick
+              {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
+            -else
+              {{ order.first_name }} {{ order.last_name }}
+
 
       %p{style: "padding-left: 12px"} Total:
         =provider_order.orders.count
