@@ -53,6 +53,12 @@
                 %li= component.count_in_current_group_order
                   x
                   =component.display_with_url|safe
+                  for €
+                  -if component.prices_in_current_group_order|length == 1
+                    -for price in component.prices_in_current_group_order
+                      =price
+                  -else
+                    =component.prices_in_current_group_order
 
       .col-md-6
         .well
@@ -69,6 +75,12 @@
                 %li= component.count_in_current_group_order
                   x
                   =component.display_with_url|safe
+                  for €
+                  -if component.prices_in_current_group_order|length == 1
+                    -for price in component.prices_in_current_group_order
+                      =price
+                  -else
+                    =component.prices_in_current_group_order
 
             %p{style: "padding-left: 12px"} Total:
               -componentorder_sum provider.list
