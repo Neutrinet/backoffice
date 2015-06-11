@@ -21,3 +21,11 @@
 
       %li Total estimated price:
         =total_estimated_price
+
+    %h3 Ordered components
+
+    %ul
+      -for component in components
+        %li= component.count_in_current_group_order
+          x
+          =component
