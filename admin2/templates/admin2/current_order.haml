@@ -24,8 +24,18 @@
 
     %h3 Ordered components
 
-    %ul
-      -for component in components
-        %li= component.count_in_current_group_order
-          x
-          =component
+    -regroup components|dictsortreversed:"in_default_pack" by in_default_pack as in_pack
+
+    -for pack in in_pack
+      -if pack.grouper
+        %p
+          %b Components in the default pack:
+      -else
+        %p
+          %b Other components:
+
+      %ul
+        -for component in pack.list
+          %li= component.count_in_current_group_order
+            x
+            =component
