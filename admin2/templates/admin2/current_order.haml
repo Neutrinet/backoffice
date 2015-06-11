@@ -115,3 +115,59 @@
 
     %p Total:
       =new_vpn_subscription
+
+    %h3 Emails
+
+    -for order in orders
+      %pre
+        To: {{ order.email }}
+        Cc: cube@worlddomination.be
+        Subject: [Neutrinet/Cube] confirmation and payment information for your order #{{ order.id }} at https://cube.neutrinet.be
+
+        Hello {% if order.nick %}{{ order.nick }}{% else %}{{ order.first_name }}{% endif %},
+
+        Good news, we are happy at Neutrinet to confirm the order you've made
+        at https://cube.neutrinet.be \o/
+
+        Now that the order is closed, we were able to calculate the cost, it
+        shouldn't be very far away from the estimated price.
+
+        Because the total cost of the group order is way higher than our
+        current treasury we need to ask you to paid before being able to do it.
+
+        As a reminder, you are free to consider how much this service is worth
+        and how much you want and are able to pay for it (with only ask you a
+        minimum of the hardware cost). This service include the order
+        management, the cube configuration and everything around it that make
+        it possible. Anything above the minimum will be greatly appreciate and
+        will directly contribute to what Neutrinet will be able to do :)
+
+        Here are the bank transfer informations:
+
+        Bank: RecordBank
+        Name: Neutrinet ASBL
+        IBAN: BE52 6528 3497 8409
+        BIC: HBKABE22
+
+        Communication: cube ordering #{{ order.id }}
+        Amount: a minimum of {{ order.real_price }} €
+
+        As for the details of the minimum cost, the only shipment cost we have
+        are 25€ from olimex, the other providers offer free shipping. This
+        shipment cost is split by the number of orders (20) across everyone.
+        This represent 1.25€ per order.
+
+        And for the other details, here are you order and the final price next
+        to each component:
+
+        {% for componentorder in order.componentorder_set.all %}
+        * {{ componentorder.number }} x {{ componentorder.component }}{% mail_space componentorder %}{{ componentorder.number }} x {{ componentorder.price }} = {{ componentorder.total_price }} €{% endfor %}
+
+        Total: {{ order.real_price }} €
+
+        Since the total order depends on the payment of everyone, it would be
+        great if you could pay as soon as possible.
+
+        Thanks for your trust and everything else,
+
+        <3

@@ -85,5 +85,13 @@ class ComponentOrder(models.Model):
     paid_price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)  # effectivly paid price
     received = models.PositiveIntegerField(default=0)
 
+    @property
+    def price(self):
+        return self.paid_price if self.paid_price else self.component.current_price
+
+    @property
+    def total_price(self):
+        return self.number * self.price
+
     def __unicode__(self):
         return u"%s '%s' for %s" % (self.number, self.component, self.order)
