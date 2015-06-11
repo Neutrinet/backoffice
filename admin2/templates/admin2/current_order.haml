@@ -1,0 +1,23 @@
+-extends "bootstrap3.html"
+
+-block bootstrap3_title
+  Neutrinet Cube Group Order Form Second Admin Interface
+
+-block bootstrap3_content
+  .container
+    %h2 All-in-one page about the current group order
+    %hr
+
+    %p
+      %b
+        For now, orders are filtered on the field 'member_has_been_give_order', this will probably change in the futur.
+
+    %h3 Stats
+    %hr
+
+    %ul
+      %li Number of orders:
+        =orders.count
+
+      %li Total estimated price:
+        =total_estimated_price
