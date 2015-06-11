@@ -226,8 +226,7 @@
         shipping cost is split by the number of orders (20) across everyone,
         making it € 1.25 per order.
 
-        And for the other details, here is you order and the final price next
-        to each component:
+        Here are the items you ordered:
         {% for componentorder in order.componentorder_set.all %}
         * {{ componentorder.number }} x {{ componentorder.component }}{% mail_space componentorder.component %}{{ componentorder.number }} x {{ componentorder.price }} = € {{ componentorder.total_price }}{% endfor %}
         * 1 x Shipment from Olimex{% mail_space 'shipment for olimex' %}1 x 1.25 = € 1.25
