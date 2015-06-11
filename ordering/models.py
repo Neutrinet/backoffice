@@ -67,6 +67,7 @@ class Component(models.Model):
     def count_in_current_group_order(self):
         return self.componentorder_set.filter(order=Order.get_current()).count()
 
+    @property
     def provider(self):
         return self.url.split("//")[1].split("/")[0].replace("www.", "").replace(".com", "")
 
