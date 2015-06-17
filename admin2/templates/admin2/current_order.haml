@@ -30,6 +30,39 @@
       %li Number or ordered components:
         -componentorder_sum components
 
+    %h3 Group order Status
+    %hr
+
+    .row
+      .col-md-6
+        %h4 Member has payed
+        %ul
+          -for order in orders
+            -if order.has_payed
+              %li
+                %a{href: "/admin/ordering/order/{{ order.id }}/"}
+                  -if order.nick
+                    {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
+                  -else
+                    {{ order.first_name }} {{ order.last_name }}
+                =order.price_payed
+
+      .col-md-6
+        %h4 Member hasn't payed
+        %ul
+          -for order in orders
+            -if not order.has_payed
+              %li
+                %a{href: "/admin/ordering/order/{{ order.id }}/"}
+                  -if order.nick
+                    {{ order.nick }} ({{ order.first_name }} {{ order.last_name }})
+                  -else
+                    {{ order.first_name }} {{ order.last_name }}
+                =order.email
+
+        %p
+          Emails in one line: {% for order in orders %}{% if not order.has_payed %}{{ order.email }}, {% endif %}{% endfor %}
+
     %h3 Number of ordered components
     %hr
 
