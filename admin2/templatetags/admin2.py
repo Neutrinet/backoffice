@@ -25,5 +25,8 @@ def total_payed(orders):
 
 @register.simple_tag
 def total_addition_from_free_price(orders):
+    if orders.filter(has_payed=True).count() == 0:
+        return 0
+
     orders = orders.filter(has_payed=True)
     return orders.filter(price_payed__isnull=False).aggregate(Sum('price_payed'))["price_payed__sum"] - orders.filter(price_payed__isnull=False).aggregate(Sum('real_price'))["real_price__sum"]
