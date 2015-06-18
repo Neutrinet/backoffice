@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import models
+from django.db.models import Sum
 
 
 COUNTRIES = (
@@ -65,7 +66,7 @@ class Component(models.Model):
     in_default_pack = models.BooleanField(default=False)
 
     def count_in_current_group_order(self):
-        return self.componentorder_set.filter(order=Order.get_current()).count()
+        return self.componentorder_set.filter(order=Order.get_current()).aggregate(Sum('number'))['number__sum']
 
     def prices_in_current_group_order(self):
         print set([x for x in self.componentorder_set.filter(order=Order.get_current())])
