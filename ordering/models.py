@@ -21,7 +21,7 @@ class GroupOrder(models.Model):
     )
 
     name = models.CharField(max_length=255)
-    state = models.CharField(max_length=15, choices=group_order_state)
+    state = models.CharField(max_length=15, choices=group_order_state, default="open")
     description = models.TextField(null=True, blank=True)
     deadline = models.DateField(null=True, blank=True)
 
