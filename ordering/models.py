@@ -10,8 +10,26 @@ COUNTRIES = (
     ('lu', 'Luxembourg'),
 )
 
+
+class GroupOrder(models.Model):
+    launched_on = models.DateTimeField(auto_now_add=True)
+
+    group_order_state = (
+        ('open', 'Open'),
+        ('close', 'Close'),
+        ('done', 'Done'),
+    )
+
+    name = models.CharField(max_length=255)
+    state = models.CharField(max_length=15, choices=group_order_state)
+    description = models.TextField(null=True, blank=True)
+    deadline = models.DateField(null=True, blank=True)
+
+
 class Order(models.Model):
     made_on = models.DateTimeField(auto_now_add=True)
+
+    group_order = models.ForeignKey(GroupOrder, null=True, blank=True)
 
     nick = models.CharField(max_length=255, null=True, blank=True, verbose_name="Nickname (optional)", help_text="We may know you better by your nickname than your civil name :-)")
     first_name = models.CharField(max_length=255)
