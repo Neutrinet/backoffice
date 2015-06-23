@@ -1,7 +1,11 @@
 import reversion
 
 from django.contrib import admin
-from .models import Order, Component, ComponentOrder
+from .models import GroupOrder, Order, Component, ComponentOrder
+
+
+class GroupOrderAdmin(reversion.VersionAdmin):
+    pass
 
 
 class ComponentOrderInline(admin.TabularInline):
@@ -41,5 +45,6 @@ class ComponentAdmin(reversion.VersionAdmin):
     list_display = ('__unicode__', 'current_price', 'in_default_pack')
 
 
+admin.site.register(GroupOrder, GroupOrderAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Component, ComponentAdmin)
