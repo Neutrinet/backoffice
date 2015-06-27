@@ -13,7 +13,7 @@ from .forms import OrderForm
 def home(request):
     GroupOrder.close_deadline_passed_grouper_order()
     return render(request, "home.haml", {
-        "group_orders": GroupOrder.objects.order_by("-launched_on")[:3],
+        "group_orders": GroupOrder.objects.order_by("-launched_on")[:2],
     })
 
 
