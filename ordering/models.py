@@ -74,6 +74,18 @@ class Order(models.Model):
     def __unicode__(self):
         return u"order #%s for %s made %s days ago" % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick), (datetime.now() - self.made_on.replace(tzinfo=None)).days)
 
+    def save(self, *args, **kwargs):
+        if self.group_order is None:
+            if not GroupOrder.objects.filter(state="open").exists():
+                self.group_order = GroupOrder.objects.create(
+                    name="foobar",
+                    state="open",
+                )
+            else:
+                self.group_order = GroupOrder.objects.filter(state="open").first()
+
+        return self.save(*args, **kwargs)
+
 
 class Component(models.Model):
     reference = models.CharField(max_length=255)
