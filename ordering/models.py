@@ -27,15 +27,19 @@ class GroupOrder(models.Model):
     number = models.PositiveSmallIntegerField()
 
     @classmethod
-    def generate_next_group_order_name(self):
+    def get_next_group_order_number(self):
         group_orders = GroupOrder.objects.order_by("-launched_on")
 
         if not group_orders.exists():
-            number = "1"
-            today = date.today()
-            next_month = today.replace(day=1) + timedelta(days=31)
+            return 1
         else:
-            number = group_orders.first().number + 1
+            return group_orders.first().number + 1
+
+    @classmethod
+    def generate_next_group_order_name(self):
+        group_orders = GroupOrder.objects.order_by("-launched_on")
+
+        number = GroupOrder.get_next_group_order_number()
 
         if not group_orders.exists() or not group_orders.first().deadline:
             today = date.today()
