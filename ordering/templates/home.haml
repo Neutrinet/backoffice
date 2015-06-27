@@ -59,6 +59,14 @@
 
               -if group_order.description
                 =group_order.description|safe
+
+              -if group_order.order_set.count == 0
+                %p
+                  There is no one in this group order for now.
+              -else
+                %p
+                  There is {{ group_order.order_set.count }} {% if group_order.order_set.count == 1 %}person{% else %}people{% endif %} registered in this group order.
+
     %p
       %i
         You will be automatically assigned to the current group order when making an order, this information is here to inform you about the current state of the process.
