@@ -7,6 +7,8 @@ from .models import GroupOrder, Order, Component, ComponentOrder
 class OrderInline(admin.TabularInline):
     model = Order
     extra = 1
+    readonly_fields = ('made_on',)
+    fields = ('made_on', 'email', 'has_payed', 'member_has_been_give_order', 'estimated_price', 'real_price', 'price_payed')
 
 
 class GroupOrderAdmin(reversion.VersionAdmin):
