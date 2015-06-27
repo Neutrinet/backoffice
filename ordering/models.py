@@ -112,7 +112,7 @@ class Order(models.Model):
             else:
                 self.group_order = GroupOrder.objects.filter(state="open").first()
 
-        return self.save(*args, **kwargs)
+        return super(Order, self).save(*args, **kwargs)
 
 
 class Component(models.Model):
