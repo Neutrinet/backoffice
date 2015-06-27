@@ -49,4 +49,10 @@
                 =group_order.state
 
             .panel-body
-              foobar
+              -if group_order.deadline
+                %p
+                  %b Deadline:
+                  =group_order.deadline
+              -else
+                %p
+                  %i There is no deadline right now.
