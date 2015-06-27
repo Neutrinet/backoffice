@@ -107,6 +107,7 @@ class Order(models.Model):
                 self.group_order = GroupOrder.objects.create(
                     name=GroupOrder.generate_next_group_order_name(),
                     state="open",
+                    number=GroupOrder.get_next_group_order_number(),
                 )
             else:
                 self.group_order = GroupOrder.objects.filter(state="open").first()
