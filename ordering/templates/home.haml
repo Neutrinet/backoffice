@@ -26,3 +26,15 @@
       %center
         %a.btn.btn-lg.btn-primary{href: "{% url 'order' %}"}
           Order my cube
+
+    %h3 Current and previous group orders
+    %hr
+
+    .row
+      -for group_order in group_orders
+        .col-md-4
+          .panel.panel-default
+            .panel-heading= group_order.name
+
+            .panel-body
+              foobar

@@ -49,6 +49,10 @@ class GroupOrder(models.Model):
 
         return "Group Order #%s %s" % (number, next_month.strftime("%B %Y"))
 
+    @classmethod
+    def close_deadline_passed_grouper_order(klass):
+        GroupOrder.objects.filter(deadline__isnull=False, deadline__gt=date.today(), state="open").update(state="close")
+
     def __unicode__(self):
         return u"%s [%s]" % (self.name, self.state)
 

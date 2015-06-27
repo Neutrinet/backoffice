@@ -6,11 +6,20 @@ from django.db import transaction
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
-from .models import Component, ComponentOrder, Order
+from .models import Component, ComponentOrder, Order, GroupOrder
 from .forms import OrderForm
 
 
+def home(request):
+    GroupOrder.close_deadline_passed_grouper_order()
+    return render(request, "home.haml", {
+        "group_orders": GroupOrder.objects.order_by("-launched_on")[:3],
+    })
+
+
 def make_order(request):
+    GroupOrder.close_deadline_passed_grouper_order()
+
     if request.method == "GET":
         return render(request, "order.haml", {
             "form": OrderForm(),
