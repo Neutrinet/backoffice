@@ -56,3 +56,6 @@
               -else
                 %p
                   %i There is no deadline right now.
+
+              -if group_order.description
+                =group_order.description|safe
