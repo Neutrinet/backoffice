@@ -27,7 +27,7 @@ class GroupOrder(models.Model):
     number = models.PositiveSmallIntegerField()
 
     @classmethod
-    def next_group_order_name(self):
+    def generate_next_group_order_name(self):
         group_orders = GroupOrder.objects.order_by("-launched_on")
 
         if not group_orders.exists():
