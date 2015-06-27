@@ -1,15 +1,16 @@
 from decimal import Decimal
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.db.models import Sum
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
-from ordering.models import Order, Component
+from ordering.models import Order, Component, GroupOrder
 
 
-def current_order(request):
-    components = Component.objects.filter(componentorder__order=Order.get_current()).distinct()
+def group_order_detail(request, pk):
+    group_order = get_object_or_404(GroupOrder, pk=pk)
+    components = Component.objects.filter(componentorder__order=group_order.order_set.all()).distinct()
 
     providers = set()
     for component in components:
@@ -30,7 +31,7 @@ def current_order(request):
     })
 
 
-def calculate_final_price_for_current_order(request):
+def calculate_final_price_for_group_order(request):
     # this function is mostly an hack for now
 
     for order in Order.get_current():

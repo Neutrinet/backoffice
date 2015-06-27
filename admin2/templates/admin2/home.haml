@@ -12,8 +12,8 @@
       %i
         Because modifying the django admin interface sucks.
 
-    %h3 Available admin pages:
+    %h3 Group Orders:
     %ul
-      %li
-        %a{href: "{% url 'admin2_current_order' %}"}
-          current order "all in one" page
+      -for group_order in object_list
+        %li
+          %a{href: "{% url 'admin2_group_order_detail' group_order.pk %}"}= group_order.name

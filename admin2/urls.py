@@ -1,12 +1,14 @@
 from django.conf.urls import patterns, url
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+
+from ordering.models import GroupOrder
 
 from .utils import user_is_admin
 from . import views
 
 
 urlpatterns = patterns('admin2.views',
-    url(r'^$', user_is_admin(TemplateView.as_view(template_name="admin2/home.haml")), name='admin2_home'),
-    url(r'^current_order/$', user_is_admin(views.current_order), name='admin2_current_order'),
-    url(r'^current_order/calculate$', user_is_admin(views.calculate_final_price_for_current_order), name='admin2_calculate_final_price_for_current_order'),
+    url(r'^$', user_is_admin(ListView.as_view(template_name="admin2/home.haml", queryset=GroupOrder.objects.order_by("-launched_on"))), name='admin2_home'),
+    url(r'^group_order/(?P<pk>\d+)/$', user_is_admin(views.group_order_detail), name='admin2_group_order_detail'),
+    url(r'^group_orderrder_detail/(?P<pk>\d+)/calculate$', user_is_admin(views.calculate_final_price_for_group_order), name='admin2_calculate_final_price_for_group_order'),
 )
