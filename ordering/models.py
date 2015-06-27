@@ -101,7 +101,7 @@ class Order(models.Model):
         if self.group_order is None:
             if not GroupOrder.objects.filter(state="open").exists():
                 self.group_order = GroupOrder.objects.create(
-                    name="foobar",
+                    name=GroupOrder.generate_next_group_order_name(),
                     state="open",
                 )
             else:
