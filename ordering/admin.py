@@ -4,8 +4,13 @@ from django.contrib import admin
 from .models import GroupOrder, Order, Component, ComponentOrder
 
 
+class OrderInline(admin.TabularInline):
+    model = Order
+    extra = 1
+
+
 class GroupOrderAdmin(reversion.VersionAdmin):
-    pass
+    inlines = (OrderInline,)
 
 
 class ComponentOrderInline(admin.TabularInline):
