@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date, timedelta
 
 from django.db import models
 from django.db.models import Sum
@@ -24,6 +24,26 @@ class GroupOrder(models.Model):
     state = models.CharField(max_length=15, choices=group_order_state, default="open")
     description = models.TextField(null=True, blank=True)
     deadline = models.DateField(null=True, blank=True)
+    number = models.PositiveSmallIntegerField()
+
+    @classmethod
+    def next_group_order_name(self):
+        group_orders = GroupOrder.objects.order_by("-launched_on")
+
+        if not group_orders.exists():
+            number = "1"
+            today = date.today()
+            next_month = today.replace(day=1) + timedelta(days=31)
+        else:
+            number = group_orders.first().number + 1
+
+        if not group_orders.exists() or not group_orders.first().deadline:
+            today = date.today()
+            next_month = today.replace(day=1) + timedelta(days=31)
+        else:
+            next_month = group_orders.first().deadline.replace(day=1) + timedelta(days=31)
+
+        return "Group Order #%s %s" % (number, next_month.strftime("%B %Y"))
 
 
 class Order(models.Model):
