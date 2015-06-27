@@ -35,6 +35,17 @@
         .col-md-6
           .panel.panel-default
             .panel-heading= group_order.name
+              -if group_order.state == "open"
+                .label.label-success
+                  current open group order
+              -elif group_order.state == "close"
+                .label.label-danger
+                  closed, the order is being processed
+              -elif group_order.state == "done"
+                .label.label-default
+                  cubes have been distributed
+              -else
+                =group_order.state
 
             .panel-body
               foobar
