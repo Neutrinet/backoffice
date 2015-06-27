@@ -45,6 +45,9 @@ class GroupOrder(models.Model):
 
         return "Group Order #%s %s" % (number, next_month.strftime("%B %Y"))
 
+    def __unicode__(self):
+        return u"%s [%s]" % (self.name, self.state)
+
 
 class Order(models.Model):
     made_on = models.DateTimeField(auto_now_add=True)
