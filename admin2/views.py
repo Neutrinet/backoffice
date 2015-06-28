@@ -27,8 +27,8 @@ def group_order_detail(request, pk):
         "orders": orders,
         "new_vpn_subscription": orders.filter(wants_vpn=True).count(),
         "components": components,
-        "total_real_price": Order.objects.aggregate(Sum('real_price'))['real_price__sum'],
-        "total_estimated_price": Order.objects.aggregate(Sum('estimated_price'))['estimated_price__sum'],
+        "total_real_price": orders.aggregate(Sum('real_price'))['real_price__sum'],
+        "total_estimated_price": orders.aggregate(Sum('estimated_price'))['estimated_price__sum'],
         "provider_order_list": provider_order_list,
     })
 
