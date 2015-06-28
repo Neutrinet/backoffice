@@ -110,7 +110,7 @@
 
             %ul
               -for component in provider.list
-                %li= count_in_current_group_order component group_order
+                %li- count_in_current_group_order component group_order
                   x
                   =component.display_with_url|safe
                   for €
