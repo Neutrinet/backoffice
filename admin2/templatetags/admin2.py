@@ -6,8 +6,8 @@ register = template.Library()
 
 
 @register.simple_tag
-def componentorder_sum(component_list, group_order):
-    return sum([count_in_current_group_order(x, group_order) for x in component_list])
+def componentorder_sum(component_list, orders):
+    return sum([count_in_current_group_order(x, orders) for x in component_list])
 
 
 @register.simple_tag

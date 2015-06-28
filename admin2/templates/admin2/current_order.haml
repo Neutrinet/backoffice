@@ -28,7 +28,7 @@
         =new_vpn_subscription
 
       %li Number or ordered components:
-        -componentorder_sum components group_order
+        -componentorder_sum components orders
 
     %h3 Group order Status
     %hr
@@ -117,10 +117,10 @@
                   -prices_in_current_group_order component orders
 
             %p{style: "padding-left: 12px"} Total:
-              -componentorder_sum provider.list group_order
+              -componentorder_sum provider.list orders
 
           %p Grand total:
-            -componentorder_sum components group_order
+            -componentorder_sum components orders
 
     %h3 Show who order from where
       %small to split shipment cost
