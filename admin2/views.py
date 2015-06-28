@@ -20,7 +20,7 @@ def group_order_detail(request, pk):
     provider_order_list = [{
         "group_order": group_order,
         "provider": provider,
-        "orders": Order.get_current().filter(componentorder__component__url__icontains=provider).distinct(),
+        "orders": orders.filter(componentorder__component__url__icontains=provider).distinct(),
     } for provider in providers]
 
     return render(request, "admin2/current_order.haml", {
