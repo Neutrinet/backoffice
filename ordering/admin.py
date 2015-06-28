@@ -25,7 +25,7 @@ class OrderAdmin(reversion.VersionAdmin):
     inlines = (ComponentOrderInline,)
     fieldsets = (
         (None, {
-            'fields': ('made_on',)
+            'fields': (('made_on', 'group_order'),)
         }),
         ('Member infos', {
             'fields': (('nick', 'email'), ('first_name', 'last_name'))
