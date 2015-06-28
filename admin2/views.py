@@ -10,7 +10,8 @@ from ordering.models import Order, Component, GroupOrder
 
 def group_order_detail(request, pk):
     group_order = get_object_or_404(GroupOrder, pk=pk)
-    components = Component.objects.filter(componentorder__order=group_order.order_set.all()).distinct()
+    orders = group_order.order_set.all()
+    components = Component.objects.filter(componentorder__order=orders).distinct()
 
     providers = set()
     for component in components:
@@ -22,8 +23,8 @@ def group_order_detail(request, pk):
     } for provider in providers]
 
     return render(request, "admin2/current_order.haml", {
-        "orders": Order.get_current(),
-        "new_vpn_subscription": Order.get_current().filter(wants_vpn=True).count(),
+        "orders": orders,
+        "new_vpn_subscription": orders.filter(wants_vpn=True).count(),
         "components": components,
         "total_real_price": Order.objects.aggregate(Sum('real_price'))['real_price__sum'],
         "total_estimated_price": Order.objects.aggregate(Sum('estimated_price'))['estimated_price__sum'],
@@ -31,10 +32,12 @@ def group_order_detail(request, pk):
     })
 
 
-def calculate_final_price_for_group_order(request):
+def calculate_final_price_for_group_order(request, pk):
     # this function is mostly an hack for now
+    group_order = get_object_or_404(GroupOrder, pk=pk)
+    orders = group_order.order_set.all()
 
-    for order in Order.get_current():
+    for order in orders:
         # XXX hack
         # splited shipment cost for this order
         total = Decimal(1.25)

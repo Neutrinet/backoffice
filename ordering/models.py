@@ -98,10 +98,6 @@ class Order(models.Model):
 
     comment = models.TextField(null=True, blank=True)
 
-    @classmethod
-    def get_current(klass):
-        return klass.objects.filter(member_has_been_give_order=False)
-
     def __unicode__(self):
         return u"order #%s for %s made %s days ago" % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick), (datetime.now() - self.made_on.replace(tzinfo=None)).days)
 
