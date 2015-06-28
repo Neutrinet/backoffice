@@ -1,7 +1,6 @@
 from datetime import datetime, date, timedelta
 
 from django.db import models
-from django.db.models import Sum
 
 
 COUNTRIES = (
