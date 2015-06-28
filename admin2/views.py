@@ -18,12 +18,12 @@ def group_order_detail(request, pk):
         providers.add(component.provider)
 
     provider_order_list = [{
-        "group_order": group_order,
         "provider": provider,
         "orders": orders.filter(componentorder__component__url__icontains=provider).distinct(),
     } for provider in providers]
 
     return render(request, "admin2/current_order.haml", {
+        "group_order": group_order,
         "orders": orders,
         "new_vpn_subscription": orders.filter(wants_vpn=True).count(),
         "components": components,
