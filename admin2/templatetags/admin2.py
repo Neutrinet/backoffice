@@ -38,8 +38,8 @@ def count_in_current_group_order(component, orders):
 
 
 @register.simple_tag
-def prices_in_current_group_order(component, group_order):
-    prices = set([x.price for x in component.componentorder_set.filter(order=group_order)])
+def prices_in_current_group_order(component, orders):
+    prices = set([x.price for x in component.componentorder_set.filter(order=orders)])
     if len(prices) == 1:
         for i in prices:
             return i
