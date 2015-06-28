@@ -92,11 +92,11 @@
 
             %ul
               -for component in pack.list
-                %li- count_in_current_group_order component group_order
+                %li- count_in_current_group_order component orders
                   x
                   =component.display_with_url|safe
                   for €
-                  -prices_in_current_group_order component group_order
+                  -prices_in_current_group_order component orders
 
       .col-md-6
         .well
@@ -110,7 +110,7 @@
 
             %ul
               -for component in provider.list
-                %li- count_in_current_group_order component group_order
+                %li- count_in_current_group_order component orders
                   x
                   =component.display_with_url|safe
                   for €

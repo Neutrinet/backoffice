@@ -33,8 +33,8 @@ def total_addition_from_free_price(orders):
 
 
 @register.simple_tag
-def count_in_current_group_order(component, group_order):
-    return component.componentorder_set.filter(order=group_order).aggregate(Sum('number'))['number__sum']
+def count_in_current_group_order(component, orders):
+    return component.componentorder_set.filter(order=orders).aggregate(Sum('number'))['number__sum']
 
 
 @register.simple_tag
