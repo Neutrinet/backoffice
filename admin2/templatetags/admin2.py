@@ -30,3 +30,8 @@ def total_addition_from_free_price(orders):
 
     orders = orders.filter(has_payed=True)
     return orders.filter(price_payed__isnull=False).aggregate(Sum('price_payed'))["price_payed__sum"] - orders.filter(price_payed__isnull=False).aggregate(Sum('real_price'))["real_price__sum"]
+
+
+@register.simple_tag
+def count_in_current_group_order(component, group_order):
+    return component.componentorder_set.filter(order=group_order).aggregate(Sum('number'))['number__sum']

@@ -18,6 +18,7 @@ def group_order_detail(request, pk):
         providers.add(component.provider)
 
     provider_order_list = [{
+        "group_order": group_order,
         "provider": provider,
         "orders": Order.get_current().filter(componentorder__component__url__icontains=provider).distinct(),
     } for provider in providers]

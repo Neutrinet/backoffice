@@ -123,9 +123,6 @@ class Component(models.Model):
     estimated_shipment_time = models.PositiveSmallIntegerField(null=True, blank=True, help_text="in days")
     in_default_pack = models.BooleanField(default=False)
 
-    def count_in_current_group_order(self):
-        return self.componentorder_set.filter(order=Order.get_current()).aggregate(Sum('number'))['number__sum']
-
     def prices_in_current_group_order(self):
         print set([x for x in self.componentorder_set.filter(order=Order.get_current())])
         return set([x.price for x in self.componentorder_set.filter(order=Order.get_current())])
