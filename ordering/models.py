@@ -55,23 +55,7 @@ class GroupOrder(models.Model):
     def close_deadline_passed_grouper_order(klass):
         for group_order in GroupOrder.objects.filter(deadline__isnull=False, deadline__lt=date.today(), state="open"):
             with transaction.atomic():
-                group_order.state = "close"
-                group_order.save()
-
-                orders = group_order.order_set.all()
-
-                splited_shipment_cost = Decimal(25) / Decimal(orders.count())
-
-                for order in orders:
-                    # XXX hack
-                    # splited shipment cost for this order
-                    total = splited_shipment_cost
-
-                    for component_order in order.componentorder_set.all():
-                        total += component_order.price * component_order.number
-
-                    order.real_price = total
-                    order.save()
+                group_order.close()
 
                 send_mail(
                     u'[cube order] deadline for %s expired' % group_order,
@@ -80,6 +64,23 @@ class GroupOrder(models.Model):
                     ['cube@neutrinet.be'],
                     fail_silently=False,
                 )
+
+    def close(self):
+        self.state = "close"
+        self.save()
+
+        orders = self.order_set.all()
+
+        splited_shipment_cost = Decimal(25) / Decimal(orders.count())
+
+        for order in orders:
+            total = splited_shipment_cost
+
+            for component_order in order.componentorder_set.all():
+                total += component_order.price * component_order.number
+
+            order.real_price = total
+            order.save()
 
     def __unicode__(self):
         return u"%s [%s]" % (self.name, self.state)
