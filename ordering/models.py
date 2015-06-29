@@ -69,6 +69,9 @@ class GroupOrder(models.Model):
     def calculate_real_price(self):
         orders = self.order_set.all()
 
+        if orders.count() == 0:
+            return
+
         splited_shipment_cost = Decimal(25) / Decimal(orders.count())
 
         for order in orders:
