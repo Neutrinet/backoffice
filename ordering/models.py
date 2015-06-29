@@ -55,7 +55,8 @@ class GroupOrder(models.Model):
     def close_deadline_passed_grouper_order(klass):
         for group_order in GroupOrder.objects.filter(deadline__isnull=False, deadline__lt=date.today(), state="open"):
             with transaction.atomic():
-                group_order.close()
+                group_order.state = "close"
+                group_order.save()
 
                 send_mail(
                     u'[cube order] deadline for %s expired' % group_order,
@@ -65,10 +66,7 @@ class GroupOrder(models.Model):
                     fail_silently=False,
                 )
 
-    def close(self):
-        self.state = "close"
-        self.save()
-
+    def calculate_real_price(self):
         orders = self.order_set.all()
 
         splited_shipment_cost = Decimal(25) / Decimal(orders.count())
