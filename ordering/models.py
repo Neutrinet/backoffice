@@ -80,6 +80,14 @@ class GroupOrder(models.Model):
             order.real_price = total
             order.save()
 
+    def save(self, *args, **kwargs):
+        if GroupOrder.objects.filter(pk=self.pk).exists():
+            old = GroupOrder.objects.get(pk=self.pk)
+            if old.state == "open" and self.state == "close":
+                self.calculate_real_price()
+
+        return super(GroupOrder, self).save(*args, **kwargs)
+
     def __unicode__(self):
         return u"%s [%s]" % (self.name, self.state)
 
