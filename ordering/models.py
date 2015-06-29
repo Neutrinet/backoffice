@@ -1,3 +1,4 @@
+from decimal import Decimal
 from datetime import datetime, date, timedelta
 
 from django.db import models, transaction
@@ -56,6 +57,21 @@ class GroupOrder(models.Model):
             with transaction.atomic():
                 group_order.state = "close"
                 group_order.save()
+
+                orders = group_order.order_set.all()
+
+                splited_shipment_cost = Decimal(25) / Decimal(orders.count())
+
+                for order in orders:
+                    # XXX hack
+                    # splited shipment cost for this order
+                    total = splited_shipment_cost
+
+                    for component_order in order.componentorder_set.all():
+                        total += component_order.price * component_order.number
+
+                    order.real_price = total
+                    order.save()
 
                 send_mail(
                     u'[cube order] deadline for %s expired' % group_order,
