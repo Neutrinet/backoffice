@@ -1,9 +1,5 @@
-from decimal import Decimal
-
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Sum
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
 
 from ordering.models import Component, GroupOrder
 
@@ -31,22 +27,3 @@ def group_order_detail(request, pk):
         "total_estimated_price": orders.aggregate(Sum('estimated_price'))['estimated_price__sum'],
         "provider_order_list": provider_order_list,
     })
-
-
-def calculate_final_price_for_group_order(request, pk):
-    # this function is mostly an hack for now
-    group_order = get_object_or_404(GroupOrder, pk=pk)
-    orders = group_order.order_set.all()
-
-    for order in orders:
-        # XXX hack
-        # splited shipment cost for this order
-        total = Decimal(1.25)
-
-        for component_order in order.componentorder_set.all():
-            total += component_order.price * component_order.number
-
-        order.real_price = total
-        order.save()
-
-    return HttpResponseRedirect(reverse('admin2_current_order'))
