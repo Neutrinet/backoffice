@@ -5,7 +5,7 @@ from django.db.models import Sum
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
-from ordering.models import Order, Component, GroupOrder
+from ordering.models import Component, GroupOrder
 
 
 def group_order_detail(request, pk):
