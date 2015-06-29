@@ -1,6 +1,8 @@
 from datetime import datetime, date, timedelta
 
-from django.db import models
+from django.db import models, transaction
+from django.core.urlresolvers import reverse
+from django.core.mail import send_mail
 
 
 COUNTRIES = (
@@ -50,7 +52,18 @@ class GroupOrder(models.Model):
 
     @classmethod
     def close_deadline_passed_grouper_order(klass):
-        GroupOrder.objects.filter(deadline__isnull=False, deadline__lt=date.today(), state="open").update(state="close")
+        for group_order in GroupOrder.objects.filter(deadline__isnull=False, deadline__lt=date.today(), state="open"):
+            with transaction.atomic():
+                group_order.state = "close"
+                group_order.save()
+
+                send_mail(
+                    u'[cube order] deadline for %s expired' % group_order,
+                    u'Hello,\n\nJust an email to inform you that the %s deadline (%s) has experied.\nGo there for the details: %s\n\n<3\n\nPS: I was too lazy to write a better mail.' % (group_order, group_order.deadline, reverse('admin2_group_order_detail', args=(group_order.pk,))),
+                    'noreplay@neutrinet.be',
+                    ['cube@neutrinet.be'],
+                    fail_silently=False,
+                )
 
     def __unicode__(self):
         return u"%s [%s]" % (self.name, self.state)
