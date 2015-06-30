@@ -29,7 +29,14 @@ def total_addition_from_free_price(orders):
         return 0
 
     orders = orders.filter(has_payed=True)
-    return orders.filter(price_payed__isnull=False).aggregate(Sum('price_payed'))["price_payed__sum"] - orders.filter(price_payed__isnull=False).aggregate(Sum('real_price'))["real_price__sum"]
+    real_price__sum = orders.filter(price_payed__isnull=False).aggregate(Sum('real_price'))["real_price__sum"]
+    estimated_price__sum = orders.filter(price_payed__isnull=False).aggregate(Sum('estimated_price'))["estimated_price__sum"]
+    price_payed__sum = orders.filter(price_payed__isnull=False).aggregate(Sum('price_payed'))["price_payed__sum"]
+
+    if real_price__sum is None:
+        return price_payed__sum - estimated_price__sum
+    else:
+        return price_payed__sum - real_price__sum
 
 
 @register.simple_tag
