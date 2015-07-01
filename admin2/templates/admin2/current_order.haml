@@ -204,6 +204,11 @@
       %small made by members on their order
     %hr
 
+    %h3 Fritedombox tools script
+
+    %pre<
+      -include "admin2/script.html"
+
     -for order in orders
       -if order.comment
         %p

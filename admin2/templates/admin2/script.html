@@ -1,0 +1,5 @@
+API_PASSWORD=your_password
+API_EMAIL=you_email
+{% for order in orders %}{% if order.wants_vpn %}
+python script.py --api-password $API_PASSWORD {{ order.email }} $API_EMAIL -n "{{ order.first_name }}" -l "{{ order.last_name }}" -s "{{ order.street }}" -p "{{ order.postal_code }}" -t "{{ order.town }}" -c "{{ order.get_country_display|upper }}" --birthplace "{{ order.birthplace }}" --birthdate "{{ order.birth_date|date:"d-m-Y" }}"
+{% endif %}{% endfor %}
