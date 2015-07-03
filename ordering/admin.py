@@ -23,7 +23,7 @@ class ComponentOrderInline(admin.TabularInline):
 class OrderAdmin(reversion.VersionAdmin):
     readonly_fields = ('made_on',)
     inlines = (ComponentOrderInline,)
-    list_display = ('__unicode__', 'has_payed', 'domain_name', 'member_has_been_give_order')
+    list_display = ('__unicode__', 'has_payed', 'domain_name', 'member_has_been_give_order', 'group_order_number')
     fieldsets = (
         (None, {
             'fields': (('made_on', 'group_order'),)
