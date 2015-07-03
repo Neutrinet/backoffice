@@ -24,6 +24,7 @@ class OrderAdmin(reversion.VersionAdmin):
     readonly_fields = ('made_on',)
     inlines = (ComponentOrderInline,)
     list_display = ('__unicode__', 'has_payed', 'domain_name', 'member_has_been_give_order', 'group_order_number')
+    list_filter = ('has_payed', 'member_has_been_give_order', 'group_order')
     fieldsets = (
         (None, {
             'fields': (('made_on', 'group_order'),)
