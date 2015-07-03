@@ -83,6 +83,9 @@ class GroupOrder(models.Model):
             order.real_price = total
             order.save()
 
+    def number(self):
+        return self.order_set.count()
+
     def save(self, *args, **kwargs):
         if GroupOrder.objects.filter(pk=self.pk).exists():
             old = GroupOrder.objects.get(pk=self.pk)
