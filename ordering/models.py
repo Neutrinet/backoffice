@@ -83,7 +83,7 @@ class GroupOrder(models.Model):
             order.real_price = total
             order.save()
 
-    def number(self):
+    def number_of_order(self):
         return self.order_set.count()
 
     def save(self, *args, **kwargs):

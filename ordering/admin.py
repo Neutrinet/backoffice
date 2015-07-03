@@ -13,7 +13,7 @@ class OrderInline(admin.TabularInline):
 
 class GroupOrderAdmin(reversion.VersionAdmin):
     inlines = (OrderInline,)
-    list_display = ('__unicode__', 'state', 'deadline', 'number')
+    list_display = ('__unicode__', 'state', 'deadline', 'number_of_order')
 
 
 class ComponentOrderInline(admin.TabularInline):
