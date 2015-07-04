@@ -5,6 +5,9 @@
   Neutrinet Cube Group Order Form Second Admin Interface
 
 -block bootstrap3_content
+  :css
+    .red { color: red; }
+
   .container
     %h2 All-in-one page about the current group order
     %hr
@@ -89,6 +92,36 @@
 
         %p
           Emails in one line: {% for order in orders %}{% if not order.has_payed %}{{ order.email }}, {% endif %}{% endfor %}
+
+    %h3 Components distribution status
+    %hr
+
+    -for order in orders
+      .well
+        %h4
+          %b= order
+
+        .row
+          .col-md-6
+            %p Received:
+            %ul
+              -for component_order in order.componentorder_set.all
+                -if component_order.received != 0
+                  %li
+                    =component_order.received
+                    x
+                    =component_order.component
+
+          .col-md-6
+            %p <b>Not</b> received:
+            %ul
+              -for component_order in order.componentorder_set.all
+                -if component_order.not_received != 0
+                  %li.red
+                    =component_order.not_received
+                    x
+                    =component_order.component
+
 
     %h3 Number of ordered components
     %hr

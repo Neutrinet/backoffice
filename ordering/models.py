@@ -189,6 +189,9 @@ class ComponentOrder(models.Model):
     paid_price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)  # effectivly paid price
     received = models.PositiveIntegerField(default=0)
 
+    def not_received(self):
+        return self.number - self.received
+
     @property
     def price(self):
         return self.paid_price if self.paid_price else self.component.current_price
