@@ -143,6 +143,9 @@ class Order(models.Model):
     def group_order_number(self):
         return self.group_order.number
 
+    def has_a_working_cube_or_dont_care(self):
+        return self.has_a_working_cube or self.wants_to_install_everything_himself
+
     def __unicode__(self):
         return u"order #%s for %s made %s days ago" % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick), (datetime.now() - self.made_on.replace(tzinfo=None)).days)
 
