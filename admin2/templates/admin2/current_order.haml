@@ -44,6 +44,8 @@
       %li <b>doesn't want a domain name:</b> {% for order in orders %}{% if not order.domain_name %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
       %li <b>has a working cube (exclude the ones that wants to configure everything themself):</b> {% for order in orders %}{% if order.has_a_working_cube and not order.wants_to_install_everything_himself %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
       %li <b>doesn't have a working cube (exclude the ones that wants to configure everything themself):</b> {% for order in orders %}{% if not order.has_a_working_cube and not order.wants_to_install_everything_himself %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>wants to configure everything themself and has received their order:</b> {% for order in orders %}{% if order.member_has_been_give_order and order.wants_to_install_everything_himself %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>wants to configure everything themself and has NOT received their order:</b> {% for order in orders %}{% if not order.member_has_been_give_order and order.wants_to_install_everything_himself %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
       %li <b>has a working cube but not all composants:</b> {% for order in orders %}{% if order.has_a_working_cube and not order.member_has_been_give_order %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
 
     %h3 Group order Status
