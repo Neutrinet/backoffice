@@ -24,7 +24,7 @@ class ComponentOrderInline(admin.TabularInline):
 class OrderAdmin(reversion.VersionAdmin):
     readonly_fields = ('made_on',)
     inlines = (ComponentOrderInline,)
-    list_display = ('__unicode__', 'has_payed', 'domain_name', 'member_has_been_give_order', 'group_order_number')
+    list_display = ('__unicode__', 'has_payed', 'domain_name', 'member_has_been_give_order', 'has_a_working_cube', 'group_order_number')
     list_filter = ('has_payed', 'member_has_been_give_order', 'group_order')
     fieldsets = (
         (None, {
@@ -43,7 +43,7 @@ class OrderAdmin(reversion.VersionAdmin):
             'fields': (('wants_neutrinet_to_renew_the_domain', 'domain_name'),)
         }),
         ('Status informations', {
-            'fields': (('estimated_price', 'real_price'), ('has_payed', 'price_payed'), ('member_has_been_give_order', 'we_have_received_the_order'))
+            'fields': (('estimated_price', 'real_price'), ('has_payed', 'price_payed'), ('member_has_been_give_order', 'we_have_received_the_order'), ('has_a_working_cube',))
         }),
         ('Additional informations', {
             'fields': ('comment', 'private_comment'),
