@@ -128,6 +128,7 @@ class Order(models.Model):
     has_payed = models.BooleanField(default=False)
     we_have_received_the_order = models.BooleanField(default=False)
     member_has_been_give_order = models.BooleanField(default=False, verbose_name="Has been given order")
+    has_a_working_cube = models.BooleanField(default=False)
     private_comment = models.TextField(null=True, blank=True)
 
     components = models.ManyToManyField('Component', through='ComponentOrder')
