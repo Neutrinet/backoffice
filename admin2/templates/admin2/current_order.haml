@@ -30,6 +30,19 @@
       %li Number or ordered components:
         -componentorder_sum components orders
 
+    %h3 Members emails
+
+    %ul
+      %li <b>everyone:</b> {% for order in orders %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endfor %}
+      %li <b>has received their order:</b> {% for order in orders %}{% if order.member_has_been_give_order %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>has not received their order:</b> {% for order in orders %}{% if not order.member_has_been_give_order %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>has payed:</b> {% for order in orders %}{% if order.has_payed %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>has not payed:</b> {% for order in orders %}{% if not order.has_payed %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>wants vpn:</b> {% for order in orders %}{% if order.wants_vpn %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>doesn't wants vpn:</b> {% for order in orders %}{% if not order.wants_vpn %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>wants a domain name:</b> {% for order in orders %}{% if order.domain_name %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>doesn't wants a domain name:</b> {% for order in orders %}{% if not order.domain_name %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+
     %h3 Group order Status
     %hr
 
