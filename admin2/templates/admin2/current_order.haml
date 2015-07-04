@@ -42,6 +42,8 @@
       %li <b>doesn't wants vpn:</b> {% for order in orders %}{% if not order.wants_vpn %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
       %li <b>wants a domain name:</b> {% for order in orders %}{% if order.domain_name %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
       %li <b>doesn't wants a domain name:</b> {% for order in orders %}{% if not order.domain_name %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>has a working cube:</b> {% for order in orders %}{% if order.has_a_working_cube %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
+      %li <b>doesn't have a working cube:</b> {% for order in orders %}{% if not order.has_a_working_cube %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
       %li <b>has a working cube but not all composants:</b> {% for order in orders %}{% if order.has_a_working_cube and not order.member_has_been_give_order %}{{ order.email }}{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}
 
     %h3 Group order Status
