@@ -23,8 +23,8 @@ def make_order(request):
     if request.method == "GET":
         return render(request, "order.haml", {
             "form": OrderForm(),
-            "default_components": Component.objects.filter(in_default_pack=True),
-            "other_components": Component.objects.filter(in_default_pack=False),
+            "default_components": Component.objects.filter(in_default_pack=True, available=True),
+            "other_components": Component.objects.filter(in_default_pack=False, available=True),
         })
 
     assert request.method == "POST"
@@ -34,16 +34,17 @@ def make_order(request):
     print request.POST
 
     if not form.is_valid():
+        print form.errors
         return render(request, "order.haml", {
             "form": form,
-            "default_components": Component.objects.filter(in_default_pack=True),
-            "other_components": Component.objects.filter(in_default_pack=False),
+            "default_components": Component.objects.filter(in_default_pack=True, available=True),
+            "other_components": Component.objects.filter(in_default_pack=False, available=True),
         })
 
     with transaction.atomic():
         order = form.save()
 
-        for component in Component.objects.all():
+        for component in Component.objects.filter(available=True):
             if form.cleaned_data["component_%d_number" % component.id] > 0:
                 ComponentOrder.objects.create(
                     order=order,

@@ -7,7 +7,7 @@ class OrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(OrderForm, self).__init__(*args, **kwargs)
 
-        for component in Component.objects.all():
+        for component in Component.objects.filter(available=True):
             self.fields["component_%s_number" % component.id] = forms.IntegerField(min_value=0)
 
         self.fields["birth_date"].input_formats = ['%Y-%m-%d', '%d/%m/%Y', '%d/%m/%y']

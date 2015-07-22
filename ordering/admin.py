@@ -52,7 +52,7 @@ class OrderAdmin(reversion.VersionAdmin):
 
 
 class ComponentAdmin(reversion.VersionAdmin):
-    list_display = ('__unicode__', 'current_price', 'in_default_pack')
+    list_display = ('__unicode__', 'current_price', 'in_default_pack', 'available')
 
 
 admin.site.register(GroupOrder, GroupOrderAdmin)

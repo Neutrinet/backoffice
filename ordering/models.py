@@ -170,6 +170,7 @@ class Component(models.Model):
     url = models.URLField()
     estimated_shipment_time = models.PositiveSmallIntegerField(null=True, blank=True, help_text="in days")
     in_default_pack = models.BooleanField(default=False)
+    available = models.BooleanField(default=True)
 
     @property
     def provider(self):
