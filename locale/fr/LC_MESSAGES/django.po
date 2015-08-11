@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 13:24+0000\n"
+"POT-Creation-Date: 2015-08-11 14:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,36 +20,36 @@ msgstr ""
 
 #: ordering/models.py:11
 msgid "Belgium"
-msgstr ""
+msgstr "Belgique"
 
 #: ordering/models.py:12
 msgid "Netherlands"
-msgstr ""
+msgstr "Hollande"
 
 #: ordering/models.py:13
 msgid "Luxembourg"
-msgstr ""
+msgstr "Luxembourg"
 
 #: ordering/models.py:21
 msgid "Open"
-msgstr ""
+msgstr "En cours"
 
 #: ordering/models.py:22
 msgid "Close"
-msgstr ""
+msgstr "Fermée"
 
 #: ordering/models.py:23
 msgid "Done"
-msgstr ""
+msgstr "Terminée"
 
 #: ordering/models.py:53
 #, python-format
 msgid "Group Order #%s %s"
-msgstr ""
+msgstr "Commande groupée #%s %s"
 
 #: ordering/models.py:107
 msgid "Nickname (optional)"
-msgstr ""
+msgstr "Pseudo (optionnel)"
 
 #: ordering/models.py:107
 msgid "We may know you better by your nickname than your civil name :-)"
@@ -99,14 +99,14 @@ msgstr ""
 
 #: ordering/models.py:131
 msgid "Has been given order"
-msgstr ""
+msgstr "A reçu sa commande"
 
 #: ordering/models.py:151
 #, python-format
 msgid "order #%s for %s made %s days ago"
 msgstr ""
 
-#: ordering/views.py:57
+#: ordering/views.py:58
 #, python-format
 msgid "[Neutrinet] Order #%s for one or more Internet Cube"
-msgstr ""
+msgstr "[Neutrinet] commande #%s pour une ou plusieurs Brique Internet"
