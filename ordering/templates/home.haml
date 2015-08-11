@@ -1,33 +1,40 @@
 -extends "bootstrap3.html"
 
 -block bootstrap3_title
-  Neutrinet Cube Group Order Form
+  -trans "Neutrinet Cube Group Order Form"
 
 -block bootstrap3_content
   .container
-    %h1 Neutrinet Cube Group Order Form
+    %h1
+      -trans "Neutrinet Cube Group Order Form"
     %hr
 
-    %p This website is dedicated to helping (future) Neutrinet members to acquire parts of, or complete, <a href="http://labriqueinter.net">[fr] Internet Cube</a> (<i>brique internet</i>).
+    %p
+      -trans "This website is dedicated to helping (future) Neutrinet members to acquire parts of, or complete, <a href="http://labriqueinter.net">[fr] Internet Cube</a> (<i>brique internet</i>)."
 
-    %p Please bear in mind that we do not sell hardware components, we buy it for you so that the overall process is eased and you benefit from lower rates.
+    %p
+      -trans "Please bear in mind that we do not sell hardware components, we buy it for you so that the overall process is eased and you benefit from lower rates."
 
-    %h3 About the process:
+    %h3
+      -trans "About the process:"
     %ol
-      %li through this website, you will get to chose your desired components (and optionally subscribe to the Neutrinet VPN service) ;
-      %li the website will provide you with an estimated price and even though you are not required to pay now, by ordering, you commit yourself to pay the final price (it may vary slightly) ;
-      %li as soon as we have enough orders, we will make a group order, let you know about the definitive price and the estimated time of arrival ;
-      %li once the components arrive, except if you explicitly asked otherwise, we will configure and install everything for you ;
-      %li finally, we will let you know when you can come and grab your Cube (and/or components) and, except if you have opted out, finish the configuration with you and explain how to use it.
+      -blocktrans
+        %li through this website, you will get to chose your desired components (and optionally subscribe to the Neutrinet VPN service) ;
+        %li the website will provide you with an estimated price and even though you are not required to pay now, by ordering, you commit yourself to pay the final price (it may vary slightly) ;
+        %li as soon as we have enough orders, we will make a group order, let you know about the definitive price and the estimated time of arrival ;
+        %li once the components arrive, except if you explicitly asked otherwise, we will configure and install everything for you ;
+        %li finally, we will let you know when you can come and grab your Cube (and/or components) and, except if you have opted out, finish the configuration with you and explain how to use it.
 
-    %p Neutrinet is as strong as its community is, <a href="http://neutrinet.be/#getinvolved">join us</a>!
+    %p
+      -trans "Neutrinet is as strong as its community is, <a href="http://neutrinet.be/#getinvolved">join us</a>!"
 
     %div{style: "margin-top: 60px"}
       %center
         %a.btn.btn-lg.btn-primary{href: "{% url 'order' %}"}
-          Order my cube
+          -trans "Order my cube"
 
-    %h3 Current and previous group orders
+    %h3
+      -trans "Current and previous group orders"
     %hr
 
     .row
@@ -38,34 +45,36 @@
               \-
               -if group_order.state == "open"
                 .label.label-success
-                  current open group order
+                  -trans "current open group order"
               -elif group_order.state == "close"
                 .label.label-danger
-                  closed, the order is being processed
+                  -trans "closed, the order is being processed"
               -elif group_order.state == "done"
                 .label.label-default
-                  cubes have been distributed
+                  -trans "cubes have been distributed"
               -else
                 =group_order.state
 
             .panel-body
               -if group_order.deadline
                 %p
-                  %b Deadline:
+                  %b
+                    -trans "Deadline:"
                   =group_order.deadline
               -else
                 %p
-                  %i There is no deadline right now.
+                  %i
+                    -trans "There is no deadline right now."
 
               -if group_order.description
                 =group_order.description|safe
 
               -if group_order.order_set.count == 0
                 %p
-                  There is no one in this group order for now.
+                  -trans "There is no one in this group order for now."
               -else
                 %p
-                  There is {{ group_order.order_set.count }} {% if group_order.order_set.count == 1 %}person{% else %}people{% endif %} registered in this group order.
+                  -trans "There is {{ group_order.order_set.count }} {% if group_order.order_set.count == 1 %}person{% else %}people{% endif %} registered in this group order."
 
     %p
       %i
