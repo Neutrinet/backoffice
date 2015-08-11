@@ -1,15 +1,16 @@
 -extends "bootstrap3.html"
 
 -block bootstrap3_title
-  Neutrinet Cube Group Order Form
+  -trans "Neutrinet Cube Group Order Form"
 
 -block bootstrap3_content
   %center
     .container
       .row
         .col-md-6.col-md-offset-3
-            %h1 Congratulations, you order is complete, an overview has just been sent to your email address \o/
+          %h1
+            -trans "Congratulations, you order is complete, an overview has just been sent to your email address \o/"
 
       %p{style: "margin-top: 100px"}
         %a{href: "{% url 'home' %}"}
-          Go back to the front page
+          -trans "Go back to the front page"
