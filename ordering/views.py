@@ -1,4 +1,5 @@
 from django.core.mail import send_mail
+from django.utils.translation import ugettext as _
 from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render, get_object_or_404
@@ -53,7 +54,7 @@ def make_order(request):
                 )
 
         send_mail(
-            u'[Neutrinet] Order #%s for one or more Internet Cube' % order.id,
+            _(u'[Neutrinet] Order #%s for one or more Internet Cube') % order.id,
             get_template('email.txt').render(Context({"order": order})),
             'cube@neutrinet.be',
             [order.email],
