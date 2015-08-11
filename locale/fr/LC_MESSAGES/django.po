@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 14:14+0000\n"
+"POT-Creation-Date: 2015-08-11 16:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,7 +106,345 @@ msgstr "A reçu sa commande"
 msgid "order #%s for %s made %s days ago"
 msgstr ""
 
-#: ordering/views.py:58
+#: ordering/templates/email.txt:3
+#, python-format
+msgid ""
+"\n"
+"Hello %(order.first_name)s %(order.last_name)s,\n"
+"\n"
+"We're happy to confirm your order for the Cube or related components!\n"
+"\n"
+"Details:\n"
+msgstr ""
+
+#: ordering/templates/email.txt:12
+msgid "* You have subscribed to our VPN service"
+msgstr ""
+
+#: ordering/templates/email.txt:12
+msgid "* You have NOT subscribed to our VPN service"
+msgstr ""
+
+#: ordering/templates/email.txt:13
+msgid "* You have ordered "
+msgstr ""
+
+#: ordering/templates/email.txt:15
+#, python-format
+msgid ""
+"Personal data (VPN):\n"
+"\n"
+"Please, make sure that these are correct, it is required to comply with the "
+"Belgian law.\n"
+"\n"
+"* Street: %(order.street|default:\"\")s ;\n"
+"* Postal code: %(order.postal_code|default:\"\")s ;\n"
+"* Town: %(order.town|default:\"\")s ;\n"
+"* Birth place: %(order.birthplace|default:\"\")s ;\n"
+"* Country: %(order.get_country_display|default:\"\")s ;\n"
+"* Birth Date: %(order.birth_date|default:\"\")s ;\n"
+msgstr ""
+
+#: ordering/templates/email.txt:26
+msgid "Comment:"
+msgstr ""
+
+#: ordering/templates/email.txt:30
+msgid "Order:"
+msgstr ""
+
+#: ordering/templates/email.txt:34
+msgid "For an *estimated* total price of {{ order.estimated_price }} €."
+msgstr ""
+
+#: ordering/templates/email.txt:36
+msgid ""
+"As soon as your order arrives, we will contact you and inform you about "
+"either when we can meet to finish the installation together (it is very "
+"likely that this will take place during the next upcoming meeting — every "
+"two weeks) or when you can come to grab your components.\n"
+"\n"
+"If you have any questions, want to modify your order or cancel it, just drop "
+"us an email at cube@neutrinet.be\n"
+"\n"
+"Have a nice day,\n"
+"\n"
+"<3"
+msgstr ""
+
+#: ordering/templates/home.haml:4 ordering/templates/home.haml.py:10
+#: ordering/templates/success.haml:4
+msgid "Neutrinet Cube Group Order Form"
+msgstr ""
+
+#: ordering/templates/home.haml:15
+msgid ""
+"This website is dedicated to helping (future) Neutrinet members to acquire "
+"parts of, or complete, <a href="
+msgstr ""
+
+#: ordering/templates/home.haml:19
+msgid ""
+"Please bear in mind that we do not sell hardware components, we buy it for "
+"you so that the overall process is eased and you benefit from lower rates."
+msgstr ""
+
+#: ordering/templates/home.haml:23
+msgid "About the process:"
+msgstr ""
+
+#: ordering/templates/home.haml:26
+msgid ""
+"\n"
+"        <li>through this website, you will get to chose your desired "
+"components (and optionally subscribe to the Neutrinet VPN service) ;</li>\n"
+"        <li>the website will provide you with an estimated price and even "
+"though you are not required to pay now, by ordering, you commit yourself to "
+"pay the final price (it may vary slightly) ;</li>\n"
+"        <li>as soon as we have enough orders, we will make a group order, "
+"let you know about the definitive price and the estimated time of arrival ;</"
+"li>\n"
+"        <li>once the components arrive, except if you explicitly asked "
+"otherwise, we will configure and install everything for you ;</li>\n"
+"        <li>finally, we will let you know when you can come and grab your "
+"Cube (and/or components) and, except if you have opted out, finish the "
+"configuration with you and explain how to use it.</li>\n"
+"\n"
+"      "
+msgstr ""
+
+#: ordering/templates/home.haml:36
+msgid "Neutrinet is as strong as its community is, <a href="
+msgstr ""
+
+#: ordering/templates/home.haml:42
+msgid "Order my cube"
+msgstr ""
+
+#: ordering/templates/home.haml:48
+msgid "Current and previous group orders"
+msgstr ""
+
+#: ordering/templates/home.haml:59
+msgid "current open group order"
+msgstr ""
+
+#: ordering/templates/home.haml:63
+msgid "closed, the order is being processed"
+msgstr ""
+
+#: ordering/templates/home.haml:67
+msgid "cubes have been distributed"
+msgstr ""
+
+#: ordering/templates/home.haml:78
+msgid "Deadline:"
+msgstr ""
+
+#: ordering/templates/home.haml:85
+msgid "There is no deadline right now."
+msgstr ""
+
+#: ordering/templates/home.haml:96
+msgid "There is no one in this group order for now."
+msgstr ""
+
+#: ordering/templates/order.haml:6 ordering/templates/order.haml.py:38
+msgid "Neutrinet Cube Ordering Form"
+msgstr ""
+
+#: ordering/templates/order.haml:47
+msgid "You have made some mistakes, please correct them."
+msgstr ""
+
+#: ordering/templates/order.haml:53
+msgid "Contact information"
+msgstr ""
+
+#: ordering/templates/order.haml:77
+msgid "Preferences"
+msgstr ""
+
+#: ordering/templates/order.haml:85
+msgid "Subscribe to a Neutrinet VPN (recommended)"
+msgstr ""
+
+#: ordering/templates/order.haml:90
+msgid ""
+"You do not need to fill this section if you already have a VPN subscription."
+msgstr ""
+
+#: ordering/templates/order.haml:95
+msgid ""
+"You will need a VPN connection if you want your Cube to work in a <i>plug'n "
+"play</i> fashion. It is stongly recommended to use one, unless you know what "
+"you are doing."
+msgstr ""
+
+#: ordering/templates/order.haml:98
+msgid ""
+"Technically, the VPN connection will encrypt all your Cube's traffic, making "
+"it unreadable to your current <abbr title="
+msgstr ""
+
+#: ordering/templates/order.haml:105
+msgid ""
+"Please note that Neutrinet is a non-profit ASBL/VZW. Therefore, by "
+"subscribing to the VPN service, you will become a <b>member</b> of "
+"Neutrinet. This membership grants you the right to vote and decide the "
+"future of Neutrinet. You will not be a customer, you will be Neutrinet."
+msgstr ""
+
+#: ordering/templates/order.haml:109
+msgid ""
+"<b>You are free to consider how much your VPN subscription is worth</b>, and "
+"how much you want to pay for it. We strongly recommend you to pay at least "
+"6€/month, because we cannot currently afford to lower the service's price "
+"below. The mandatory membership fee costing 24€/year, we are all paying "
+"around 8€/month (6€ + 2€ for membership) for now. Of course, any additional "
+"support is really appreciated :-)"
+msgstr ""
+
+#: ordering/templates/order.haml:114
+msgid ""
+"If you want to run multiple Cubes at the same time, you will need multiple "
+"VPN subscriptions."
+msgstr ""
+
+#: ordering/templates/order.haml:123
+msgid ""
+"The Belgium Telecom laws and our ASBL/VZW status requires us to ask you the "
+"following personal informations. It will obviously not be selled nor leaked."
+msgstr ""
+
+#: ordering/templates/order.haml:144
+msgid "Register a domain name (recommended)"
+msgstr ""
+
+#: ordering/templates/order.haml:149
+msgid ""
+"You do not need to fill this section if you already have registered domain "
+"name."
+msgstr ""
+
+#: ordering/templates/order.haml:154
+msgid ""
+"Your Cube will be associated to a domain name. It will enable you to receive "
+"emails at addresses like <b>you@your-domain.org</b> and to have your Cube "
+"accessible from <b>https://your-domain.org</b>."
+msgstr ""
+
+#: ordering/templates/order.haml:158
+msgid ""
+"By default, we can provide you a domain name for free ending with <i>.nohost."
+"me</i>, but if you want a domain name of your own (ending with <i>.be</i>, "
+"<i>.net</i> or <i>.org</i> for example), it will add an extra 1€ to your VPN "
+"subscription monthly fee."
+msgstr ""
+
+#: ordering/templates/order.haml:162
+msgid "The domain name will be registered at <a href="
+msgstr ""
+
+#: ordering/templates/order.haml:171
+msgid "Choose your components (required)"
+msgstr ""
+
+#: ordering/templates/order.haml:175
+msgid ""
+"The prices listed below are the prices we can get for a batch order of 10 "
+"units, we also add 5€ as an estimation of the split shipping fees."
+msgstr ""
+
+#: ordering/templates/order.haml:179
+msgid "We have a special deal with <a href="
+msgstr ""
+
+#: ordering/templates/order.haml:184
+msgid ""
+"The final price may vary slightly from what is shown below, it is only an "
+"estimation."
+msgstr ""
+
+#: ordering/templates/order.haml:191
+msgid "Default components of the Cube"
+msgstr ""
+
+#: ordering/templates/order.haml:196 ordering/templates/order.haml.py:232
+msgid "Quantity"
+msgstr ""
+
+#: ordering/templates/order.haml:199 ordering/templates/order.haml.py:235
+msgid "Name"
+msgstr ""
+
+#: ordering/templates/order.haml:202 ordering/templates/order.haml.py:238
+msgid "Estimated price"
+msgstr ""
+
+#: ordering/templates/order.haml:227
+msgid "Extra components"
+msgstr ""
+
+#: ordering/templates/order.haml:261
+msgid ""
+"\n"
+"            <b>\n"
+"              Estimated total price:\n"
+"            </b>\n"
+"            <span id='estimated-price'></span>\n"
+"            €\n"
+"            for\n"
+"            <span id='number-of-components'></span>\n"
+"            components\n"
+"\n"
+"          "
+msgstr ""
+
+#: ordering/templates/order.haml:279
+msgid ""
+"Reminder: We will send you the final price once we have received enough "
+"orders (usually 10) to order from Olimex by our side. You will be free to "
+"add to this price as much as you think the service (batch ordering and Cube "
+"configuration) is worth. Neutrinet does not charge any extra fee."
+msgstr ""
+
+#: ordering/templates/order.haml:285
+msgid ""
+"If you wish to cancel your order in the mean time, please contact us "
+"immediately at <a href="
+msgstr ""
+
+#: ordering/templates/order.haml:292
+#, fuzzy
+#| msgid "Nickname (optional)"
+msgid "Leave a comment (optional)"
+msgstr "Pseudo (optionnel)"
+
+#: ordering/templates/order.haml:307
+msgid ""
+"If you have any question or if you want to modify your order, please contact "
+"us as soon as you can at <a href="
+msgstr ""
+
+#: ordering/templates/order.haml:313
+msgid ""
+"Please remember that we are humans and volunteers. We do not make any "
+"profit, we help you as much as we can and we do it on our spare time because "
+"we do believe in a better Internet."
+msgstr ""
+
+#: ordering/templates/success.haml:13
+msgid ""
+"Congratulations, you order is complete, an overview has just been sent to "
+"your email address \\o/"
+msgstr ""
+
+#: ordering/templates/success.haml:20
+msgid "Go back to the front page"
+msgstr ""
+
+#: ordering/views.py:57
 #, python-format
 msgid "[Neutrinet] Order #%s for one or more Internet Cube"
 msgstr "[Neutrinet] commande #%s pour une ou plusieurs Brique Internet"
