@@ -104,7 +104,7 @@ msgstr "A reçu sa commande"
 #: ordering/models.py:151
 #, python-format
 msgid "order #%s for %s made %s days ago"
-msgstr ""
+msgstr "Commande #%s pour %s fait il y a %s jours"
 
 #: ordering/templates/email.txt:3
 #, python-format
@@ -119,15 +119,15 @@ msgstr ""
 
 #: ordering/templates/email.txt:12
 msgid "* You have subscribed to our VPN service"
-msgstr ""
+msgstr "* Vous avez souscris à notre service VPN"
 
 #: ordering/templates/email.txt:12
 msgid "* You have NOT subscribed to our VPN service"
-msgstr ""
+msgstr "* vous n'avez PAS souscris à notre service VPN"
 
 #: ordering/templates/email.txt:13
 msgid "* You have ordered "
-msgstr ""
+msgstr "* Vous avez commandé "
 
 #: ordering/templates/email.txt:15
 #, python-format
@@ -147,11 +147,11 @@ msgstr ""
 
 #: ordering/templates/email.txt:26
 msgid "Comment:"
-msgstr ""
+msgstr "Commentaire :"
 
 #: ordering/templates/email.txt:30
 msgid "Order:"
-msgstr ""
+msgstr "Commande :"
 
 #: ordering/templates/email.txt:34
 msgid "For an *estimated* total price of {{ order.estimated_price }} €."
