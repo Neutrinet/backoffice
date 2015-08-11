@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'reversion',
     'ordering',
     'admin2',
+    'hamlpy',
 )
 
 MIDDLEWARE_CLASSES = (
