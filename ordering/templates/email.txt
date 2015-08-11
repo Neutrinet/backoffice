@@ -1,14 +1,18 @@
+{% load i18n %}
+
+{% blocktrans %}
 Hello {{ order.first_name }} {{ order.last_name }},
 
 We're happy to confirm your order for the Cube or related components!
 
 Details:
+{% endblocktrans %}
 
-{% if not order.wants_to_install_everything_himself %}* You have chosen to get everything installed by US{% else %}* You have chosen to get everything installed by yourself{% endif %} ;
-{% if order.wants_vpn %}* You have subscribed to our VPN service{% else %}* You have NOT subscribed to our VPN service{% endif %} ;
-{% if order.domain_name %}* You have ordered "{{ order.domain_name }}" and asked us {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}to handle its renewal
+{% if not order.wants_to_install_everything_himself %}{% trans "* You have chosen to get everything installed by US{% else %}* You have chosen to get everything installed by yourself" %}{% endif %} ;
+{% if order.wants_vpn %}{% trans "* You have subscribed to our VPN service" %}{% else %}{% trans "* You have NOT subscribed to our VPN service" %}{% endif %} ;
+{% if order.domain_name %}{% if not order.wants_neutrinet_to_renew_the_domain %}{% trans "* You have ordered "{{ order.domain_name }}" and asked us NOT to handle its renewal" %}{% else %}{% trans "* You have ordered "{{ order.domain_name }}" and asked us to handle its renewal" %}{% endif %}
 {% endif %} ;
-{% if order.wants_vpn %}Personal data (VPN):
+{% if order.wants_vpn %}{% blocktrans %}Personal data (VPN):
 
 Please, make sure that these are correct, it is required to comply with the Belgian law.
 
@@ -18,21 +22,21 @@ Please, make sure that these are correct, it is required to comply with the Belg
 * Birth place: {{ order.birthplace|default:"" }} ;
 * Country: {{ order.get_country_display|default:"" }} ;
 * Birth Date: {{ order.birth_date|default:"" }} ;
-{% endif %}
-{% if order.comment %}Comment:
+{% endblocktrans %}{% endif %}
+{% if order.comment %}{% trans "Comment:" %}
 
 {{ order.comment }}{% endif %}
 
-Order:
+{% trans "Order:" %}
 
 {% for co in order.componentorder_set.all %}* {{ co.number }} x {{ co.component }} for {{ co.number }} x {{ co.component.current_price }}
 {% endfor %}
-For an *estimated* total price of {{ order.estimated_price }} €.
+{% trans "For an *estimated* total price of {{ order.estimated_price }} €." %}
 
-As soon as your order arrives, we will contact you and inform you about either when we can meet to finish the installation together (it is very likely that this will take place during the next upcoming meeting — every two weeks) or when you can come to grab your components.
+{% blocktrans %}As soon as your order arrives, we will contact you and inform you about either when we can meet to finish the installation together (it is very likely that this will take place during the next upcoming meeting — every two weeks) or when you can come to grab your components.
 
 If you have any questions, want to modify your order or cancel it, just drop us an email at cube@neutrinet.be
 
 Have a nice day,
 
-<3
+<3{% endblocktrans %}
