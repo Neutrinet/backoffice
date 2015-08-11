@@ -1,0 +1,112 @@
+# French translation files for Neutrinet's Cube Ordering Interface
+# Copyright (C) 2015
+# This file is distributed under the same license as the cube_ordering_interface package.
+# Laurent Peuch <cortex@worlddomination.be>, 2015
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-11 13:24+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ordering/models.py:11
+msgid "Belgium"
+msgstr ""
+
+#: ordering/models.py:12
+msgid "Netherlands"
+msgstr ""
+
+#: ordering/models.py:13
+msgid "Luxembourg"
+msgstr ""
+
+#: ordering/models.py:21
+msgid "Open"
+msgstr ""
+
+#: ordering/models.py:22
+msgid "Close"
+msgstr ""
+
+#: ordering/models.py:23
+msgid "Done"
+msgstr ""
+
+#: ordering/models.py:53
+#, python-format
+msgid "Group Order #%s %s"
+msgstr ""
+
+#: ordering/models.py:107
+msgid "Nickname (optional)"
+msgstr ""
+
+#: ordering/models.py:107
+msgid "We may know you better by your nickname than your civil name :-)"
+msgstr ""
+
+#: ordering/models.py:111
+msgid ""
+"We will never send you unwanted emails. You will only receive a copy of your "
+"order, and further information about it."
+msgstr ""
+
+#: ordering/models.py:113
+msgid ""
+"I want to subscribe to the Neutrinet's VPN service and become a member of "
+"Neutrinet ASBL/VZW"
+msgstr ""
+
+#: ordering/models.py:114
+msgid "Do not configure my Cube for me, I want to do it by myself"
+msgstr ""
+
+#: ordering/models.py:117
+msgid "I want my domain to be renewed automatically every year."
+msgstr ""
+
+#: ordering/models.py:117
+msgid ""
+"It is a common mistake to forget to renew a domain name every year. Check "
+"this box if you want Neutrinet to do it for you."
+msgstr ""
+
+#: ordering/models.py:118
+msgid "Domain name"
+msgstr ""
+
+#: ordering/models.py:125
+msgid ""
+"If you do not see your country of living on this list, please <a "
+"href='http://db.ffdn.org'>find another ISP closer to you</a>. If you want to "
+"choose Neutrinet anyway, please indicate your country of living in the "
+"comment section below."
+msgstr ""
+
+#: ordering/models.py:126
+msgid "Format: dd/mm/yyyy"
+msgstr ""
+
+#: ordering/models.py:131
+msgid "Has been given order"
+msgstr ""
+
+#: ordering/models.py:151
+#, python-format
+msgid "order #%s for %s made %s days ago"
+msgstr ""
+
+#: ordering/views.py:57
+#, python-format
+msgid "[Neutrinet] Order #%s for one or more Internet Cube"
+msgstr ""
