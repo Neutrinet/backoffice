@@ -1,4 +1,5 @@
 -extends "bootstrap3.html"
+-load i18n
 
 -block bootstrap3_title
   -trans "Neutrinet Cube Group Order Form"
@@ -10,7 +11,7 @@
     %hr
 
     %p
-      -trans "This website is dedicated to helping (future) Neutrinet members to acquire parts of, or complete, <a href="http://labriqueinter.net">[fr] Internet Cube</a> (<i>brique internet</i>)."
+      -trans "This website is dedicated to helping (future) Neutrinet members to acquire parts of, or complete, <a href=\"http://labriqueinter.net\">[fr] Internet Cube</a> (<i>brique internet</i>)."
 
     %p
       -trans "Please bear in mind that we do not sell hardware components, we buy it for you so that the overall process is eased and you benefit from lower rates."
@@ -26,7 +27,7 @@
         %li finally, we will let you know when you can come and grab your Cube (and/or components) and, except if you have opted out, finish the configuration with you and explain how to use it.
 
     %p
-      -trans "Neutrinet is as strong as its community is, <a href="http://neutrinet.be/#getinvolved">join us</a>!"
+      -trans "Neutrinet is as strong as its community is, <a href=\"http://neutrinet.be/#getinvolved\">join us</a>!"
 
     %div{style: "margin-top: 60px"}
       %center
@@ -74,7 +75,10 @@
                   -trans "There is no one in this group order for now."
               -else
                 %p
-                  -trans "There is {{ group_order.order_set.count }} {% if group_order.order_set.count == 1 %}person{% else %}people{% endif %} registered in this group order."
+                  -if group_order.order_set.count == 1
+                    -trans "There is {{ group_order.order_set.count }} person registered in this group order."
+                  -else
+                    -trans "There is {{ group_order.order_set.count }} people registered in this group order."
 
     %p
       %i
