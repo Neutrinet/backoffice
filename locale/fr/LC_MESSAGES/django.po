@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-12 16:30+0000\n"
+"POT-Creation-Date: 2015-08-12 22:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,11 +154,25 @@ msgid "Order:"
 msgstr "Commande :"
 
 #: ordering/templates/email.txt:34
-msgid "For an *estimated* total price of {{ order.estimated_price }} €."
-msgstr ""
-
-#: ordering/templates/email.txt:36
+#, python-format
 msgid ""
+"\n"
+"For a total price of %(order.estimated_price)s €.\n"
+"\n"
+"You can pay by wire transfer using this information:\n"
+"\n"
+"Bank: RecordBank\n"
+"Name: Neutrinet ASBL\n"
+"Communication: order n%(order.id)s of first %(order.first_name)s "
+"%(order.last_name)s\n"
+"IBAN: BE52 6528 3497 8409\n"
+"BIC: HBKABE22\n"
+"\n"
+"If you wish to pay by other means, please contact us.\n"
+"\n"
+"It would be great if you could make the transfer quickly as this will allow "
+"us to do the order faster.\n"
+"\n"
 "As soon as your order arrives, we will contact you and inform you about "
 "either when we can meet to finish the installation together (it is very "
 "likely that this will take place during the next upcoming meeting — every "
@@ -199,17 +213,18 @@ msgid ""
 "\n"
 "        <li>through this website, you will get to chose your desired "
 "components (and optionally subscribe to the Neutrinet VPN service) ;</li>\n"
-"        <li>the website will provide you with an estimated price and even "
-"though you are not required to pay now, by ordering, you commit yourself to "
-"pay the final price (it may vary slightly) ;</li>\n"
-"        <li>as soon as we have enough orders, we will make a group order, "
-"let you know about the definitive price and the estimated time of arrival ;</"
-"li>\n"
-"        <li>once the components arrive, except if you explicitly asked "
-"otherwise, we will configure and install everything for you ;</li>\n"
-"        <li>finally, we will let you know when you can come and grab your "
-"Cube (and/or components) and, except if you have opted out, finish the "
-"configuration with you and explain how to use it.</li>\n"
+"        <li>as soon as we have enough orders and that everyone has paid, we "
+"will make a group order and let you know about the estimated time of "
+"arrival ;</li>\n"
+"        <li>the indicated price is the bare price without any margin and is "
+"the minimal, you are invited to add to it how much you think this service is "
+"worth it (and how much you can, 0 is totally acceptable). This is called "
+"\"free price\" ;</li>\n"
+"        <li>you are invited to pay before the deadline : the sooner everyone "
+"has paid, the sooner we can make the order ;</li>\n"
+"        <li>once the components arrive, we will let you know when you can "
+"come and grab your Cube (and/or components) and, except if you have opted "
+"out, finish the configuration with you and explain how to use it.</li>\n"
 "\n"
 "      "
 msgstr ""
@@ -224,7 +239,7 @@ msgstr ""
 msgid "Order my cube"
 msgstr ""
 
-#: ordering/templates/home.haml:49
+#: ordering/templates/home.haml:51
 msgid "Current and previous group orders"
 msgstr ""
 
@@ -253,15 +268,67 @@ msgid "There is no one in this group order for now."
 msgstr ""
 
 #: ordering/templates/home.haml:102
+#, python-format
 msgid ""
-"There is {{ group_order.order_set.count }} person registered in this group "
-"order."
+"\n"
+"                      There is %(group_order.order_set.count)s person "
+"registered in this group order.\n"
+"                    "
 msgstr ""
 
-#: ordering/templates/home.haml:104
+#: ordering/templates/home.haml:106
+#, python-format
 msgid ""
-"There is {{ group_order.order_set.count }} people registered in this group "
-"order."
+"\n"
+"                      There is %(group_order.order_set.count)s people "
+"registered in this group order.\n"
+"\n"
+"                    "
+msgstr ""
+
+#: ordering/templates/home.haml:125
+msgid ""
+"\n"
+"            Bank information\n"
+"            <small>you'll receive it by email</small>\n"
+"          "
+msgstr ""
+
+#: ordering/templates/home.haml:134
+msgid ""
+"\n"
+"              <dt>\n"
+"                Bank\n"
+"              </dt>\n"
+"              <dd>\n"
+"                RecordBank\n"
+"              </dd>\n"
+"              <dt>\n"
+"                Name\n"
+"              </dt>\n"
+"              <dd>\n"
+"                Neutrinet ASBL\n"
+"              </dd>\n"
+"              <dt>\n"
+"                Communication\n"
+"              </dt>\n"
+"              <dd>\n"
+"                for example: order X of first name last name (nick)\n"
+"              </dd>\n"
+"              <dt>\n"
+"                IBAN\n"
+"              </dt>\n"
+"              <dd>\n"
+"                BE52 6528 3497 8409\n"
+"              </dd>\n"
+"              <dt>\n"
+"                BIC\n"
+"              </dt>\n"
+"              <dd>\n"
+"                HBKABE22\n"
+"\n"
+"              </dd>\n"
+"            "
 msgstr ""
 
 #: ordering/templates/order.haml:6 ordering/templates/order.haml.py:38
@@ -317,7 +384,7 @@ msgid ""
 "<b>You are free to consider how much your VPN subscription is worth</b>, and "
 "how much you want to pay for it. We strongly recommend you to pay at least "
 "6€/month, because we cannot currently afford to lower the service's price "
-"below. The mandatory membership fee costing 24€/year, we are all paying "
+"below. The mandatory membership fee costing 25€/year, we are all paying "
 "around 8€/month (6€ + 2€ for membership) for now. Of course, any additional "
 "support is really appreciated :-)"
 msgstr ""
@@ -372,48 +439,40 @@ msgstr ""
 
 #: ordering/templates/order.haml:175
 msgid ""
-"The prices listed below are the prices we can get for a batch order of 10 "
-"units, we also add 5€ as an estimation of the split shipping fees."
-msgstr ""
-
-#: ordering/templates/order.haml:179
-msgid ""
 "We have a special deal with <a href='http://olimex.com'>Olimex</a> that "
 "allows us to lower the prices. Prices below <b>include VAT</b> unlike those "
 "on Olimex.com."
 msgstr ""
 
-#: ordering/templates/order.haml:184
-msgid ""
-"The final price may vary slightly from what is shown below, it is only an "
-"estimation."
-msgstr ""
-
-#: ordering/templates/order.haml:191
+#: ordering/templates/order.haml:181
 msgid "Default components of the Cube"
 msgstr ""
 
-#: ordering/templates/order.haml:196 ordering/templates/order.haml.py:232
+#: ordering/templates/order.haml:186 ordering/templates/order.haml.py:222
 msgid "Quantity"
 msgstr ""
 
-#: ordering/templates/order.haml:199 ordering/templates/order.haml.py:235
+#: ordering/templates/order.haml:189 ordering/templates/order.haml.py:225
 msgid "Name"
 msgstr ""
 
-#: ordering/templates/order.haml:202 ordering/templates/order.haml.py:238
+#: ordering/templates/order.haml:192
 msgid "Estimated price"
 msgstr ""
 
-#: ordering/templates/order.haml:227
+#: ordering/templates/order.haml:217
 msgid "Extra components"
 msgstr ""
 
-#: ordering/templates/order.haml:261
+#: ordering/templates/order.haml:228
+msgid "Price"
+msgstr ""
+
+#: ordering/templates/order.haml:251
 msgid ""
 "\n"
 "            <b>\n"
-"              Estimated total price:\n"
+"              Total price (+5€ for shipment):\n"
 "            </b>\n"
 "            <span id='estimated-price'></span>\n"
 "            €\n"
@@ -424,34 +483,26 @@ msgid ""
 "          "
 msgstr ""
 
-#: ordering/templates/order.haml:279
-msgid ""
-"Reminder: We will send you the final price once we have received enough "
-"orders (usually 10) to order from Olimex by our side. You will be free to "
-"add to this price as much as you think the service (batch ordering and Cube "
-"configuration) is worth. Neutrinet does not charge any extra fee."
-msgstr ""
-
-#: ordering/templates/order.haml:285
+#: ordering/templates/order.haml:269
 msgid ""
 "If you wish to cancel your order in the mean time, please contact us "
 "immediately at <a href='mailto:cube@neutrinet.be'>cube@neutrinet.be</a>."
 msgstr ""
 
-#: ordering/templates/order.haml:292
+#: ordering/templates/order.haml:276
 #, fuzzy
 #| msgid "Nickname (optional)"
 msgid "Leave a comment (optional)"
 msgstr "Pseudo (optionnel)"
 
-#: ordering/templates/order.haml:307
+#: ordering/templates/order.haml:291
 msgid ""
 "If you have any question or if you want to modify your order, please contact "
 "us as soon as you can at <a href='mailto:cube@neutrinet.be'>cube@neutrinet."
 "be</a> or on <i>irc.freenode.net#neutrinet</i>."
 msgstr ""
 
-#: ordering/templates/order.haml:313
+#: ordering/templates/order.haml:297
 msgid ""
 "Please remember that we are humans and volunteers. We do not make any "
 "profit, we help you as much as we can and we do it on our spare time because "
