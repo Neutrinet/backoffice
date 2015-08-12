@@ -76,9 +76,11 @@
               -else
                 %p
                   -if group_order.order_set.count == 1
-                    -trans "There is {{ group_order.order_set.count }} person registered in this group order."
+                    -blocktrans
+                      There is {{ group_order.order_set.count }} person registered in this group order.
                   -else
-                    -trans "There is {{ group_order.order_set.count }} people registered in this group order."
+                    -blocktrans
+                      There is {{ group_order.order_set.count }} people registered in this group order.
 
     %p
       %i
