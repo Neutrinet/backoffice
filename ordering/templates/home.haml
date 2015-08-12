@@ -34,13 +34,13 @@
         %a.btn.btn-lg.btn-primary{href: "{% url 'order' %}"}
           -trans "Order my cube"
 
-    %h3
-      -trans "Current and previous group orders"
-    %hr
-
     .row
-      -for group_order in group_orders
-        .col-md-6
+      .col-md-6
+        %h3
+          -trans "Current and previous group orders"
+        %hr
+
+        -for group_order in group_orders
           .panel.panel-default
             .panel-heading= group_order.name
               \-
@@ -82,6 +82,6 @@
                     -blocktrans
                       There is {{ group_order.order_set.count }} people registered in this group order.
 
-    %p
-      %i
-        You will be automatically assigned to the current group order when making an order, this information is here to inform you about the current state of the process.
+        %p
+          %i
+            You will be automatically assigned to the current group order when making an order, this information is here to inform you about the current state of the process.
