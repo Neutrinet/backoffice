@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 16:59+0000\n"
+"POT-Creation-Date: 2015-08-12 16:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,28 +172,29 @@ msgid ""
 "<3"
 msgstr ""
 
-#: ordering/templates/home.haml:4 ordering/templates/home.haml.py:10
-#: ordering/templates/success.haml:4
+#: ordering/templates/home.haml:5 ordering/templates/home.haml.py:11
+#: ordering/templates/success.haml:5
 msgid "Neutrinet Cube Group Order Form"
 msgstr ""
 
-#: ordering/templates/home.haml:15
+#: ordering/templates/home.haml:16
 msgid ""
 "This website is dedicated to helping (future) Neutrinet members to acquire "
-"parts of, or complete, <a href="
+"parts of, or complete, <a href='http://labriqueinter.net'>[fr] Internet "
+"Cube</a> (<i>brique internet</i>)."
 msgstr ""
 
-#: ordering/templates/home.haml:19
+#: ordering/templates/home.haml:20
 msgid ""
 "Please bear in mind that we do not sell hardware components, we buy it for "
 "you so that the overall process is eased and you benefit from lower rates."
 msgstr ""
 
-#: ordering/templates/home.haml:23
+#: ordering/templates/home.haml:24
 msgid "About the process:"
 msgstr ""
 
-#: ordering/templates/home.haml:26
+#: ordering/templates/home.haml:27
 msgid ""
 "\n"
 "        <li>through this website, you will get to chose your desired "
@@ -213,40 +214,54 @@ msgid ""
 "      "
 msgstr ""
 
-#: ordering/templates/home.haml:36
-msgid "Neutrinet is as strong as its community is, <a href="
+#: ordering/templates/home.haml:37
+msgid ""
+"Neutrinet is as strong as its community is, <a href='http://neutrinet.be/"
+"#getinvolved'>join us</a>!"
 msgstr ""
 
-#: ordering/templates/home.haml:42
+#: ordering/templates/home.haml:43
 msgid "Order my cube"
 msgstr ""
 
-#: ordering/templates/home.haml:48
+#: ordering/templates/home.haml:49
 msgid "Current and previous group orders"
 msgstr ""
 
-#: ordering/templates/home.haml:59
+#: ordering/templates/home.haml:60
 msgid "current open group order"
 msgstr ""
 
-#: ordering/templates/home.haml:63
+#: ordering/templates/home.haml:64
 msgid "closed, the order is being processed"
 msgstr ""
 
-#: ordering/templates/home.haml:67
+#: ordering/templates/home.haml:68
 msgid "cubes have been distributed"
 msgstr ""
 
-#: ordering/templates/home.haml:78
+#: ordering/templates/home.haml:79
 msgid "Deadline:"
 msgstr ""
 
-#: ordering/templates/home.haml:85
+#: ordering/templates/home.haml:86
 msgid "There is no deadline right now."
 msgstr ""
 
-#: ordering/templates/home.haml:96
+#: ordering/templates/home.haml:97
 msgid "There is no one in this group order for now."
+msgstr ""
+
+#: ordering/templates/home.haml:102
+msgid ""
+"There is {{ group_order.order_set.count }} person registered in this group "
+"order."
+msgstr ""
+
+#: ordering/templates/home.haml:104
+msgid ""
+"There is {{ group_order.order_set.count }} people registered in this group "
+"order."
 msgstr ""
 
 #: ordering/templates/order.haml:6 ordering/templates/order.haml.py:38
@@ -281,10 +296,12 @@ msgid ""
 "you are doing."
 msgstr ""
 
-#: ordering/templates/order.haml:98
+#: ordering/templates/order.haml:99
 msgid ""
 "Technically, the VPN connection will encrypt all your Cube's traffic, making "
-"it unreadable to your current <abbr title="
+"it unreadable to your current <abbr title='Internet Service Provider'>ISP</"
+"abbr>, and will give your Cube a static IP address that will make it easily "
+"reachable wherever you install it (roughly like a mobile phone number)."
 msgstr ""
 
 #: ordering/templates/order.haml:105
@@ -343,7 +360,10 @@ msgid ""
 msgstr ""
 
 #: ordering/templates/order.haml:162
-msgid "The domain name will be registered at <a href="
+msgid ""
+"The domain name will be registered at <a href='https://gandi.net'>Gandi.net</"
+"a>. Also, <b>please ensure that the domain name you want is available there</"
+"b>."
 msgstr ""
 
 #: ordering/templates/order.haml:171
@@ -357,7 +377,10 @@ msgid ""
 msgstr ""
 
 #: ordering/templates/order.haml:179
-msgid "We have a special deal with <a href="
+msgid ""
+"We have a special deal with <a href='http://olimex.com'>Olimex</a> that "
+"allows us to lower the prices. Prices below <b>include VAT</b> unlike those "
+"on Olimex.com."
 msgstr ""
 
 #: ordering/templates/order.haml:184
@@ -412,7 +435,7 @@ msgstr ""
 #: ordering/templates/order.haml:285
 msgid ""
 "If you wish to cancel your order in the mean time, please contact us "
-"immediately at <a href="
+"immediately at <a href='mailto:cube@neutrinet.be'>cube@neutrinet.be</a>."
 msgstr ""
 
 #: ordering/templates/order.haml:292
@@ -424,7 +447,8 @@ msgstr "Pseudo (optionnel)"
 #: ordering/templates/order.haml:307
 msgid ""
 "If you have any question or if you want to modify your order, please contact "
-"us as soon as you can at <a href="
+"us as soon as you can at <a href='mailto:cube@neutrinet.be'>cube@neutrinet."
+"be</a> or on <i>irc.freenode.net#neutrinet</i>."
 msgstr ""
 
 #: ordering/templates/order.haml:313
@@ -434,13 +458,13 @@ msgid ""
 "we do believe in a better Internet."
 msgstr ""
 
-#: ordering/templates/success.haml:13
+#: ordering/templates/success.haml:14
 msgid ""
 "Congratulations, you order is complete, an overview has just been sent to "
 "your email address \\o/"
 msgstr ""
 
-#: ordering/templates/success.haml:20
+#: ordering/templates/success.haml:21
 msgid "Go back to the front page"
 msgstr ""
 
