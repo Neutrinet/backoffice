@@ -31,9 +31,22 @@ Please, make sure that these are correct, it is required to comply with the Belg
 
 {% for co in order.componentorder_set.all %}* {{ co.number }} x {{ co.component }} for {{ co.number }} x {{ co.component.current_price }}
 {% endfor %}
-{% trans "For an *estimated* total price of {{ order.estimated_price }} €." %}
+{% blocktrans %}
+For a total price of {{ order.estimated_price }} €.
 
-{% blocktrans %}As soon as your order arrives, we will contact you and inform you about either when we can meet to finish the installation together (it is very likely that this will take place during the next upcoming meeting — every two weeks) or when you can come to grab your components.
+You can pay by wire transfer using this information:
+
+Bank: RecordBank
+Name: Neutrinet ASBL
+Communication: order n{{ order.id }} of first {{ order.first_name }} {{ order.last_name }}
+IBAN: BE52 6528 3497 8409
+BIC: HBKABE22
+
+If you wish to pay by other means, please contact us.
+
+It would be great if you could make the transfer quickly as this will allow us to do the order faster.
+
+As soon as your order arrives, we will contact you and inform you about either when we can meet to finish the installation together (it is very likely that this will take place during the next upcoming meeting — every two weeks) or when you can come to grab your components.
 
 If you have any questions, want to modify your order or cancel it, just drop us an email at cube@neutrinet.be
 

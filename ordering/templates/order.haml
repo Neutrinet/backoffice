@@ -82,7 +82,7 @@
           -trans "Please note that Neutrinet is a non-profit ASBL/VZW. Therefore, by subscribing to the VPN service, you will become a <b>member</b> of Neutrinet. This membership grants you the right to vote and decide the future of Neutrinet. You will not be a customer, you will be Neutrinet."
 
         %p
-          -trans "<b>You are free to consider how much your VPN subscription is worth</b>, and how much you want to pay for it. We strongly recommend you to pay at least 6€/month, because we cannot currently afford to lower the service's price below. The mandatory membership fee costing 24€/year, we are all paying around 8€/month (6€ + 2€ for membership) for now. Of course, any additional support is really appreciated :-)"
+          -trans "<b>You are free to consider how much your VPN subscription is worth</b>, and how much you want to pay for it. We strongly recommend you to pay at least 6€/month, because we cannot currently afford to lower the service's price below. The mandatory membership fee costing 25€/year, we are all paying around 8€/month (6€ + 2€ for membership) for now. Of course, any additional support is really appreciated :-)"
 
         %p
           %span.help-block
@@ -130,14 +130,7 @@
           -trans "Choose your components (required)"
 
         %p
-          -trans "The prices listed below are the prices we can get for a batch order of 10 units, we also add 5€ as an estimation of the split shipping fees."
-
-        %p
           -trans "We have a special deal with <a href='http://olimex.com'>Olimex</a> that allows us to lower the prices. Prices below <b>include VAT</b> unlike those on Olimex.com."
-
-        %p
-          %b
-            -trans "The final price may vary slightly from what is shown below, it is only an estimation."
 
         %hr
 
@@ -174,7 +167,7 @@
             %th
               -trans "Name"
             %th
-              -trans "Estimated price"
+              -trans "Price"
 
           -for component in other_components
             %tr
@@ -190,7 +183,7 @@
         %p
           -blocktrans
             %b
-              Estimated total price:
+              Total price (+5€ for shipment):
             %span#estimated-price
             €
             for
@@ -199,10 +192,6 @@
 
         %riv{style: "display: none"}
           -bootstrap_field form.estimated_price
-
-        %p
-          %span.help-block
-            -trans "Reminder: We will send you the final price once we have received enough orders (usually 10) to order from Olimex by our side. You will be free to add to this price as much as you think the service (batch ordering and Cube configuration) is worth. Neutrinet does not charge any extra fee."
 
         %p
           %span.help-block
