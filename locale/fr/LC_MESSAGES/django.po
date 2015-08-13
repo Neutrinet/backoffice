@@ -146,11 +146,11 @@ msgstr ""
 
 #: ordering/templates/email.txt:11
 msgid "* You have chosen to get everything installed by US"
-msgstr ""
+msgstr "* Vous avez fait le choix que nous configurions tout pour vous"
 
 #: ordering/templates/email.txt:11
 msgid "* You have chosen to get everything installed by yourself"
-msgstr ""
+msgstr "* Vous avez fait le choix de configurer vous même votre Brique"
 
 #: ordering/templates/email.txt:12
 msgid "* You have subscribed to our VPN service"
@@ -166,6 +166,8 @@ msgid ""
 "* You have ordered \"%(order.domain_name)s\" and asked us NOT to handle its "
 "renewal"
 msgstr ""
+"* Vous avez commandé \"%(order.domain_name)s\" et choisi que nous ne nous occupions"
+"PAS de le renouveler"
 
 #: ordering/templates/email.txt:13
 #, python-format
@@ -173,6 +175,8 @@ msgid ""
 "* You have ordered \"%(order.domain_name)s\" and asked us to handle its "
 "renewal"
 msgstr ""
+"* Vous avez commandé \"%(order.domain_name)s\" et choisi que nous nous occupions "
+"de le renouveler chaque année"
 
 #: ordering/templates/email.txt:15
 #, python-format
