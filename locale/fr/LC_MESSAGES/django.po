@@ -391,6 +391,16 @@ msgstr ""
 "\n"
 "                    "
 
+#: ordering/templates/home.haml:118
+msgid ""
+"You will be automatically assigned to the current group order when making an "
+"order, this information is here to inform you about the current state of the "
+"process."
+msgstr ""
+"Vous serez automatiquement assigné·e à la commande groupée en cours en faisant "
+"une commande, cette information vous est donnée dans le but de vous tenir au "
+"courant de l'état actuel de la procédure."
+
 #: ordering/templates/home.haml:125
 msgid ""
 "\n"
