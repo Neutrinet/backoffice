@@ -24,7 +24,7 @@ msgstr "Belgique"
 
 #: ordering/models.py:12
 msgid "Netherlands"
-msgstr "Hollande"
+msgstr "Pays-Bas"
 
 #: ordering/models.py:13
 msgid "Luxembourg"
@@ -71,7 +71,7 @@ msgid ""
 "order, and further information about it."
 msgstr ""
 "Nous ne vous enverrons jamais de mail indésirables. Vous recevrez uniquement "
-"unecopie de votre email et des informations à son propos."
+"une copie de votre commande et des informations à son propos."
 
 #: ordering/models.py:113
 msgid ""
@@ -79,7 +79,7 @@ msgid ""
 "Neutrinet ASBL/VZW"
 msgstr ""
 "Je veux prendre un abonnement VPN chez Neutrinet et donc également "
-"devenirmembre de l'ASBL Neutrinet"
+"devenir membre de l'ASBL Neutrinet"
 
 #: ordering/models.py:114
 msgid "Do not configure my Cube for me, I want to do it by myself"
@@ -88,7 +88,7 @@ msgstr "Ne configurez pas ma Brique, je veux tout faire moi même."
 #: ordering/models.py:117
 msgid "I want my domain to be renewed automatically every year."
 msgstr ""
-"Je veux que mon nom de domaine soit renouvelé automatiquement chaque année."
+"Je veux que mon nom de domaine soit renouvelé automatiquement tout les ans."
 
 #: ordering/models.py:117
 msgid ""
@@ -96,8 +96,8 @@ msgid ""
 "this box if you want Neutrinet to do it for you."
 msgstr ""
 "C'est une erreur courant d'oublier de renouveler son nom de domaine "
-"chaqueannée. Sélectionnez cette option si vous voulez que Neutrinet le fasse "
-"pourvous."
+"chaque année. Sélectionnez cette option si vous voulez que Neutrinet le fasse "
+"pour vous."
 
 #: ordering/models.py:118
 msgid "Domain name"
@@ -110,10 +110,10 @@ msgid ""
 "choose Neutrinet anyway, please indicate your country of living in the "
 "comment section below."
 msgstr ""
-"Si vous ne voyez pas votre pays de résidence dans la liste, regardezsi vous "
-"<a href='http://db.ffdn.org'>trouvez un autre FAi plus proche dechez vous</"
-"a>. Si vous voulez quand même choisir Neutrinet, indiquez votrepays de "
-"résidence en commentaire dans la section prévu pour ça plus bas."
+"Si vous ne voyez pas votre pays de résidence dans la liste, regardez si vous "
+"<a href='http://db.ffdn.org'>trouvez un autre FAI plus proche de chez vous "
+"</a>. Si vous voulez quand même choisir Neutrinet, indiquez votre pays de "
+"résidence en commentaire dans la section prévu pour cela plus bas."
 
 #: ordering/models.py:126
 msgid "Format: dd/mm/yyyy"
@@ -126,7 +126,7 @@ msgstr "A reçu sa commande"
 #: ordering/models.py:151
 #, python-format
 msgid "order #%s for %s made %s days ago"
-msgstr "Commande #%s pour %s fait il y a %s jours"
+msgstr "Commande #%s pour %s faite il y a %s jours"
 
 #: ordering/templates/email.txt:3
 #, python-format
@@ -151,7 +151,7 @@ msgstr "* Vous avez souscris à notre service VPN"
 
 #: ordering/templates/email.txt:12
 msgid "* You have NOT subscribed to our VPN service"
-msgstr "* vous n'avez PAS souscris à notre service VPN"
+msgstr "* Vous n'avez PAS souscris à notre service VPN"
 
 #: ordering/templates/email.txt:13
 msgid "* You have ordered "
@@ -174,7 +174,7 @@ msgid ""
 msgstr ""
 "Informations personnelles (VPN):\n"
 "\n"
-"Assurez vous que ces informations sont correctes, nous en avons besoinpour "
+"Assurez-vous que ces informations sont correctes, nous en avons besoin pour "
 "être en règle avec la loi Belge.\n"
 "\n"
 "* Rue : %(order.street|default:\"\")s ;\n"
@@ -248,7 +248,7 @@ msgstr ""
 
 #: ordering/templates/home.haml:24
 msgid "About the process:"
-msgstr "À propos des étapes :"
+msgstr "À propos de la procédure :"
 
 #: ordering/templates/home.haml:27
 msgid ""
@@ -425,7 +425,7 @@ msgstr "Formulaire de commande de Brique Internet de Neutrinet"
 
 #: ordering/templates/order.haml:47
 msgid "You have made some mistakes, please correct them."
-msgstr "Vous avez fait des erreurs."
+msgstr "Le formulaire contient des erreurs, merci de les corriger."
 
 #: ordering/templates/order.haml:53
 msgid "Contact information"
@@ -478,9 +478,9 @@ msgid ""
 "future of Neutrinet. You will not be a customer, you will be Neutrinet."
 msgstr ""
 "N'oubliez pas que Neutrinet est une association (ASBL). Par conséquent, "
-"enprenant un abonnement VPN, vous deviendrez <b>membre</b> de Neutrinet.Cela "
-"vous donnera le droit de vote et la possibilité d'influencer sur lefuture de "
-"Neutrinet. Vous ne serrez pas un client, vous serrez une partiede Neutrinet."
+"en prenant un abonnement VPN, vous deviendrez <b>membre</b> de Neutrinet.Cela "
+"vous donnera le droit de vote et la possibilité d'influencer sur le future de "
+"Neutrinet. Vous ne serrez pas un client, vous serrez une partie de Neutrinet."
 
 #: ordering/templates/order.haml:109
 msgid ""
@@ -608,7 +608,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Nickname (optional)"
 msgid "Leave a comment (optional)"
-msgstr "Pseudo (optionnel)"
+msgstr "Laisser un commentaire (optionnel)"
 
 #: ordering/templates/order.haml:291
 msgid ""
@@ -616,7 +616,7 @@ msgid ""
 "us as soon as you can at <a href='mailto:cube@neutrinet.be'>cube@neutrinet."
 "be</a> or on <i>irc.freenode.net#neutrinet</i>."
 msgstr ""
-"Si vous avez la moindre question ou que vous voulez modifier votre commande,"
+"Si vous avez la moindre question ou que vous souhaitez modifier votre commande,"
 "contactez nous le plus rapidement possible sur <a href='mailto:"
 "cube@neutrinet.be'>cube@neutrinet.be</a> ou sur <i>irc.freenode."
 "net#neutrinet</i>."
@@ -628,8 +628,8 @@ msgid ""
 "we do believe in a better Internet."
 msgstr ""
 "N'oubliez pas que nous sommes des humains et des bénévoles. Nous ne "
-"faisonspas de profit, nous vous aidons autant que nous pouvons et nous "
-"faisons cela surnotre temps car nous croyons en un meilleur Internet."
+"faisons pas de profit, nous vous aidons autant que nous pouvons et nous "
+"faisons cela sur notre temps car nous croyons en un meilleur Internet."
 
 #: ordering/templates/success.haml:14
 msgid ""
@@ -637,7 +637,7 @@ msgid ""
 "your email address \\o/"
 msgstr ""
 "Félicitations, votre commande est faite, un résumé vous a été envoyé "
-"paremail \\o/"
+"par email \\o/"
 
 #: ordering/templates/success.haml:21
 msgid "Go back to the front page"
