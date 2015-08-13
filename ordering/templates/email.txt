@@ -38,7 +38,7 @@ You can pay by wire transfer using this information:
 
 Bank: RecordBank
 Name: Neutrinet ASBL
-Communication: order n{{ id }} of first {{ first_name }} {{ last_name }}
+Communication: order n{{ id }} of {{ first_name }} {{ last_name }}
 IBAN: BE52 6528 3497 8409
 BIC: HBKABE22
 
