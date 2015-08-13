@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-13 00:47+0000\n"
+"POT-Creation-Date: 2015-08-13 16:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -292,6 +292,13 @@ msgid ""
 "registered in this group order.\n"
 "\n"
 "                    "
+msgstr ""
+
+#: ordering/templates/home.haml:118
+msgid ""
+"You will be automatically assigned to the current group order when making an "
+"order, this information is here to inform you about the current state of the "
+"process."
 msgstr ""
 
 #: ordering/templates/home.haml:125
