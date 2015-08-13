@@ -683,8 +683,6 @@ msgstr ""
 "be</a>."
 
 #: ordering/templates/order.haml:276
-#, fuzzy
-#| msgid "Nickname (optional)"
 msgid "Leave a comment (optional)"
 msgstr "Laisser un commentaire (optionnel)"
 
