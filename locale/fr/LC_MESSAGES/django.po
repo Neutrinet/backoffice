@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-12 22:43+0000\n"
+"POT-Creation-Date: 2015-08-13 00:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,36 +54,46 @@ msgstr "Pseudo (optionnel)"
 #: ordering/models.py:107
 msgid "We may know you better by your nickname than your civil name :-)"
 msgstr ""
+"Il est possible que vous nous connaissiez mieux via votre pseudo que votre "
+"nom civil :-)"
 
 #: ordering/models.py:111
 msgid ""
 "We will never send you unwanted emails. You will only receive a copy of your "
 "order, and further information about it."
 msgstr ""
+"Nous ne vous enverrons jamais de mail indésirables. Vous recevrez uniquement "
+"unecopie de votre email et des informations à son propos."
 
 #: ordering/models.py:113
 msgid ""
 "I want to subscribe to the Neutrinet's VPN service and become a member of "
 "Neutrinet ASBL/VZW"
 msgstr ""
+"Je veux prendre un abonnement VPN chez Neutrinet et donc également "
+"devenirmembre de l'ASBL Neutrinet"
 
 #: ordering/models.py:114
 msgid "Do not configure my Cube for me, I want to do it by myself"
-msgstr ""
+msgstr "Ne configurez pas ma Brique, je veux tout faire moi même."
 
 #: ordering/models.py:117
 msgid "I want my domain to be renewed automatically every year."
 msgstr ""
+"Je veux que mon nom de domaine soit renouvelé automatiquement chaque année."
 
 #: ordering/models.py:117
 msgid ""
 "It is a common mistake to forget to renew a domain name every year. Check "
 "this box if you want Neutrinet to do it for you."
 msgstr ""
+"C'est une erreur courant d'oublier de renouveler son nom de domaine "
+"chaqueannée. Sélectionnez cette option si vous voulez que Neutrinet le fasse "
+"pourvous."
 
 #: ordering/models.py:118
 msgid "Domain name"
-msgstr ""
+msgstr "Nom de domaine"
 
 #: ordering/models.py:125
 msgid ""
@@ -92,10 +102,14 @@ msgid ""
 "choose Neutrinet anyway, please indicate your country of living in the "
 "comment section below."
 msgstr ""
+"Si vous ne voyez pas votre pays de résidence dans la liste, regardezsi vous "
+"<a href='http://db.ffdn.org'>trouvez un autre FAi plus proche dechez vous</"
+"a>. Si vous voulez quand même choisir Neutrinet, indiquez votrepays de "
+"résidence en commentaire dans la section prévu pour ça plus bas."
 
 #: ordering/models.py:126
 msgid "Format: dd/mm/yyyy"
-msgstr ""
+msgstr "Format : jj/mm/aaaa"
 
 #: ordering/models.py:131
 msgid "Has been given order"
@@ -116,6 +130,12 @@ msgid ""
 "\n"
 "Details:\n"
 msgstr ""
+"\n"
+"Bonjour %(order.first_name)s %(order.last_name)s,\n"
+"\n"
+"Nous sommes heureux de confirmer votre commande de Brique Internet (et/ou de "
+"composants supplémentaires) !\n"
+"Détails :\n"
 
 #: ordering/templates/email.txt:12
 msgid "* You have subscribed to our VPN service"
@@ -144,6 +164,17 @@ msgid ""
 "* Country: %(order.get_country_display|default:\"\")s ;\n"
 "* Birth Date: %(order.birth_date|default:\"\")s ;\n"
 msgstr ""
+"Informations personnelles (VPN):\n"
+"\n"
+"Assurez vous que ces informations sont correctes, nous en avons besoinpour "
+"être en règle avec la loi Belge.\n"
+"\n"
+"* Rue : %(order.street|default:\"\")s ;\n"
+"* Code postal : %(order.postal_code|default:\"\")s ;\n"
+"* Ville : %(order.town|default:\"\")s ;\n"
+"* Lieu de naissance : %(order.birthplace|default:\"\")s ;\n"
+"* Pays : %(order.get_country_display|default:\"\")s ;\n"
+"* Date de naissance : %(order.birth_date|default:\"\")s ;\n"
 
 #: ordering/templates/email.txt:26
 msgid "Comment:"
@@ -189,7 +220,7 @@ msgstr ""
 #: ordering/templates/home.haml:5 ordering/templates/home.haml.py:11
 #: ordering/templates/success.haml:5
 msgid "Neutrinet Cube Group Order Form"
-msgstr ""
+msgstr "Formulaire de commande de Brique Internet de Neutrinet"
 
 #: ordering/templates/home.haml:16
 msgid ""
@@ -203,10 +234,13 @@ msgid ""
 "Please bear in mind that we do not sell hardware components, we buy it for "
 "you so that the overall process is eased and you benefit from lower rates."
 msgstr ""
+"N'oubliez pas que nous ne vendez pas de matériel informatique, nous "
+"effectuonsla commande pour vous pour vous faciliter la tâche et pour vous "
+"faire profiterdes tarifs réduits auxquels nous avons accès."
 
 #: ordering/templates/home.haml:24
 msgid "About the process:"
-msgstr ""
+msgstr "À propos des étapes :"
 
 #: ordering/templates/home.haml:27
 msgid ""
@@ -401,7 +435,8 @@ msgstr "S'abonner au VPN de Neutrinet (recommandé)"
 msgid ""
 "You do not need to fill this section if you already have a VPN subscription."
 msgstr ""
-"Vous n'avez pas besoin de remplir cette section si vous avez déjà un abonnement VPN."
+"Vous n'avez pas besoin de remplir cette section si vous avez déjà un "
+"abonnement VPN."
 
 #: ordering/templates/order.haml:95
 msgid ""
@@ -409,9 +444,9 @@ msgid ""
 "play</i> fashion. It is stongly recommended to use one, unless you know what "
 "you are doing."
 msgstr ""
-"Vous aurez besoin d'une connection VPN si vous voulez que votre Brique marche"
-"directement lorsque vous la brancherez. Nous vous recommandons vraiment d'en"
-"avoir une à moins que vous sachiez ce que vous faites."
+"Vous aurez besoin d'une connection VPN si vous voulez que votre Brique "
+"marchedirectement lorsque vous la brancherez. Nous vous recommandons "
+"vraiment d'enavoir une à moins que vous sachiez ce que vous faites."
 
 #: ordering/templates/order.haml:99
 msgid ""
@@ -420,11 +455,12 @@ msgid ""
 "abbr>, and will give your Cube a static IP address that will make it easily "
 "reachable wherever you install it (roughly like a mobile phone number)."
 msgstr ""
-"Techniquement, la connection VPN chiffrera tout le trafic sortant de votre"
-"Brique Internet le rendant ainsi illisible pour vous <abbr title='Fournisseur"
-"d´accès à Internet'>FAI</abbr> actuel et cela vous donnera à votre Brique"
-"Internet une adresse IP static ce qui la rendra facilement contactable peut"
-"import l'endroit où vous la branchez (un peu comme un numéro de téléphone portable)."
+"Techniquement, la connection VPN chiffrera tout le trafic sortant de "
+"votreBrique Internet le rendant ainsi illisible pour vous <abbr "
+"title='Fournisseurd´accès à Internet'>FAI</abbr> actuel et cela vous donnera "
+"à votre BriqueInternet une adresse IP static ce qui la rendra facilement "
+"contactable peutimport l'endroit où vous la branchez (un peu comme un numéro "
+"de téléphone portable)."
 
 #: ordering/templates/order.haml:105
 msgid ""
@@ -433,11 +469,10 @@ msgid ""
 "Neutrinet. This membership grants you the right to vote and decide the "
 "future of Neutrinet. You will not be a customer, you will be Neutrinet."
 msgstr ""
-"N'oubliez pas que Neutrinet est une association (ASBL). Par conséquent, en"
-"prenant un abonnement VPN, vous deviendrez <b>membre</b> de Neutrinet."
-"Cela vous donnera le droit de vote et la possibilité d'influencer sur le"
-"future de Neutrinet. Vous ne serrez pas un client, vous serrez une partie"
-"de Neutrinet."
+"N'oubliez pas que Neutrinet est une association (ASBL). Par conséquent, "
+"enprenant un abonnement VPN, vous deviendrez <b>membre</b> de Neutrinet.Cela "
+"vous donnera le droit de vote et la possibilité d'influencer sur lefuture de "
+"Neutrinet. Vous ne serrez pas un client, vous serrez une partiede Neutrinet."
 
 #: ordering/templates/order.haml:109
 msgid ""
@@ -463,13 +498,15 @@ msgstr ""
 
 #: ordering/templates/order.haml:144
 msgid "Register a domain name (recommended)"
-msgstr ""
+msgstr "Enregistrer un nom de domaine (conseillé)"
 
 #: ordering/templates/order.haml:149
 msgid ""
 "You do not need to fill this section if you already have registered domain "
 "name."
 msgstr ""
+"Vous n'avez pas besoin de remplir cette section si vous avez déjà un nom de "
+"domaine."
 
 #: ordering/templates/order.haml:154
 msgid ""
@@ -495,7 +532,7 @@ msgstr ""
 
 #: ordering/templates/order.haml:171
 msgid "Choose your components (required)"
-msgstr ""
+msgstr "Choisissez vos composants (obligatoire)"
 
 #: ordering/templates/order.haml:175
 msgid ""
@@ -506,27 +543,23 @@ msgstr ""
 
 #: ordering/templates/order.haml:181
 msgid "Default components of the Cube"
-msgstr ""
+msgstr "Composants par défaut pour la Brique Internet"
 
 #: ordering/templates/order.haml:186 ordering/templates/order.haml.py:222
 msgid "Quantity"
-msgstr ""
+msgstr "Quantité"
 
 #: ordering/templates/order.haml:189 ordering/templates/order.haml.py:225
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
-#: ordering/templates/order.haml:192
-msgid "Estimated price"
-msgstr ""
+#: ordering/templates/order.haml:192 ordering/templates/order.haml.py:228
+msgid "Price"
+msgstr "Prix"
 
 #: ordering/templates/order.haml:217
 msgid "Extra components"
-msgstr ""
-
-#: ordering/templates/order.haml:228
-msgid "Price"
-msgstr ""
+msgstr "Composants additionnels"
 
 #: ordering/templates/order.haml:251
 msgid ""
@@ -548,6 +581,8 @@ msgid ""
 "If you wish to cancel your order in the mean time, please contact us "
 "immediately at <a href='mailto:cube@neutrinet.be'>cube@neutrinet.be</a>."
 msgstr ""
+"Si vous désirez annuler votre commande entre temps, contactez nous "
+"le plus rapidement possible sur <a href='mailto:cube@neutrinet.be'>cube@neutrinet.be</a>."
 
 #: ordering/templates/order.haml:276
 #, fuzzy
@@ -561,6 +596,9 @@ msgid ""
 "us as soon as you can at <a href='mailto:cube@neutrinet.be'>cube@neutrinet."
 "be</a> or on <i>irc.freenode.net#neutrinet</i>."
 msgstr ""
+"Si vous avez la moindre question ou que vous voulez modifier votre commande,"
+"contactez nous le plus rapidement possible sur <a href='mailto:cube@neutrinet.be'>"
+"cube@neutrinet.be</a> ou sur <i>irc.freenode.net#neutrinet</i>."
 
 #: ordering/templates/order.haml:297
 msgid ""
@@ -568,16 +606,21 @@ msgid ""
 "profit, we help you as much as we can and we do it on our spare time because "
 "we do believe in a better Internet."
 msgstr ""
+"N'oubliez pas que nous sommes des humains et des bénévoles. Nous ne faisons"
+"pas de profit, nous vous aidons autant que nous pouvons et nous faisons cela sur"
+"notre temps car nous croyons en un meilleur Internet."
 
 #: ordering/templates/success.haml:14
 msgid ""
 "Congratulations, you order is complete, an overview has just been sent to "
 "your email address \\o/"
 msgstr ""
+"Félicitations, votre commande est faite, un résumé vous a été envoyé par"
+"email \\o/"
 
 #: ordering/templates/success.haml:21
 msgid "Go back to the front page"
-msgstr ""
+msgstr "Retourner à la page d'accueil"
 
 #: ordering/views.py:57
 #, python-format
