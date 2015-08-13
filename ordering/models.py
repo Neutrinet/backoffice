@@ -105,8 +105,8 @@ class Order(models.Model):
     group_order = models.ForeignKey(GroupOrder, null=True, blank=True)
 
     nick = models.CharField(max_length=255, null=True, blank=True, verbose_name=_("Nickname (optional)"), help_text=_("We may know you better by your nickname than your civil name :-)"))
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255, verbose_name=_("First name"))
+    last_name = models.CharField(max_length=255, verbose_name=_("Last name"))
 
     email = models.EmailField(help_text=_("We will never send you unwanted emails. You will only receive a copy of your order, and further information about it."))
 
