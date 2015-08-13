@@ -4,8 +4,8 @@ Hello,
 
 Details:
 
-{% if not order.wants_to_install_everything_himself %}* s·he has chosen to get everything installed by us{% else %}* (s)he has chosen to get everything installed by her/himself{% endif %} ;
-{% if order.wants_vpn %}* s·he has subscribed to our VPN service{% else %}* (s)he has NOT subscribed to our VPN service{% endif %} ;
+{% if not order.wants_to_install_everything_himself %}* s·he has chosen to get everything installed by us{% else %}* s·he has chosen to get everything installed by her/himself{% endif %} ;
+{% if order.wants_vpn %}* s·he has subscribed to our VPN service{% else %}* s·he has NOT subscribed to our VPN service{% endif %} ;
 {% if order.domain_name %}* s·he has registered "{{ order.domain_name }}" and asked us {% if not order.wants_neutrinet_to_renew_the_domain %}NOT {% endif %}to handle its renewal
 {% endif %} ;
 {% if order.wants_vpn %}Personal data (VPN):

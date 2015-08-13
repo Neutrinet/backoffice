@@ -10,7 +10,7 @@ Details:
 
 {% if not order.wants_to_install_everything_himself %}{% trans "* You have chosen to get everything installed by US" %}{% else %}{% trans "* You have chosen to get everything installed by yourself" %}{% endif %} ;
 {% if order.wants_vpn %}{% trans "* You have subscribed to our VPN service" %}{% else %}{% trans "* You have NOT subscribed to our VPN service" %}{% endif %} ;
-{% if order.domain_name %}{% if not order.wants_neutrinet_to_renew_the_domain %}{% trans "* You have ordered "{{ order.domain_name }}" and asked us NOT to handle its renewal" %}{% else %}{% trans "* You have ordered "{{ order.domain_name }}" and asked us to handle its renewal" %}{% endif %}
+{% if order.domain_name %}{% if not order.wants_neutrinet_to_renew_the_domain %}{% blocktrans %}* You have ordered "{{ order.domain_name }}" and asked us NOT to handle its renewal{% endblocktrans %}{% else %}{% blocktrans %}* You have ordered "{{ order.domain_name }}" and asked us to handle its renewal{% endblocktrans %}{% endif %}
 {% endif %} ;
 {% if order.wants_vpn %}{% blocktrans %}Personal data (VPN):
 
