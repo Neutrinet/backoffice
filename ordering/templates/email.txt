@@ -1,7 +1,7 @@
 {% load i18n %}
 
-{% blocktrans %}
-Hello {{ order.first_name }} {{ order.last_name }},
+{% blocktrans with first_name=order.first_name last_name=order.last_name %}
+Hello {{ first_name }} {{ last_name }},
 
 We're happy to confirm your order for the Cube or related components!
 
@@ -10,18 +10,18 @@ Details:
 
 {% if not order.wants_to_install_everything_himself %}{% trans "* You have chosen to get everything installed by US" %}{% else %}{% trans "* You have chosen to get everything installed by yourself" %}{% endif %} ;
 {% if order.wants_vpn %}{% trans "* You have subscribed to our VPN service" %}{% else %}{% trans "* You have NOT subscribed to our VPN service" %}{% endif %} ;
-{% if order.domain_name %}{% if not order.wants_neutrinet_to_renew_the_domain %}{% blocktrans %}* You have ordered "{{ order.domain_name }}" and asked us NOT to handle its renewal{% endblocktrans %}{% else %}{% blocktrans %}* You have ordered "{{ order.domain_name }}" and asked us to handle its renewal{% endblocktrans %}{% endif %}
+{% if order.domain_name %}{% if not order.wants_neutrinet_to_renew_the_domain %}{% blocktrans with domain_name=order.domain_name %}* You have ordered "{{ domain_name }}" and asked us NOT to handle its renewal{% endblocktrans %}{% else %}{% blocktrans with domain_name=order.domain_name %}* You have ordered "{{ domain_name }}" and asked us to handle its renewal{% endblocktrans %}{% endif %}
 {% endif %} ;
-{% if order.wants_vpn %}{% blocktrans %}Personal data (VPN):
+{% if order.wants_vpn %}{% blocktrans with street=order.street|default:"" postal_code=order.postal_code|default:"" town=order.town|default:"" birthplace=order.birthplace|default:"" get_country_display=order.get_country_display|default:"" birth_date=order.birth_date|default:"" %}Personal data (VPN):
 
 Please, make sure that these are correct, it is required to comply with the Belgian law.
 
-* Street: {{ order.street|default:"" }} ;
-* Postal code: {{ order.postal_code|default:"" }} ;
-* Town: {{ order.town|default:"" }} ;
-* Birth place: {{ order.birthplace|default:"" }} ;
-* Country: {{ order.get_country_display|default:"" }} ;
-* Birth Date: {{ order.birth_date|default:"" }} ;
+* Street: {{ street }} ;
+* Postal code: {{ postal_code }} ;
+* Town: {{ town }} ;
+* Birth place: {{ birthplace }} ;
+* Country: {{ get_country_display }} ;
+* Birth Date: {{ birth_date }} ;
 {% endblocktrans %}{% endif %}
 {% if order.comment %}{% trans "Comment:" %}
 
@@ -31,14 +31,14 @@ Please, make sure that these are correct, it is required to comply with the Belg
 
 {% for co in order.componentorder_set.all %}* {{ co.number }} x {{ co.component }} for {{ co.number }} x {{ co.component.current_price }}
 {% endfor %}
-{% blocktrans %}
-For a total price of {{ order.estimated_price }} €.
+{% blocktrans with estimated_price=order.estimated_price id=order.id first_name=order.first_name last_name=order.last_name %}
+For a total price of {{ estimated_price }} €.
 
 You can pay by wire transfer using this information:
 
 Bank: RecordBank
 Name: Neutrinet ASBL
-Communication: order n{{ order.id }} of first {{ order.first_name }} {{ order.last_name }}
+Communication: order n{{ id }} of first {{ first_name }} {{ last_name }}
 IBAN: BE52 6528 3497 8409
 BIC: HBKABE22
 
