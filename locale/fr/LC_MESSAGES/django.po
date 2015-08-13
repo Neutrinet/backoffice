@@ -589,8 +589,9 @@ msgid ""
 "If you wish to cancel your order in the mean time, please contact us "
 "immediately at <a href='mailto:cube@neutrinet.be'>cube@neutrinet.be</a>."
 msgstr ""
-"Si vous désirez annuler votre commande entre temps, contactez nous "
-"le plus rapidement possible sur <a href='mailto:cube@neutrinet.be'>cube@neutrinet.be</a>."
+"Si vous désirez annuler votre commande entre temps, contactez nous le plus "
+"rapidement possible sur <a href='mailto:cube@neutrinet.be'>cube@neutrinet."
+"be</a>."
 
 #: ordering/templates/order.haml:276
 #, fuzzy
@@ -605,8 +606,9 @@ msgid ""
 "be</a> or on <i>irc.freenode.net#neutrinet</i>."
 msgstr ""
 "Si vous avez la moindre question ou que vous voulez modifier votre commande,"
-"contactez nous le plus rapidement possible sur <a href='mailto:cube@neutrinet.be'>"
-"cube@neutrinet.be</a> ou sur <i>irc.freenode.net#neutrinet</i>."
+"contactez nous le plus rapidement possible sur <a href='mailto:"
+"cube@neutrinet.be'>cube@neutrinet.be</a> ou sur <i>irc.freenode."
+"net#neutrinet</i>."
 
 #: ordering/templates/order.haml:297
 msgid ""
@@ -614,17 +616,17 @@ msgid ""
 "profit, we help you as much as we can and we do it on our spare time because "
 "we do believe in a better Internet."
 msgstr ""
-"N'oubliez pas que nous sommes des humains et des bénévoles. Nous ne faisons"
-"pas de profit, nous vous aidons autant que nous pouvons et nous faisons cela sur"
-"notre temps car nous croyons en un meilleur Internet."
+"N'oubliez pas que nous sommes des humains et des bénévoles. Nous ne "
+"faisonspas de profit, nous vous aidons autant que nous pouvons et nous "
+"faisons cela surnotre temps car nous croyons en un meilleur Internet."
 
 #: ordering/templates/success.haml:14
 msgid ""
 "Congratulations, you order is complete, an overview has just been sent to "
 "your email address \\o/"
 msgstr ""
-"Félicitations, votre commande est faite, un résumé vous a été envoyé par"
-"email \\o/"
+"Félicitations, votre commande est faite, un résumé vous a été envoyé "
+"paremail \\o/"
 
 #: ordering/templates/success.haml:21
 msgid "Go back to the front page"
