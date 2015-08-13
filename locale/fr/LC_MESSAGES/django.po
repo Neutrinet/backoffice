@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-13 00:21+0000\n"
+"POT-Creation-Date: 2015-08-13 00:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,6 +56,14 @@ msgid "We may know you better by your nickname than your civil name :-)"
 msgstr ""
 "Il est possible que vous nous connaissiez mieux via votre pseudo que votre "
 "nom civil :-)"
+
+#: ordering/models.py:108
+msgid "First name"
+msgstr "Prénom"
+
+#: ordering/models.py:109
+msgid "Last name"
+msgstr "Nom"
 
 #: ordering/models.py:111
 msgid ""
