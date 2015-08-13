@@ -237,35 +237,35 @@ msgstr ""
 
 #: ordering/templates/home.haml:43
 msgid "Order my cube"
-msgstr ""
+msgstr "Commander ma Brique Internet"
 
 #: ordering/templates/home.haml:51
 msgid "Current and previous group orders"
-msgstr ""
+msgstr "Commandes groupées en cours"
 
 #: ordering/templates/home.haml:60
 msgid "current open group order"
-msgstr ""
+msgstr "commande groupé du moment"
 
 #: ordering/templates/home.haml:64
 msgid "closed, the order is being processed"
-msgstr ""
+msgstr "inscriptions terminées"
 
 #: ordering/templates/home.haml:68
 msgid "cubes have been distributed"
-msgstr ""
+msgstr "Les Briques ont été distribuées"
 
 #: ordering/templates/home.haml:79
 msgid "Deadline:"
-msgstr ""
+msgstr "Date butoire :"
 
 #: ordering/templates/home.haml:86
 msgid "There is no deadline right now."
-msgstr ""
+msgstr "Il n'y a pas encore de date butoire."
 
 #: ordering/templates/home.haml:97
 msgid "There is no one in this group order for now."
-msgstr ""
+msgstr "Il n'y a personne dans cette commande groupée pour l'instant."
 
 #: ordering/templates/home.haml:102
 #, python-format
@@ -275,6 +275,10 @@ msgid ""
 "registered in this group order.\n"
 "                    "
 msgstr ""
+"\n"
+"                      Il y a %(group_order.order_set.count)s personne "
+"inscrite dans cette commande groupée.\n"
+"                    "
 
 #: ordering/templates/home.haml:106
 #, python-format
@@ -285,6 +289,11 @@ msgid ""
 "\n"
 "                    "
 msgstr ""
+"\n"
+"                      Il y a %(group_order.order_set.count)s personnes "
+"inscrites dans cette commande groupée.\n"
+"\n"
+"                    "
 
 #: ordering/templates/home.haml:125
 msgid ""
@@ -293,6 +302,10 @@ msgid ""
 "            <small>you'll receive it by email</small>\n"
 "          "
 msgstr ""
+"\n"
+"            Informations bancaires\n"
+"            <small>également envoyé par mail</small>\n"
+"          "
 
 #: ordering/templates/home.haml:134
 msgid ""
@@ -330,31 +343,65 @@ msgid ""
 "              </dd>\n"
 "            "
 msgstr ""
+"\n"
+"              <dt>\n"
+"                Banque\n"
+"              </dt>\n"
+"              <dd>\n"
+"                RecordBank\n"
+"              </dd>\n"
+"              <dt>\n"
+"                Nom\n"
+"              </dt>\n"
+"              <dd>\n"
+"                Neutrinet ASBL\n"
+"              </dd>\n"
+"              <dt>\n"
+"                Communication\n"
+"              </dt>\n"
+"              <dd>\n"
+"                par example: order X of first name last name (nick)\n"
+"              </dd>\n"
+"              <dt>\n"
+"                IBAN\n"
+"              </dt>\n"
+"              <dd>\n"
+"                BE52 6528 3497 8409\n"
+"              </dd>\n"
+"              <dt>\n"
+"                BIC\n"
+"              </dt>\n"
+"              <dd>\n"
+"                HBKABE22\n"
+"\n"
+"              </dd>\n"
+"            "
 
 #: ordering/templates/order.haml:6 ordering/templates/order.haml.py:38
 msgid "Neutrinet Cube Ordering Form"
-msgstr ""
+msgstr "Formulaire de commande de Brique Internet de Neutrinet"
 
 #: ordering/templates/order.haml:47
 msgid "You have made some mistakes, please correct them."
-msgstr ""
+msgstr "Vous avez fait des erreurs."
 
 #: ordering/templates/order.haml:53
 msgid "Contact information"
-msgstr ""
+msgstr "Informations de contact"
 
 #: ordering/templates/order.haml:77
 msgid "Preferences"
-msgstr ""
+msgstr "Préférences"
 
 #: ordering/templates/order.haml:85
 msgid "Subscribe to a Neutrinet VPN (recommended)"
-msgstr ""
+msgstr "S'abonner au VPN de Neutrinet (recommandé)"
 
 #: ordering/templates/order.haml:90
 msgid ""
 "You do not need to fill this section if you already have a VPN subscription."
 msgstr ""
+"Vous n'avez pas besoin de remplir cette section si vous avez déjà un abonnement VPN."
 
 #: ordering/templates/order.haml:95
 msgid ""
@@ -362,6 +409,9 @@ msgid ""
 "play</i> fashion. It is stongly recommended to use one, unless you know what "
 "you are doing."
 msgstr ""
+"Vous aurez besoin d'une connection VPN si vous voulez que votre Brique marche"
+"directement lorsque vous la brancherez. Nous vous recommandons vraiment d'en"
+"avoir une à moins que vous sachiez ce que vous faites."
 
 #: ordering/templates/order.haml:99
 msgid ""
@@ -370,6 +420,11 @@ msgid ""
 "abbr>, and will give your Cube a static IP address that will make it easily "
 "reachable wherever you install it (roughly like a mobile phone number)."
 msgstr ""
+"Techniquement, la connection VPN chiffrera tout le trafic sortant de votre"
+"Brique Internet le rendant ainsi illisible pour vous <abbr title='Fournisseur"
+"d´accès à Internet'>FAI</abbr> actuel et cela vous donnera à votre Brique"
+"Internet une adresse IP static ce qui la rendra facilement contactable peut"
+"import l'endroit où vous la branchez (un peu comme un numéro de téléphone portable)."
 
 #: ordering/templates/order.haml:105
 msgid ""
@@ -378,6 +433,11 @@ msgid ""
 "Neutrinet. This membership grants you the right to vote and decide the "
 "future of Neutrinet. You will not be a customer, you will be Neutrinet."
 msgstr ""
+"N'oubliez pas que Neutrinet est une association (ASBL). Par conséquent, en"
+"prenant un abonnement VPN, vous deviendrez <b>membre</b> de Neutrinet."
+"Cela vous donnera le droit de vote et la possibilité d'influencer sur le"
+"future de Neutrinet. Vous ne serrez pas un client, vous serrez une partie"
+"de Neutrinet."
 
 #: ordering/templates/order.haml:109
 msgid ""
