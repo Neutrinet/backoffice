@@ -163,6 +163,9 @@ class Order(models.Model):
 
         return super(Order, self).save(*args, **kwargs)
 
+    class Meta:
+        ordering = ['-group_order', '-id']
+
 
 class Component(models.Model):
     reference = models.CharField(max_length=255)
