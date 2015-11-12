@@ -99,7 +99,10 @@
     -for order in orders
       .well
         %h4
-          %b= order
+          %b
+            =order
+            \-
+            =order.email
 
         .row
           .col-md-6
