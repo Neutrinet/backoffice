@@ -99,14 +99,16 @@
     -for order in orders
       .well
         %h4
+          %b
+            =order
+            \-
+            =order.email
+            \-
+            =order.estimated_price
+            €
+            \-
           %a{href: "/admin/ordering/order/{{ order.id }}/"}
-            %b
-              =order
-              \-
-              =order.email
-              \-
-              =order.estimated_price
-              €
+            order
 
         .row
           .col-md-6
