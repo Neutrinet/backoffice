@@ -1,10 +1,10 @@
-django
+django<1.9
 django-bootstrap3
 django-extensions
 django-debug-toolbar
 django-pdb
 hamlpy
 werkzeug
-django-reversion
+django-reversion<1.10
 psycopg2
 django-admin-bootstrapped>=2.0
