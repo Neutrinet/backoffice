@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'admin_views',
     'bootstrap3',
     'django_admin_bootstrapped',
     'django.contrib.admin',
@@ -43,6 +44,8 @@ INSTALLED_APPS = (
     'django_extensions',
     'reversion',
     'ordering',
+    'members',
+    'accounts',
     'admin2',
     'hamlpy',
 )

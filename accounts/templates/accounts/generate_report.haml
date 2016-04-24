@@ -1,0 +1,82 @@
+-if data.movement_that_might_be_the_same
+  %h4 Movement that I DIDN'T IMPORTED because they might already been there:
+
+  %ul
+    -for i, j in data.movement_that_might_be_the_same
+      %li
+        %b
+          =i
+        ({{ i.comment }})
+        is not imported because it is probably
+        %a{href: "/admin/accounts/movement/{{ j.id }}/"}
+          =j
+        %ul
+          %li either add it by hand if you think that it's a new one
+          %li or add {{ i.bank_id }} as a bank id to
+            %a{href: "/admin/accounts/movement/{{ j.id }}/"}
+              =j
+            make this warning disapeared
+
+-if data.need_title
+  %h4 Movement that needs a title
+
+  %ul
+    -for i in data.need_title
+      %li
+        %a{href: "/admin/accounts/movement/{{ i.id }}/"}
+          =i
+        %br
+        =i.comment
+
+  Reminder of common titles :
+
+  %ul
+    %li Redevance VPN
+    %li Cotisation
+    %li Commande de Brique Internet
+    %li Commande Olimex UK
+    %li Frais Bancaires
+
+-if data.guessed_title
+  %h4 Movement for which I have guess a title
+
+  %p
+    %b
+      Please verify that the titles is correct
+
+  %table.table.table-bordered
+    %tr
+      %th
+        Guessed title
+      %th
+        Amount
+      %th
+        Communication
+      %th
+        From
+    -for i, communication, from in data.guessed_title
+      %tr
+        %td
+          =i.title
+        %td
+          -if i.kind == "credit"
+            +{{ i.amount }}
+          -else
+            \-{{ i.amount }}
+        %td
+          =communication
+        %td
+          =from
+        %td
+          %a{href: "/admin/accounts/movement/{{ i.id }}/"}
+            edit
+
+-if data.skip_because_already_imported
+  %h4 Movements that I've skipped because they are already imported (based on their bank id)
+
+  %ul
+    -for i in data.skip_because_already_imported
+      %li
+        %a{href: "/admin/accounts/movement/{{ i.id }}/"}
+          =i
+        =i.bank_id

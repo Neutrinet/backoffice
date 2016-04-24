@@ -1,0 +1,93 @@
+-extends "bootstrap3/bootstrap3.html"
+-load accounts_tags
+
+-block bootstrap3_content
+  .container
+    %h1 Neutrinet Public (not yet actually) Accounting Page
+    %hr
+
+    -regroup movement_list by date.year as movement_list
+
+    -for movement_year in movement_list
+      %table.table.table-bordered
+        %col{span: 1, style: "width: 4%"}
+        %col{span: 1, style: "width: 8%"}
+        %col{span: 1, style: "width: 60%"}
+        %col{span: 1, style: "width: 14%"}
+        %col{span: 1, style: "width: 14%"}
+        %tr
+          %th #
+          %th Date
+          %th Communication
+          %th Debit
+          %th Credit
+        -for movement in movement_year.list
+          %tr
+            %td= forloop.revcounter
+            %td= movement.date
+            %td= movement.title
+            %td.money
+              -if movement.kind == "debit"
+                =movement.amount
+                €
+            %td.money
+              -if movement.kind == "credit"
+                =movement.amount
+                €
+
+        %tr
+          %td
+          %td
+          %td.total
+            %b Total
+          %td.money{colspan: 2}
+            %b
+              -current_year_total movement_year.grouper
+              €
+
+      .row
+        .col-md-6.col-md-offset-6
+          %table.table.table-bordered
+            %col{span: 1, style: "width: 4%"}
+            %col{span: 1, style: "width: 8%"}
+            %tr
+              %td
+                %b Solde exercice précédent
+              %td.money
+                -previous_year_sold movement_year.grouper
+                €
+            %tr
+              %td
+                %b Solde au {{ movement_year.grouper }}-12-31
+              %td.money
+                -current_year_sold movement_year.grouper
+                €
+
+    %hr
+
+    %p.center
+      %b
+        %a{href: "{% url 'accounts_upload_record_bank_csv' %}"}
+          Upload page for record bank CSV
+
+    %p.center
+      %b
+        %a{href: "{% url 'accounts_importreport_list' %}"}
+          All import reports
+
+  :css
+    th {
+      text-align: center;
+    }
+
+    .money {
+      text-align: center;
+    }
+
+    .total {
+      text-align: right;
+    }
+
+    .center {
+      text-align: center;
+    }

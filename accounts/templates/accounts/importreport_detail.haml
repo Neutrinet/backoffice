@@ -1,0 +1,28 @@
+-extends "bootstrap3/bootstrap3.html"
+
+-block bootstrap3_content
+  .container
+    %h1= importreport
+    %hr
+
+    %p
+      %b
+        %a{href: "{% url 'accounts_importreport_list' %}"}
+          All import reports
+        \-
+        %a{href: "accounts_home"}
+          Go back to movements page
+
+    %hr
+
+    =importreport.content|safe
+
+    %hr
+
+    %p
+      %b
+        %a{href: "{% url 'accounts_importreport_list' %}"}
+          All import reports
+        \-
+        %a{href: "accounts_home"}
+          Go back to movements page

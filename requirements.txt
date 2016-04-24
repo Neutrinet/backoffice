@@ -7,4 +7,4 @@ hamlpy
 werkzeug
 django-reversion<1.10
 psycopg2
-django-admin-bootstrapped>=2.0
+git+https://github.com/neutrinet/django-admin-views

@@ -1,0 +1,23 @@
+-extends "bootstrap3/bootstrap3.html"
+
+-block bootstrap3_content
+  .container
+    %h1 RecordBank CSV uploader
+    %hr
+
+    .row
+      .col-md-4
+        %form.upload_form{method: "post", enctype: "multipart/form-data"}
+          -csrf_token
+
+          .form-group
+            =form
+
+          %input.btn.btn-default{type: "submit"}
+
+  :css
+    .upload_form {
+      border: 1px solid #EEEEEE;
+      padding: 10px;
+      border-radius: 5px;
+    }
