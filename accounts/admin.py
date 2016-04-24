@@ -1,17 +1,17 @@
 # encoding: utf-8
 
 from django.contrib import admin
-
 from django.conf.locale.en import formats as en_formats
 
 from reversion.admin import VersionAdmin
+from admin_views.admin import AdminViews
 
 from .models import Movement
 
 en_formats.DATE_FORMAT = "Y-m-d"
 
 
-class MovementAdmin(VersionAdmin):
+class MovementAdmin(VersionAdmin, AdminViews):
     fieldsets = (
         (None, {
             "fields": (("date", "amount"), ("title", "kind"), ("comment",), ("bank_id",))
@@ -40,5 +40,11 @@ class MovementAdmin(VersionAdmin):
         return obj.title
 
     title_column.short_description = "Title"
+
+    admin_views = (
+       ('Neutrinet Public Accounting Page', '/accounts'),
+       ('Upload Record Bank CSV ', '/accounts/upload_record_bank_csv'),
+    )
+
 
 admin.site.register(Movement, MovementAdmin)
