@@ -54,7 +54,7 @@ class OrderAdmin(VersionAdmin, AdminViews):
     )
 
     admin_views = (
-       ('Admin2 (les informations d\xe9taill\xe9es des commandes)', '/admin2'),
+       ('Admin2 (les informations d\xe9taill\xe9es sur les commandes)', '/admin2'),
     )
 
 
