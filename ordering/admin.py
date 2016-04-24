@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-import reversion
+from reversion.admin import VersionAdmin
 from admin_views.admin import AdminViews
 
 from django.contrib import admin
@@ -14,7 +14,7 @@ class OrderInline(admin.TabularInline):
     fields = ('made_on', 'email', 'has_payed', 'member_has_been_give_order', 'estimated_price', 'real_price', 'price_payed')
 
 
-class GroupOrderAdmin(reversion.VersionAdmin):
+class GroupOrderAdmin(VersionAdmin):
     inlines = (OrderInline,)
     list_display = ('__unicode__', 'state', 'deadline', 'number_of_order')
 
@@ -24,7 +24,7 @@ class ComponentOrderInline(admin.TabularInline):
     extra = 1
 
 
-class OrderAdmin(reversion.VersionAdmin, AdminViews):
+class OrderAdmin(VersionAdmin, AdminViews):
     readonly_fields = ('made_on',)
     inlines = (ComponentOrderInline,)
     list_display = ('__unicode__', 'has_payed', 'domain_name', 'member_has_been_give_order', 'has_a_working_cube_or_dont_care', 'group_order_number')
@@ -59,7 +59,7 @@ class OrderAdmin(reversion.VersionAdmin, AdminViews):
 
 
 
-class ComponentAdmin(reversion.VersionAdmin):
+class ComponentAdmin(VersionAdmin):
     list_display = ('__unicode__', 'current_price', 'in_default_pack', 'available')
 
 

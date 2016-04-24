@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-import reversion
+from reversion.admin import VersionAdmin
 
 from django.contrib import admin
 
@@ -25,7 +25,7 @@ class IsStillMember(admin.SimpleListFilter):
             return queryset.filter(member_end__isnull=False)
 
 
-class MemberAdmin(reversion.VersionAdmin):
+class MemberAdmin(VersionAdmin):
     list_display = ('first_name', 'last_name', 'last_paid_date', 'email', 'vpn', 'cube', 'is_not_a_member_yet')
     list_filter = ('last_paid_date', 'ca_member', IsStillMember, 'vpn', 'cube', 'is_not_a_member_yet')
 
