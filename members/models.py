@@ -24,6 +24,11 @@ class Member(models.Model):
 
     is_not_a_member_yet = models.BooleanField(default=False, help_text="Cette personne a commandé une brique avec un access VPN mais n'a pas envoyé commencé à payer son abonnement VPN mais doit le faire. Elle sera considéré comme membre quand ça sera fait.")
 
+    vpn_is_paid_until = models.DateField(null=True, blank=True, verbose_name="La costisation VPN est payé jusqu'à")
+    vpn_fee_rate = models.PositiveIntegerField(default=8, verbose_name="Combien notre membre paie par mois pour son VPN:", help_text="ceci est à titre INDICATIF")
+
+    domain_names_we_handle = models.TextField(null=True, blank=True, verbose_name="Nom de domaines qu'on gère pour notre membre")
+
     comments = models.TextField(blank=True, null=True, help_text="Random comments regarding the current situation of this member like 'paying vpn by cash' or sometehing like that.")
 
     vpn = models.BooleanField(default=False, verbose_name="a un abonnement vpn")
