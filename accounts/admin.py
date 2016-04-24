@@ -1,10 +1,10 @@
 # encoding: utf-8
 
-from django.contrib import admin
-from django.conf.locale.en import formats as en_formats
-
 from reversion.admin import VersionAdmin
 from admin_views.admin import AdminViews
+
+from django.contrib import admin
+from django.conf.locale.en import formats as en_formats
 
 from .models import Movement
 

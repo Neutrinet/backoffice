@@ -1,7 +1,9 @@
 # encoding: utf-8
 
 import reversion
+
 from django.contrib import admin
+
 from .models import Member
 
 
@@ -26,8 +28,11 @@ class IsStillMember(admin.SimpleListFilter):
 class MemberAdmin(reversion.VersionAdmin):
     list_display = ('first_name', 'last_name', 'last_paid_date', 'email', 'vpn', 'cube', 'is_not_a_member_yet')
     list_filter = ('last_paid_date', 'ca_member', IsStillMember, 'vpn', 'cube', 'is_not_a_member_yet')
+
     radio_fields = {"juridical_form": admin.HORIZONTAL}
+
     search_fields = ('first_name', 'last_name')
+
     fieldsets = (
         ('Information générales', {
             'fields': (('first_name', 'last_name',), ('address', 'email'), ('juridical_form', 'billing_id'), 'comments'),
