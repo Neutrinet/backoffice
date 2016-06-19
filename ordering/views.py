@@ -65,7 +65,7 @@ def make_order(request):
         u'[cube order] Order #%s by %s %s (%s)' % (order.id, order.first_name, order.last_name, order.nick if order.nick else "no nick"),
         get_template('admin_email.txt').render(Context({"order": order})),
         'noreplay@neutrinet.be',
-        ['cube@neutrinet.be'],
+        ['forwardforcubeneutrinetbe@worlddomination.be'],
         fail_silently=False,
     )
 
