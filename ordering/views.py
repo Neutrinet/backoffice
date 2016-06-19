@@ -53,21 +53,21 @@ def make_order(request):
                     number=form.cleaned_data["component_%d_number" % component.id]
                 )
 
-        send_mail(
-            _(u'[Neutrinet] Order #%s for one or more Internet Cube') % order.id,
-            get_template('email.txt').render(Context({"order": order})),
-            'cube@neutrinet.be',
-            [order.email],
-            fail_silently=False,
-        )
+    send_mail(
+        _(u'[Neutrinet] Order #%s for one or more Internet Cube') % order.id,
+        get_template('email.txt').render(Context({"order": order})),
+        'cube@neutrinet.be',
+        [order.email],
+        fail_silently=False,
+    )
 
-        send_mail(
-            u'[cube order] Order #%s by %s %s (%s)' % (order.id, order.first_name, order.last_name, order.nick if order.nick else "no nick"),
-            get_template('admin_email.txt').render(Context({"order": order})),
-            'noreplay@neutrinet.be',
-            ['cube@neutrinet.be'],
-            fail_silently=False,
-        )
+    send_mail(
+        u'[cube order] Order #%s by %s %s (%s)' % (order.id, order.first_name, order.last_name, order.nick if order.nick else "no nick"),
+        get_template('admin_email.txt').render(Context({"order": order})),
+        'noreplay@neutrinet.be',
+        ['cube@neutrinet.be'],
+        fail_silently=False,
+    )
 
     return HttpResponseRedirect(reverse("success"))
 
