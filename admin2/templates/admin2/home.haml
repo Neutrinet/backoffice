@@ -26,6 +26,19 @@
 
         .panel.panel-default
           .panel-heading
+            Hasn't received
+
+          .list-group
+            -for order in orders
+              -if not order.received
+                %a.list-group-item{href: "/admin/ordering/order/{{ order.id }}/change/"}
+                  -if not order.has_payed
+                    %span.badge
+                      hasn't payed
+                  =order
+
+        .panel.panel-default
+          .panel-heading
             Hasn't payed
 
           .list-group
