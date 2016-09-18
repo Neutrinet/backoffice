@@ -18,11 +18,10 @@
           .panel-heading
             Group Orders
 
-          .panel-body
-
-              -for group_order in group_orders
-                %li
-                  %a{href: "{% url 'admin2_group_order_detail' group_order.pk %}"}= group_order.name
+          %ul.list-group
+            -for group_order in group_orders
+              %li.list-group-item
+                %a{href: "{% url 'admin2_group_order_detail' group_order.pk %}"}= group_order.name
 
         .panel.panel-default
           .panel-heading
