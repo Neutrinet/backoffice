@@ -52,9 +52,42 @@
       .col-md-6
         -regroup components by in_default_pack as component_group
         -for cg in component_group
-          -if cg.grouper
-            -with title="Default components" components=cg.list
-              -include "admin2/home/stock.haml"
-          -else
-            -with title="Other components" components=cg.list
-              -include "admin2/home/stock.haml"
+          .panel.panel-default
+            .panel-heading
+              -if cg.grouper
+                Default components
+              -else
+                Other components
+
+            %table.table.table-bordered
+              %colgroup
+                %col
+                %col{width: "10px"}
+                %col{width: "15px", style: "text-align: right"}
+              %tr
+                %th Name
+                %th Stock
+                %th Price
+              -for component in cg.list
+                %tr
+                  %td
+                    -if component.full_name
+                      %a{href: "/admin/ordering/component/{{ component.id }}/"}
+                        =component.full_name
+                      %i= component.reference
+                    -else
+                      %a{href: "/admin/ordering/component/{{ component.id }}/"}
+                        =component.reference
+                  %td.stock= component.stock
+                  %td.price= component.current_price
+                    €
+
+  :css
+    td.price {
+      width: 65px;
+      text-align: right;
+    }
+
+    td.stock {
+      text-align: right;
+    }
