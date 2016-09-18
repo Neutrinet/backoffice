@@ -31,7 +31,7 @@
           .list-group
             -for order in orders
               -if not order.member_has_been_give_order
-                %a.list-group-item{href: "/admin/ordering/order/{{ order.id }}/change/"}
+                %a.list-group-item{href: "/admin/ordering/order/{{ order.id }}/"}
                   -if not order.has_payed
                     %span.badge
                       hasn't payed
