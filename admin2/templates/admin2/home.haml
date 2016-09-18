@@ -27,7 +27,7 @@
       .col-md-6
         .panel.panel-default
           .panel-heading
-            Stock
+            Default components
 
           %table.table.table-bordered
             %colgroup
@@ -39,9 +39,33 @@
               %th Stock
               %th Price
             -for component in components
-              %tr
-                %td
-                  %a{href: "{{ component.url }}"}= component.reference
-                  %i= component.full_name
-                %td= component.stock
-                %td= component.current_price
+              -if component.in_default_pack
+                %tr
+                  %td
+                    %a{href: "{{ component.url }}"}= component.reference
+                    %i= component.full_name
+                  %td= component.stock
+                  %td= component.current_price
+
+
+        .panel.panel-default
+          .panel-heading
+            Other components
+
+          %table.table.table-bordered
+            %colgroup
+              %col
+              %col{width: "10px"}
+              %col{width: "10px"}
+            %tr
+              %th Name
+              %th Stock
+              %th Price
+            -for component in components
+              -if not component.in_default_pack
+                %tr
+                  %td
+                    %a{href: "{{ component.url }}"}= component.reference
+                    %i= component.full_name
+                  %td= component.stock
+                  %td= component.current_price
