@@ -176,6 +176,8 @@ class Component(models.Model):
     in_default_pack = models.BooleanField(default=False)
     available = models.BooleanField(default=True)
 
+    stock = models.PositiveIntegerField(default=0)
+
     @property
     def provider(self):
         return self.url.split("//")[1].split("/")[0].replace("www.", "").replace(".com", "")

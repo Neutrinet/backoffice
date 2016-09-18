@@ -60,7 +60,7 @@ class OrderAdmin(VersionAdmin, AdminViews):
 
 
 class ComponentAdmin(VersionAdmin):
-    list_display = ('__unicode__', 'current_price', 'in_default_pack', 'available')
+    list_display = ('__unicode__', 'current_price', 'in_default_pack', 'available', 'stock')
 
 
 admin.site.register(GroupOrder, GroupOrderAdmin)
