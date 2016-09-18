@@ -24,6 +24,19 @@
                 %li
                   %a{href: "{% url 'admin2_group_order_detail' group_order.pk %}"}= group_order.name
 
+        .panel.panel-default
+          .panel-heading
+            Hasn't payed
+
+          .list-group
+            -for order in orders
+              -if not order.has_payed
+                %a.list-group-item{href: "/admin/ordering/order/{{ order.id }}/change/"}
+                  %span.badge
+                    =order.estimated_price
+                    €
+                  =order
+
       .col-md-6
         .panel.panel-default
           .panel-heading
