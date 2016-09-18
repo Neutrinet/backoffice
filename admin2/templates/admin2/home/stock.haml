@@ -17,7 +17,7 @@
           -if component.full_name
             %a{href: "/admin/ordering/component/{{ component.id }}/"}
               =component.full_name
-              %i= component.reference
+            %i= component.reference
           -else
             %a{href: "/admin/ordering/component/{{ component.id }}/"}
               =component.reference
