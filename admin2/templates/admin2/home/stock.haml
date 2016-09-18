@@ -14,8 +14,13 @@
     -for component in components
       %tr
         %td
-          %a{href: "/admin/ordering/component/{{ component.id }}/"}= component.reference
-          %i= component.full_name
+          -if component.full_name
+            %a{href: "/admin/ordering/component/{{ component.id }}/"}
+              =component.full_name
+              %i= component.reference
+          -else
+            %a{href: "/admin/ordering/component/{{ component.id }}/"}
+              =component.reference
         %td= component.stock
         %td.price= component.current_price
           €
