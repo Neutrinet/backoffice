@@ -71,7 +71,7 @@
                     %a{href: "{{ component.url }}"}= component.reference
                     %i= component.full_name
                   %td= component.stock
-                  %td= component.current_price
+                  %td.price= component.current_price
                     €
 
 
@@ -95,5 +95,5 @@
                     %a{href: "{{ component.url }}"}= component.reference
                     %i= component.full_name
                   %td= component.stock
-                  %td= component.current_price
+                  %td.price= component.current_price
                     €
