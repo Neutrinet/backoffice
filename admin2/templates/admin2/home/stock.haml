@@ -21,12 +21,16 @@
           -else
             %a{href: "/admin/ordering/component/{{ component.id }}/"}
               =component.reference
-        %td= component.stock
+        %td.stock= component.stock
         %td.price= component.current_price
           €
 
 :css
   td.price {
     width: 65px;
+    text-align: right;
+  }
+
+  td.stock {
     text-align: right;
   }
