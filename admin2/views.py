@@ -7,7 +7,7 @@ from ordering.models import Component, GroupOrder, Order
 def dashboard(request):
     return render(request, "admin2/home.haml", {
         "group_orders": GroupOrder.objects.all().order_by("-launched_on"),
-        "components": Component.objects.all().order_by("in_default_pack", "full_name"),
+        "components": Component.objects.all().order_by("in_default_pack", "-full_name"),
         "orders": Order.objects.all().order_by("group_order", "id"),
     })
 
