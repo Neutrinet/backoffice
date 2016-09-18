@@ -14,12 +14,33 @@
 
     .row
       .col-md-6
-        .panel.panel-primary
+        .panel.panel-default
           .panel-heading
             Group Orders
 
           .panel-body
 
-              -for group_order in object_list
+              -for group_order in group_orders
                 %li
                   %a{href: "{% url 'admin2_group_order_detail' group_order.pk %}"}= group_order.name
+
+      .col-md-6
+        .panel.panel-default
+          .panel-heading
+            Stock
+
+          %table.table.table-bordered
+            %colgroup
+              %col
+              %col{width: "10px"}
+              %col{width: "10px"}
+            %tr
+              %th Name
+              %th Stock
+              %th Price
+            -for component in components
+              %tr
+                %td
+                  %a{href: "{{ component.url }}"}= component.reference
+                %td= component.stock
+                %td= component.current_price

@@ -4,6 +4,13 @@ from django.db.models import Sum
 from ordering.models import Component, GroupOrder
 
 
+def dashboard(request):
+    return render(request, "admin2/home.haml", {
+        "group_orders": GroupOrder.objects.all().order_by("-launched_on"),
+        "components": Component.objects.all().order_by("full_name"),
+    })
+
+
 def group_order_detail(request, pk):
     group_order = get_object_or_404(GroupOrder, pk=pk)
     orders = group_order.order_set.all()
