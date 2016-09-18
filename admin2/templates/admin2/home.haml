@@ -51,52 +51,14 @@
                   =order
 
       .col-md-6
-        .panel.panel-default
-          .panel-heading
-            Default components
-
-          %table.table.table-bordered
-            %colgroup
-              %col
-              %col{width: "10px"}
-              %col{width: "15px", style: "text-align: right"}
-            %tr
-              %th Name
-              %th Stock
-              %th Price
-            -for component in components
-              -if component.in_default_pack
-                %tr
-                  %td
-                    %a{href: "{{ component.url }}"}= component.reference
-                    %i= component.full_name
-                  %td= component.stock
-                  %td.price= component.current_price
-                    €
-
-
-        .panel.panel-default
-          .panel-heading
-            Other components
-
-          %table.table.table-bordered
-            %colgroup
-              %col
-              %col{width: "10px"}
-              %col{width: "15px", style: "text-align: right"}
-            %tr
-              %th Name
-              %th Stock
-              %th Price
-            -for component in components
-              -if not component.in_default_pack
-                %tr
-                  %td
-                    %a{href: "{{ component.url }}"}= component.reference
-                    %i= component.full_name
-                  %td= component.stock
-                  %td.price= component.current_price
-                    €
+        -regroup components by in_default_pack as component_group
+        -for cg in component_group
+          -if cg.grouper
+            -with title="Default components" components=cg.list
+              -include "admin2/home/stock.haml"
+          -else
+            -with title="Other components" components=cg.list
+              -include "admin2/home/stock.haml"
 
   :css
     td.price {

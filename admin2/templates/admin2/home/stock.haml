@@ -1,0 +1,21 @@
+.panel.panel-default
+  .panel-heading
+    =title
+
+  %table.table.table-bordered
+    %colgroup
+      %col
+      %col{width: "10px"}
+      %col{width: "15px", style: "text-align: right"}
+    %tr
+      %th Name
+      %th Stock
+      %th Price
+    -for component in components
+      %tr
+        %td
+          %a{href: "{{ component.url }}"}= component.reference
+          %i= component.full_name
+        %td= component.stock
+        %td.price= component.current_price
+          €
