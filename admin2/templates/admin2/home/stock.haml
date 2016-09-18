@@ -14,7 +14,7 @@
     -for component in components
       %tr
         %td
-          %a{href: "{{ component.url }}"}= component.reference
+          %a{href: "/admin/ordering/component/{{ component.id }}/"}= component.reference
           %i= component.full_name
         %td= component.stock
         %td.price= component.current_price
