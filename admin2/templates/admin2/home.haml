@@ -5,15 +5,21 @@
 
 -block bootstrap3_content
   .container
-    %h1 Neutrinet Cube Group Order Form Second Admin Interface
+    %h2 Neutrinet Cube Group Order Form Second Admin Interface
     %hr
 
     %p
       %i
         Because modifying the django admin interface sucks.
 
-    %h3 Group Orders:
-    %ul
-      -for group_order in object_list
-        %li
-          %a{href: "{% url 'admin2_group_order_detail' group_order.pk %}"}= group_order.name
+    .row
+      .col-md-6
+        .panel.panel-primary
+          .panel-heading
+            Group Orders
+
+          .panel-body
+
+              -for group_order in object_list
+                %li
+                  %a{href: "{% url 'admin2_group_order_detail' group_order.pk %}"}= group_order.name
