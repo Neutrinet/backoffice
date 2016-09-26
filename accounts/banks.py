@@ -53,7 +53,15 @@ def handle_recordbank_csv(csv_file):
 
             # I've already imported this movement, don't do anything
             if Movement.objects.filter(bank_id=fr_or_nl(entry, "Ref. v/d verrichting")).exists():
-                for_report["skip_because_already_imported"].append(Movement.objects.get(bank_id=fr_or_nl(entry, "Ref. v/d verrichting")))
+                movement = Movement.objects.get(bank_id=fr_or_nl(entry, "Ref. v/d verrichting"))
+                if movement.title == "FIXME":
+                    title = guess_title(movement, entry)
+                    if title:
+                        movement.title = title
+                        movement.save()
+                        for_report["guessed_title"].append((movement, fr_or_nl(entry, "Mededeling 1 :"), fr_or_nl(entry, "Naam v/d tegenpartij :")))
+
+                for_report["skip_because_already_imported"].append(movement)
                 continue
 
             movement_that_might_be_the_same = Movement.objects.filter(date=movement.date, amount=movement.amount, kind=movement.kind, bank_id__isnull=True)
