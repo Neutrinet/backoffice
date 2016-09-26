@@ -87,8 +87,23 @@ def guess_title(movement, entry):
     if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "BE52 6528 3497 8409":
         return "Frais Bancaires"
 
+    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij").strip() == "":
+        return "Frais Bancaires"
+
     if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "GB24 MIDL 4005 1570 5243 70":
         return "Commande Olimex UK"
+
+    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "LU96 0030 8787 9307 0000":
+        return "Facture GANDI"
+
+    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "NL51 INGB 0004 4900 08":
+        return "Frais serveur i3D"
+
+    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "BE48 6792 0055 0227":
+        return "Frais status moniteur"
+
+    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "FR76 1027 8060 3100 0204 5230 163":
+        return "Facture Gitoyen"
 
     if movement.kind == "debit":
         return None
@@ -101,6 +116,12 @@ def guess_title(movement, entry):
         return "Redevance VPN"
 
     if "cotisation" in title.lower() and movement.amount < 70:
+        return "Cotisation"
+
+    if title == "Abonnement Ivan":
+        return "Redevance VPN"
+
+    if movement.amount == 25:
         return "Cotisation"
 
     if "cube order" in title.lower() or "order" in title.lower() or "brique" in title.lower():
