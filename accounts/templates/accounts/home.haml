@@ -25,7 +25,8 @@
           %tr
             %td= forloop.revcounter
             %td= movement.date
-            %td= movement.title
+            %td
+              %a{href: "/admin/accounts/movement/{{ movement.id }}/", target: "_blank"}= movement.title
             %td.money
               -if movement.kind == "debit"
                 =movement.amount
