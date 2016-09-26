@@ -3,7 +3,7 @@ django-bootstrap3
 django-extensions>1.6
 django-debug-toolbar
 django-pdb
-git+https://github.com/cyso/HamlPy/@feature/django-1.9-compatibility
+django-hamlpy
 werkzeug
 django-reversion>1.10
 psycopg2
