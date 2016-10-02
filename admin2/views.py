@@ -15,7 +15,7 @@ def dashboard(request):
 def group_order_detail(request, pk):
     group_order = get_object_or_404(GroupOrder, pk=pk)
     orders = group_order.order_set.all()
-    components = Component.objects.filter(componentorder__order=orders).distinct()
+    components = Component.objects.filter(componentorder__order__in=orders).distinct()
 
     providers = set()
     for component in components:

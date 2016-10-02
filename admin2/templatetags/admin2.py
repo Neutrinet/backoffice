@@ -43,12 +43,12 @@ def total_addition_from_free_price(orders):
 
 @register.simple_tag
 def count_in_current_group_order(component, orders):
-    return component.componentorder_set.filter(order=orders).aggregate(Sum('number'))['number__sum']
+    return component.componentorder_set.filter(order__in=orders).aggregate(Sum('number'))['number__sum']
 
 
 @register.simple_tag
 def prices_in_current_group_order(component, orders):
-    prices = set([x.price for x in component.componentorder_set.filter(order=orders)])
+    prices = set([x.price for x in component.componentorder_set.filter(order__in=orders)])
     if len(prices) == 1:
         for i in prices:
             return i
