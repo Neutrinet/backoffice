@@ -161,6 +161,13 @@ class Order(models.Model):
             else:
                 self.group_order = GroupOrder.objects.filter(state="open").first()
 
+        for i in self.componentorder_set.all():
+            if i.number != i.received:
+                break
+        else:
+            # all components have been received
+            self.member_has_been_give_order = True
+
         return super(Order, self).save(*args, **kwargs)
 
     class Meta:
