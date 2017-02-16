@@ -3,7 +3,7 @@
 
 -block bootstrap3_content
   .container
-    %h1 Neutrinet Public (not yet actually) Accounting Page
+    %h1 Neutrinet Public Accounting Page
     %hr
 
     -regroup movement_list by date.year as movement_list
@@ -26,7 +26,10 @@
             %td= forloop.revcounter
             %td= movement.date
             %td
-              %a{href: "/admin/accounts/movement/{{ movement.id }}/", target: "_blank"}= movement.title
+              -if user.is_superuser
+                %a{href: "/admin/accounts/movement/{{ movement.id }}/", target: "_blank"}= movement.title
+              -else
+                =movement.title
             %td.money
               -if movement.kind == "debit"
                 =movement.amount
@@ -64,17 +67,18 @@
                 -current_year_sold movement_year.grouper
                 €
 
-    %hr
+    -if user.is_superuser
+      %hr
 
-    %p.center
-      %b
-        %a{href: "{% url 'accounts_upload_record_bank_csv' %}"}
-          Upload page for record bank CSV
+      %p.center
+        %b
+          %a{href: "{% url 'accounts_upload_record_bank_csv' %}"}
+            Upload page for record bank CSV
 
-    %p.center
-      %b
-        %a{href: "{% url 'accounts_importreport_list' %}"}
-          All import reports
+      %p.center
+        %b
+          %a{href: "{% url 'accounts_importreport_list' %}"}
+            All import reports
 
   :css
     th {
