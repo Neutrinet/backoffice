@@ -32,8 +32,9 @@ def handle_recordbank_csv(csv_file):
 
     with transaction.atomic():
         for entry in csv.DictReader(StringIO("\r\n".join(csv_file.read().split("\n")[1:]) + "\r\n"), delimiter=";"):
+            bank_id = fr_or_nl(entry, "Ref. v/d verrichting")[0:16]
             movement = Movement()
-            movement.bank_id = fr_or_nl(entry, "Ref. v/d verrichting")
+            movement.bank_id = bank_id
             movement.date = datetime.strptime(fr_or_nl(entry, "Datum v. verrichting"), "%d-%m-%Y").date()
             movement.amount = float(fr_or_nl(entry, "Bedrag v/d verrichting").replace(".", "").replace(",", "."))
 
@@ -52,8 +53,8 @@ def handle_recordbank_csv(csv_file):
             movement.title = "FIXME"
 
             # I've already imported this movement, don't do anything
-            if Movement.objects.filter(bank_id=fr_or_nl(entry, "Ref. v/d verrichting")).exists():
-                movement = Movement.objects.get(bank_id=fr_or_nl(entry, "Ref. v/d verrichting"))
+            if Movement.objects.filter(bank_id=bank_id).exists():
+                movement = Movement.objects.get(bank_id=bank_id)
                 if movement.title == "FIXME":
                     title = guess_title(movement, entry)
                     if title:
