@@ -40,7 +40,7 @@ Bank: RecordBank
 Name: Neutrinet ASBL
 Communication: order n{{ id }} of {{ first_name }} {{ last_name }}
 IBAN: BE52 6528 3497 8409
-BIC: HBKABE22
+BIC: BBRUBEBB
 
 If you wish to pay by other means, please contact us.
 
