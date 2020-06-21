@@ -36,7 +36,7 @@ For a total price of {{ estimated_price }} €.
 
 You can pay by wire transfer using this information:
 
-Bank: RecordBank
+Bank: ING
 Name: Neutrinet ASBL
 Communication: order n{{ id }} of {{ first_name }} {{ last_name }}
 IBAN: BE52 6528 3497 8409
