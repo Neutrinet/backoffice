@@ -28,4 +28,4 @@ def ffdn_api(request):
         "version": 0.1
     }
 
-    return HttpResponse(json.dumps(response, indent=4))
+    return HttpResponse(json.dumps(response), content_type='application/json')
