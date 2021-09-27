@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-13 23:10+0000\n"
+"POT-Creation-Date: 2021-09-27 20:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/templates/admin/index.html:18
+#, python-format
+msgid "Models available in the %(name)s application."
+msgstr ""
+
+#: accounts/templates/admin/index.html:19
+#, python-format
+msgid "%(name)s"
+msgstr ""
+
+#: accounts/templates/admin/index.html:29
+msgid "Add"
+msgstr ""
+
+#: accounts/templates/admin/index.html:35
+msgid "Change"
+msgstr ""
+
+#: accounts/templates/admin/index.html:46
+msgid "You don't have permission to edit anything."
+msgstr ""
+
+#: accounts/templates/admin/index.html:54
+msgid "Recent Actions"
+msgstr ""
+
+#: accounts/templates/admin/index.html:55
+msgid "My Actions"
+msgstr ""
+
+#: accounts/templates/admin/index.html:59
+msgid "None available"
+msgstr ""
+
+#: accounts/templates/admin/index.html:73
+msgid "Unknown content"
+msgstr ""
 
 #: ordering/models.py:11
 msgid "Belgium"
@@ -209,7 +247,7 @@ msgid ""
 "<3"
 msgstr ""
 
-#: ordering/templates/home.haml:5 ordering/templates/home.haml.py:11
+#: ordering/templates/home.haml:5 ordering/templates/home.haml:11
 #: ordering/templates/success.haml:5
 msgid "Neutrinet Cube Group Order Form"
 msgstr ""
@@ -361,7 +399,7 @@ msgid ""
 "            "
 msgstr ""
 
-#: ordering/templates/order.haml:6 ordering/templates/order.haml.py:38
+#: ordering/templates/order.haml:6 ordering/templates/order.haml:38
 msgid "Neutrinet Cube Ordering Form"
 msgstr ""
 
@@ -468,25 +506,22 @@ msgid "Choose your components (required)"
 msgstr ""
 
 #: ordering/templates/order.haml:175
-msgid ""
-"We have a special deal with <a href='http://olimex.com'>Olimex</a> that "
-"allows us to lower the prices. Prices below <b>include VAT</b> unlike those "
-"on Olimex.com."
+msgid "Prices below <b>include VAT</b> unlike those on Olimex.com."
 msgstr ""
 
 #: ordering/templates/order.haml:181
 msgid "Default components of the Cube"
 msgstr ""
 
-#: ordering/templates/order.haml:186 ordering/templates/order.haml.py:222
+#: ordering/templates/order.haml:186 ordering/templates/order.haml:222
 msgid "Quantity"
 msgstr ""
 
-#: ordering/templates/order.haml:189 ordering/templates/order.haml.py:225
+#: ordering/templates/order.haml:189 ordering/templates/order.haml:225
 msgid "Name"
 msgstr ""
 
-#: ordering/templates/order.haml:192 ordering/templates/order.haml.py:228
+#: ordering/templates/order.haml:192 ordering/templates/order.haml:228
 msgid "Price"
 msgstr ""
 
