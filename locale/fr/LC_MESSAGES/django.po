@@ -7,16 +7,54 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-13 23:10+0000\n"
-"PO-Revision-Date: 2020-06-21 18:42+0200\n"
+"POT-Creation-Date: 2021-09-27 20:29+0000\n"
+"PO-Revision-Date: 2021-09-27 22:38+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: accounts/templates/admin/index.html:18
+#, python-format
+msgid "Models available in the %(name)s application."
+msgstr "Modèles disponibles dans l'application %(name)s."
+
+#: accounts/templates/admin/index.html:19
+#, python-format
+msgid "%(name)s"
+msgstr "%(name)s"
+
+#: accounts/templates/admin/index.html:29
+msgid "Add"
+msgstr "Ajouter"
+
+#: accounts/templates/admin/index.html:35
+msgid "Change"
+msgstr "Modifier"
+
+#: accounts/templates/admin/index.html:46
+msgid "You don't have permission to edit anything."
+msgstr "Vous n'avez pas le droit de modifier quoi que ce soit."
+
+#: accounts/templates/admin/index.html:54
+msgid "Recent Actions"
+msgstr "Actions récentes"
+
+#: accounts/templates/admin/index.html:55
+msgid "My Actions"
+msgstr "Mes actions"
+
+#: accounts/templates/admin/index.html:59
+msgid "None available"
+msgstr "Aucun disponible"
+
+#: accounts/templates/admin/index.html:73
+msgid "Unknown content"
+msgstr "Contenu inconnu"
 
 #: ordering/models.py:11
 msgid "Belgium"
@@ -212,6 +250,7 @@ msgid "Order:"
 msgstr "Commande :"
 
 #: ordering/templates/email.txt:34
+#, python-format
 msgid ""
 "\n"
 "For a total price of %(estimated_price)s €.\n"
@@ -270,7 +309,7 @@ msgstr ""
 "\n"
 "<3"
 
-#: ordering/templates/home.haml:5 ordering/templates/home.haml.py:11
+#: ordering/templates/home.haml:5 ordering/templates/home.haml:11
 #: ordering/templates/success.haml:5
 msgid "Neutrinet Cube Group Order Form"
 msgstr "Formulaire de commande de Brique Internet de Neutrinet"
@@ -500,7 +539,7 @@ msgstr ""
 "              </dd>\n"
 "            "
 
-#: ordering/templates/order.haml:6 ordering/templates/order.haml.py:38
+#: ordering/templates/order.haml:6 ordering/templates/order.haml:38
 msgid "Neutrinet Cube Ordering Form"
 msgstr "Formulaire de commande de Brique Internet de Neutrinet"
 
@@ -647,28 +686,24 @@ msgid "Choose your components (required)"
 msgstr "Choisissez vos composants (obligatoire)"
 
 #: ordering/templates/order.haml:175
-msgid ""
-"We have a special deal with <a href='http://olimex.com'>Olimex</a> that "
-"allows us to lower the prices. Prices below <b>include VAT</b> unlike those "
-"on Olimex.com."
+msgid "Prices below <b>include VAT</b> unlike those on Olimex.com."
 msgstr ""
-"Nous avons un accord avec <a href='http://olimex.com'>Olimex</a> qui nous "
-"permet d'avoir des prix plus bas. Les prix affichés ci desous <b>incluent la "
-"TVA</b> contrairement à ceux de Olimex.com."
+"Les prix affichés ci desous <b>incluent la TVA</b> contrairement à ceux de "
+"Olimex.com."
 
 #: ordering/templates/order.haml:181
 msgid "Default components of the Cube"
 msgstr "Composants par défaut pour la Brique Internet"
 
-#: ordering/templates/order.haml:186 ordering/templates/order.haml.py:222
+#: ordering/templates/order.haml:186 ordering/templates/order.haml:222
 msgid "Quantity"
 msgstr "Quantité"
 
-#: ordering/templates/order.haml:189 ordering/templates/order.haml.py:225
+#: ordering/templates/order.haml:189 ordering/templates/order.haml:225
 msgid "Name"
 msgstr "Nom"
 
-#: ordering/templates/order.haml:192 ordering/templates/order.haml.py:228
+#: ordering/templates/order.haml:192 ordering/templates/order.haml:228
 msgid "Price"
 msgstr "Prix"
 
@@ -752,6 +787,20 @@ msgstr "Retourner à la page d'accueil"
 #, python-format
 msgid "[Neutrinet] Order #%s for one or more Internet Cube"
 msgstr "[Neutrinet] Commande #%s pour une ou plusieurs Brique Internet"
+
+#, fuzzy
+#~| msgid "Order:"
+#~ msgid "Order"
+#~ msgstr "Commande :"
+
+#~ msgid ""
+#~ "We have a special deal with <a href='http://olimex.com'>Olimex</a> that "
+#~ "allows us to lower the prices. Prices below <b>include VAT</b> unlike "
+#~ "those on Olimex.com."
+#~ msgstr ""
+#~ "Nous avons un accord avec <a href='http://olimex.com'>Olimex</a> qui nous "
+#~ "permet d'avoir des prix plus bas. Les prix affichés ci desous <b>incluent "
+#~ "la TVA</b> contrairement à ceux de Olimex.com."
 
 #~ msgid "* You have ordered "
 #~ msgstr "* Vous avez commandé "
