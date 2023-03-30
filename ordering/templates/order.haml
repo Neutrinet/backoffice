@@ -183,7 +183,7 @@
         %p
           -blocktrans
             %b
-              Total price (+5€ for shipment):
+              Total price (+3€ for shipment):
             %span#estimated-price
             €
             for
@@ -221,17 +221,17 @@
   :javascript
     $(function() {
       var calculate_estimated_price = function() {
-        var total_price = 5;
+        var total_price = 3;
         var total_number = 0;
         $("input.component-number").each(function(_, node) {
           var number = parseInt(node.value);
-          var price = parseFloat(node.attributes["data-price"].value);
+          var price = parseFloat(node.attributes["data-price"].value.replace(',', '.'));
           total_number += number;
           total_price += number * price;
         })
-        $("#estimated-price").html(parseFloat(Math.round(total_price * 100) / 100).toFixed(2));
+        $("#estimated-price").html(parseFloat(Math.round(total_price * 100) / 100).toFixed(0));
         $("#number-of-components").html(total_number)
-        $("#id_estimated_price").val(parseFloat(Math.round(total_price * 100) / 100).toFixed(2));
+        $("#id_estimated_price").val(parseFloat(Math.round(total_price * 100) / 100).toFixed(0));
       }
       calculate_estimated_price()
       $("input.component-number").change(calculate_estimated_price)
