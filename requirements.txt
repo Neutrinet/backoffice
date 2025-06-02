@@ -6,7 +6,7 @@
 #
 asgiref==3.8.1
     # via django
-django==3.2.25
+django==4.2.21
     # via
     #   -r requirements.in
     #   django-bootstrap3
@@ -14,17 +14,17 @@ django==3.2.25
     #   django-extensions
     #   django-hamlpy
     #   django-reversion
-django-bootstrap3==21.2
+django-bootstrap3==25.1
     # via -r requirements.in
-django-debug-toolbar==3.2.4
+django-debug-toolbar==5.2.0
     # via -r requirements.in
-django-extensions==3.1.5
+django-extensions==4.1
     # via -r requirements.in
-django-hamlpy==1.4.4
+django-hamlpy==1.7.0
     # via -r requirements.in
 django-pdb==0.6.2
     # via -r requirements.in
-django-reversion==4.0.2
+django-reversion==5.1.0
     # via -r requirements.in
 gunicorn==23.0.0
     # via -r requirements.in
@@ -32,12 +32,8 @@ packaging==25.0
     # via gunicorn
 psycopg2==2.9.10
     # via -r requirements.in
-pytz==2025.2
-    # via django
 regex==2024.11.6
-    # via
-    #   -r requirements.in
-    #   django-hamlpy
+    # via django-hamlpy
 sqlparse==0.5.3
     # via
     #   django
