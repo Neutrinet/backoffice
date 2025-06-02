@@ -4,7 +4,7 @@ from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render, get_object_or_404
 from django.db import transaction
-from django.core.urls import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 
 from .models import Component, ComponentOrder, Order, GroupOrder

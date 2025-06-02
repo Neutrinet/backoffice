@@ -3,7 +3,7 @@ from datetime import datetime, date, timedelta
 
 from django.db import models, transaction
 from django.utils.translation import ugettext_lazy as _
-from django.core.urls import reverse
+from django.urls import reverse
 from django.core.mail import send_mail
 
 
