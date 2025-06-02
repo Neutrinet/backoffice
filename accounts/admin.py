@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 from reversion.admin import VersionAdmin
-from admin_views.admin import AdminViews
 
 from django.contrib import admin
 from django.conf.locale.en import formats as en_formats
@@ -11,7 +10,7 @@ from .models import Movement
 en_formats.DATE_FORMAT = "Y-m-d"
 
 
-class MovementAdmin(VersionAdmin, AdminViews):
+class MovementAdmin(VersionAdmin):
     fieldsets = (
         (None, {
             "fields": (("date", "amount"), ("title", "kind"), ("comment",), ("bank_id",))

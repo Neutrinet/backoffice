@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 from reversion.admin import VersionAdmin
-from admin_views.admin import AdminViews
 
 from django.contrib import admin
 from .models import GroupOrder, Order, Component, ComponentOrder
@@ -24,7 +23,7 @@ class ComponentOrderInline(admin.TabularInline):
     extra = 1
 
 
-class OrderAdmin(VersionAdmin, AdminViews):
+class OrderAdmin(VersionAdmin):
     readonly_fields = ('made_on',)
     inlines = (ComponentOrderInline,)
     list_display = ('__unicode__', 'has_payed', 'domain_name', 'member_has_been_give_order', 'has_a_working_cube_or_dont_care', 'group_order_number')

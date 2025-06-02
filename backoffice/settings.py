@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'admin_views',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -97,6 +96,7 @@ DATABASES = {
         'USER': getpass.getuser(),
     }
 }
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
 # Internationalization
