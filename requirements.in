@@ -1,0 +1,11 @@
+Django~=1.11.0
+django-admin-views
+django-bootstrap3
+django-debug-toolbar
+django-extensions
+django-hamlpy
+django-pdb
+django-reversion
+regex<2022
+gunicorn
+psycopg2
