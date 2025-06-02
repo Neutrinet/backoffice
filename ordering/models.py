@@ -3,7 +3,7 @@ from datetime import datetime, date, timedelta
 
 from django.db import models, transaction
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
+from django.core.urls import reverse
 from django.core.mail import send_mail
 
 
@@ -102,7 +102,7 @@ class GroupOrder(models.Model):
 class Order(models.Model):
     made_on = models.DateTimeField(auto_now_add=True)
 
-    group_order = models.ForeignKey(GroupOrder, null=True, blank=True)
+    group_order = models.ForeignKey(GroupOrder, on_delete=models.CASCADE, null=True, blank=True)
 
     nick = models.CharField(max_length=255, null=True, blank=True, verbose_name=_("Nickname (optional)"), help_text=_("We may know you better by your nickname than your civil name :-)"))
     first_name = models.CharField(max_length=255, verbose_name=_("First name"))
@@ -197,8 +197,8 @@ class Component(models.Model):
 
 
 class ComponentOrder(models.Model):
-    order = models.ForeignKey(Order)
-    component = models.ForeignKey(Component)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    component = models.ForeignKey(Component, on_delete=models.CASCADE)
     number = models.PositiveIntegerField(default=1)
     paid_price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)  # effectivly paid price
     received = models.PositiveIntegerField(default=0)

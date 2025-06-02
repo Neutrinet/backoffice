@@ -4,7 +4,7 @@ from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render, get_object_or_404
 from django.db import transaction
-from django.core.urlresolvers import reverse
+from django.core.urls import reverse
 from django.http import HttpResponseRedirect
 
 from .models import Component, ComponentOrder, Order, GroupOrder
@@ -32,10 +32,10 @@ def make_order(request):
 
     form = OrderForm(request.POST)
 
-    print request.POST
+    print(request.POST)
 
     if not form.is_valid():
-        print form.errors
+        print(form.errors)
         return render(request, "order.haml", {
             "form": form,
             "default_components": Component.objects.filter(in_default_pack=True, available=True),
