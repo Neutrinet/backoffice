@@ -151,8 +151,6 @@ class Order(models.Model):
         return _(u"order #%s for %s made %s days ago") % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick), (datetime.now() - self.made_on.replace(tzinfo=None)).days)
 
     def save(self, *args, **kwargs):
-        obj = super(Order, self).save(*args, **kwargs)
-
         if self.group_order is None:
             if not GroupOrder.objects.filter(state="open").exists():
                 self.group_order = GroupOrder.objects.create(
@@ -164,14 +162,14 @@ class Order(models.Model):
             else:
                 self.group_order = GroupOrder.objects.filter(state="open").first()
 
+        super(Order, self).save(*args, **kwargs)
         for i in self.componentorder_set.all():
             if i.number != i.received:
                 break
         else:
             # all components have been received
             self.member_has_been_give_order = True
-
-        return obj
+            super(Order, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['-group_order', '-id']
