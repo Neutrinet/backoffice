@@ -1,10 +1,9 @@
 from django.core.mail import send_mail
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.template.loader import get_template
-from django.template import Context
 from django.shortcuts import render, get_object_or_404
 from django.db import transaction
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 
 from .models import Component, ComponentOrder, Order, GroupOrder
@@ -32,10 +31,10 @@ def make_order(request):
 
     form = OrderForm(request.POST)
 
-    print request.POST
+    print(request.POST)
 
     if not form.is_valid():
-        print form.errors
+        print(form.errors)
         return render(request, "order.haml", {
             "form": form,
             "default_components": Component.objects.filter(in_default_pack=True, available=True),
@@ -55,7 +54,7 @@ def make_order(request):
 
     send_mail(
         _(u'[Neutrinet] Order #%s for one or more Internet Cube') % order.id,
-        get_template('email.txt').render(Context({"order": order})),
+        get_template('email.txt').render({"order": order}),
         'cube@neutrinet.be',
         [order.email],
         fail_silently=False,
@@ -63,7 +62,7 @@ def make_order(request):
 
     send_mail(
         u'[cube order] Order #%s by %s %s (%s)' % (order.id, order.first_name, order.last_name, order.nick if order.nick else "no nick"),
-        get_template('admin_email.txt').render(Context({"order": order})),
+        get_template('admin_email.txt').render({"order": order}),
         'backoffice@neutrinet.be',
         ['hub-cube@neutrinet.be'],
         fail_silently=False,

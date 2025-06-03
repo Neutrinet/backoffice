@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'admin_views',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,13 +48,12 @@ INSTALLED_APPS = (
     'hamlpy',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -98,7 +96,9 @@ DATABASES = {
         'USER': getpass.getuser(),
     }
 }
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
+DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -130,6 +130,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 try:
-    from settings_local import *
+    from .settings_local import *
 except ImportError:
     pass
