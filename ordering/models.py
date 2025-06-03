@@ -158,7 +158,6 @@ class Order(models.Model):
                     state="open",
                     number=GroupOrder.get_next_group_order_number(),
                 )
-                self.group_order.save()
             else:
                 self.group_order = GroupOrder.objects.filter(state="open").first()
 
