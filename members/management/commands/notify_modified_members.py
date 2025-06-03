@@ -4,7 +4,7 @@ from datetime import date, timedelta
 
 from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
-from django.template import Context, Template
+from django.template import Template
 
 from members.models import Member
 
@@ -70,9 +70,9 @@ class Command(BaseCommand):
 
         fields = filter(lambda x: x.name not in ('added_on', 'last_modified', 'id', 'pk'), Member._meta.fields)
 
-        email_content = Template(email_template).render(Context({
+        email_content = Template(email_template).render({
             "data": data,
             "fields": fields,
-        }))
+        })
 
         send_mail('[NeutrinetMembersManangement] modifications of %s' % yesterday.strftime("%F"), email_content, 'noreply@neutrinet.be', ['administration@neutrinet.be'], fail_silently=False)
