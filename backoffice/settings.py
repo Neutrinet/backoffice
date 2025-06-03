@@ -98,6 +98,7 @@ DATABASES = {
 }
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
+DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
