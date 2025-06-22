@@ -95,8 +95,8 @@ class GroupOrder(models.Model):
 
         return super(GroupOrder, self).save(*args, **kwargs)
 
-    def __unicode__(self):
-        return u"%s [%s]" % (self.name, self.state)
+    def __str__(self):
+        return "%s [%s]" % (self.name, self.state)
 
 
 class Order(models.Model):
@@ -147,8 +147,8 @@ class Order(models.Model):
     def has_a_working_cube_or_dont_care(self):
         return self.has_a_working_cube or self.wants_to_install_everything_himself
 
-    def __unicode__(self):
-        return _(u"order #%s for %s made %s days ago") % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick), (datetime.now() - self.made_on.replace(tzinfo=None)).days)
+    def __str__(self):
+        return _("order #%s for %s made %s days ago") % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick), (datetime.now() - self.made_on.replace(tzinfo=None)).days)
 
     def save(self, *args, **kwargs):
         if self.group_order is None:
@@ -192,8 +192,8 @@ class Component(models.Model):
     def display_with_url(self):
         return '<a href="%s">%s</a>' % (self.url, self)
 
-    def __unicode__(self):
-        return self.reference if not self.full_name else u"%s (%s)" % (self.full_name, self.reference)
+    def __str__(self):
+        return self.reference if not self.full_name else "%s (%s)" % (self.full_name, self.reference)
 
 
 class ComponentOrder(models.Model):
@@ -214,5 +214,5 @@ class ComponentOrder(models.Model):
     def total_price(self):
         return self.number * self.price
 
-    def __unicode__(self):
-        return u"%s '%s' for %s" % (self.number, self.component, self.order)
+    def __str__(self):
+        return "%s '%s' for %s" % (self.number, self.component, self.order)

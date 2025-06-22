@@ -12,7 +12,7 @@ def componentorder_sum(component_list, orders):
 
 @register.simple_tag
 def mail_space(string):
-    return " " * (80 - len(unicode(string)))
+    return " " * (80 - len(str(string)))
 
 
 @register.simple_tag
