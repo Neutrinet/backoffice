@@ -19,7 +19,7 @@ class Movement(models.Model):
     class Meta:
         ordering = ["-date"]
 
-    def __unicode__(self):
+    def __str__(self):
         return "[%s] %s %s%s" % (self.date.strftime("%F"), self.title, "+" if self.kind == "credit" else "-", self.amount)
 
 
@@ -27,5 +27,5 @@ class ImportReport(models.Model):
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 
-    def __unicode__(self):
-        return u"Import report runned at %s" % (self.created_on.strftime("%F %X"))
+    def __str__(self):
+        return "Import report runned at %s" % (self.created_on.strftime("%F %X"))

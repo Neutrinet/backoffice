@@ -15,7 +15,7 @@ class OrderInline(admin.TabularInline):
 
 class GroupOrderAdmin(VersionAdmin):
     inlines = (OrderInline,)
-    list_display = ('__unicode__', 'state', 'deadline', 'number_of_order')
+    list_display = ('__str__', 'state', 'deadline', 'number_of_order')
 
 
 class ComponentOrderInline(admin.TabularInline):
@@ -26,7 +26,7 @@ class ComponentOrderInline(admin.TabularInline):
 class OrderAdmin(VersionAdmin):
     readonly_fields = ('made_on',)
     inlines = (ComponentOrderInline,)
-    list_display = ('__unicode__', 'has_payed', 'domain_name', 'member_has_been_give_order', 'has_a_working_cube_or_dont_care', 'group_order_number')
+    list_display = ('__str__', 'has_payed', 'domain_name', 'member_has_been_give_order', 'has_a_working_cube_or_dont_care', 'group_order_number')
     list_filter = ('has_payed', 'member_has_been_give_order', 'group_order')
     fieldsets = (
         (None, {
@@ -59,7 +59,7 @@ class OrderAdmin(VersionAdmin):
 
 
 class ComponentAdmin(VersionAdmin):
-    list_display = ('__unicode__', 'current_price', 'in_default_pack', 'available', 'stock')
+    list_display = ('__str__', 'current_price', 'in_default_pack', 'available', 'stock')
 
 
 admin.site.register(GroupOrder, GroupOrderAdmin)

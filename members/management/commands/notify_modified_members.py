@@ -52,7 +52,7 @@ class Command(BaseCommand):
 
             yesterday_modifications = filter(lambda x: x.field_dict["last_modified"].date() == yesterday, member_revisions)
 
-            users_that_has_modified_the_documented = u", ".join(set(map(lambda x: unicode(x.revision.user), yesterday_modifications)))
+            users_that_has_modified_the_documented = ", ".join(set(map(lambda x: str(x.revision.user), yesterday_modifications)))
 
             if old_data and len(member_revisions) == 1:
                 data["modified"].append([yesterday_modifications[0], old_data[0], users_that_has_modified_the_documented])

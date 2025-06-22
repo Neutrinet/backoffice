@@ -37,7 +37,7 @@ class Member(models.Model):
     added_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s %s" % (self.first_name, self.last_name)
 
     class Meta:
