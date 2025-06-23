@@ -1,11 +1,9 @@
 from django.urls import re_path
-from django.views.generic import ListView, DetailView
-
-from .models import Movement, ImportReport
-from .utils import user_is_admin
+from django.views.generic import DetailView, ListView
 
 from . import views
-
+from .models import ImportReport, Movement
+from .utils import user_is_admin
 
 urlpatterns = [
     re_path(r'^$', ListView.as_view(model=Movement, template_name="accounts/home.haml"), name='accounts_home'),

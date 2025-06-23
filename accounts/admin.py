@@ -2,8 +2,8 @@
 
 from reversion.admin import VersionAdmin
 
-from django.contrib import admin
 from django.conf.locale.en import formats as en_formats
+from django.contrib import admin
 
 from .models import Movement
 

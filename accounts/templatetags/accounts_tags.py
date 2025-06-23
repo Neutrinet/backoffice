@@ -5,7 +5,6 @@ from django.db.models import Sum
 
 from ..models import Movement
 
-
 register = template.Library()
 
 

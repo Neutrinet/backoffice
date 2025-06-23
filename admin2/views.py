@@ -1,6 +1,5 @@
-from django.shortcuts import render, get_object_or_404
 from django.db.models import Sum
-
+from django.shortcuts import get_object_or_404, render
 from ordering.models import Component, GroupOrder, Order
 
 

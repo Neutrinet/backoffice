@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 from django.views.generic import View
 
-from .models import ImportReport
-from .forms import CSVUploaderForm
 from . import banks
+from .forms import CSVUploaderForm
+from .models import ImportReport
 
 
 class UploadRecordBankCsv(View):

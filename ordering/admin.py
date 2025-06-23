@@ -3,7 +3,8 @@
 from reversion.admin import VersionAdmin
 
 from django.contrib import admin
-from .models import GroupOrder, Order, Component, ComponentOrder
+
+from .models import Component, ComponentOrder, GroupOrder, Order
 
 
 class OrderInline(admin.TabularInline):

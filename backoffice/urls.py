@@ -1,8 +1,6 @@
-from members.views import ffdn_api
-
-from django.urls import include, re_path
 from django.contrib import admin
-
+from django.urls import include, re_path
+from members.views import ffdn_api
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
