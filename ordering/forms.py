@@ -2,6 +2,7 @@ from smtplib import SMTP
 
 from dns.name import NoParent
 from dns.resolver import resolve
+from dns.exception import DNSException
 
 from django import forms
 from django.conf import settings
@@ -51,7 +52,12 @@ class OrderForm(forms.ModelForm):
         validate_email(email)
 
         username, domain = email.split("@")
-        records = resolve(domain, "MX")
+        try:
+            records = resolve(domain, "MX")
+        except DNSException as e:
+            raise ValidationError(
+                _("Domain {domain} for email {email} could not be resolved: {error}").format(domain=domain, email=email, error=str(e))
+            )
         mx_record = records[0].exchange
         try:
             mx_record.parent()
