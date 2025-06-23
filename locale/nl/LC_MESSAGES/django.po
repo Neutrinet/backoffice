@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 11:50+0000\n"
+"POT-Creation-Date: 2025-06-23 12:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,8 +57,8 @@ msgid "Unknown content"
 msgstr ""
 
 #: ordering/forms.py:60
-#, python-brace-format
-msgid "Domain {domain} for email {email} has no MX record."
+#, python-format
+msgid "Domain %(domain)s for email %(email)s has no MX record."
 msgstr ""
 
 #: ordering/models.py:11
@@ -86,8 +86,8 @@ msgid "Done"
 msgstr ""
 
 #: ordering/models.py:55
-#, python-brace-format
-msgid "Group Order #{number} {date}"
+#, python-format
+msgid "Group Order #%(number)s %(date)s"
 msgstr ""
 
 #: ordering/models.py:122
@@ -153,8 +153,8 @@ msgid "Has been given order"
 msgstr ""
 
 #: ordering/models.py:204
-#, python-brace-format
-msgid "order #{number} for {name} made {days} days ago"
+#, python-format
+msgid "order #%(number)s for %(name)s made %(days)s days ago"
 msgstr ""
 
 #: ordering/templates/email.txt:3

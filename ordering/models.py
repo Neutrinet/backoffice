@@ -52,7 +52,7 @@ class GroupOrder(models.Model):
                 days=31
             )
 
-        return _("Group Order #{number} {date}").format(number=number, date=next_month.strftime("%B %Y"))
+        return _("Group Order #%(number)s %(date)s") % {number: number, date: next_month.strftime("%B %Y")}
 
     @classmethod
     def close_deadline_passed_grouper_order(klass):
@@ -201,15 +201,15 @@ class Order(models.Model):
         return self.has_a_working_cube or self.wants_to_install_everything_himself
 
     def __str__(self):
-        return _("order #{number} for {name} made {days} days ago").format(
-            number=self.id,
-            name=(
+        return _("order #%(number)s for %(name)s made %(days)s days ago") % {
+            number: self.id,
+            name: (
                 "%s %s" % (self.first_name, self.last_name)
                 if not self.nick
                 else "%s %s (%s)" % (self.first_name, self.last_name, self.nick)
             ),
-            days=(datetime.now() - self.made_on.replace(tzinfo=None)).days,
-        )
+            days: (datetime.now() - self.made_on.replace(tzinfo=None)).days,
+        }
 
     def save(self, *args, **kwargs):
         if self.group_order is None:
