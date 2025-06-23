@@ -50,7 +50,7 @@ class OrderForm(forms.ModelForm):
 
         validate_email(email)
 
-        _, domain = email.split("@")
+        username, domain = email.split("@")
         records = resolve(domain, "MX")
         mx_record = records[0].exchange
         try:
