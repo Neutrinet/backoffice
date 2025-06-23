@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 12:30+0000\n"
-"PO-Revision-Date: 2023-03-30 22:35+0200\n"
+"POT-Creation-Date: 2025-06-23 12:32+0000\n"
+"PO-Revision-Date: 2025-06-23 14:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #: accounts/templates/admin/index.html:18
 #, python-format
@@ -59,9 +59,12 @@ msgstr "Contenu inconnu"
 #: ordering/forms.py:59
 #, fuzzy, python-brace-format
 #| msgid "Domain %s for email %s has no MX record."
-msgid "Domain {domain} for email {email} could not be resolved: {error}"
+msgid ""
+"Domain {domain} for email {email} could not be resolved:\n"
+"{error}"
 msgstr ""
-"Le nom de domaine {domain} de l'adresse mail {email} n'a pas pu être résolu: "
+"Le nom de domaine {domain} de l'adresse mail {email} n'a pas pu être "
+"résolu:\n"
 "{error}"
 
 #: ordering/forms.py:66
