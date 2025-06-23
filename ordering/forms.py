@@ -57,6 +57,6 @@ class OrderForm(forms.ModelForm):
             mx_record.parent()
         except NoParent:
             raise ValidationError(
-                _("Domain %(domain)s for email %(email)s has no MX record.") % {domain: domain, email: email}
+                _("Domain %(domain)s for email %(email)s has no MX record.") % {"domain": domain, "email": email}
             )
         return email
