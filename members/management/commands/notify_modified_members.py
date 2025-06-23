@@ -2,7 +2,7 @@ from datetime import date, timedelta
 
 import reversion
 
-from django.conf.settings import EMAIL_FROM, EMAIL_MEMBER_ADMIN
+from django.conf import settings
 from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
 from django.template import Template
@@ -113,7 +113,7 @@ class Command(BaseCommand):
             "[NeutrinetMembersManangement] modifications of %s"
             % yesterday.strftime("%F"),
             email_content,
-            EMAIL_FROM,
-            [EMAIL_MEMBER_ADMIN],
+            settings.EMAIL_FROM,
+            [settings.EMAIL_MEMBER_ADMIN],
             fail_silently=False,
         )

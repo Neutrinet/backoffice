@@ -1,4 +1,4 @@
-from django.conf.settings import EMAIL_FROM, EMAIL_ORDER_ADMIN
+from django.conf import settings
 from django.core.mail import EmailMessage, send_mail
 from django.db import transaction
 from django.http import HttpResponseRedirect
@@ -76,9 +76,9 @@ def make_order(request):
     mail = EmailMessage(
         _("[Neutrinet] Order #%s for one or more Internet Cube") % order.id,
         get_template("email.txt").render({"order": order}),
-        EMAIL_FROM,
+        settings.EMAIL_FROM,
         [order.email],
-        reply_to=[EMAIL_ORDER_ADMIN],
+        reply_to=[settings.EMAIL_ORDER_ADMIN],
     )
     mail.send(fail_silently=False)
 
@@ -91,8 +91,8 @@ def make_order(request):
             order.nick if order.nick else "no nick",
         ),
         get_template("admin_email.txt").render({"order": order}),
-        EMAIL_FROM,
-        [EMAIL_ORDER_ADMIN],
+        settings.EMAIL_FROM,
+        [settings.EMAIL_ORDER_ADMIN],
         reply_to=[order.email],
     )
     mail.send(fail_silently=False)

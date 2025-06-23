@@ -4,7 +4,7 @@ from dns.name import NoParent
 from dns.resolver import resolve
 
 from django import forms
-from django.conf.settings import EMAIL_FROM, EMAIL_HOST
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 
@@ -65,8 +65,8 @@ class OrderForm(forms.ModelForm):
 
         # SMTP Conversation
         server.connect(mx_record.to_text())
-        server.helo(EMAIL_HOST)
-        server.mail(EMAIL_FROM)
+        server.helo(settings.EMAIL_HOST)
+        server.mail(settings.EMAIL_FROM)
         code, message = server.rcpt(email)
         server.quit()
 

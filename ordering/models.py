@@ -1,7 +1,7 @@
 from datetime import date, datetime, timedelta
 from decimal import Decimal
 
-from django.conf.settings import EMAIL_FROM, EMAIL_ORDER_ADMIN
+from django.conf import settings
 from django.core.mail import send_mail
 from django.db import models, transaction
 from django.urls import reverse
@@ -71,8 +71,8 @@ class GroupOrder(models.Model):
                         group_order.deadline,
                         reverse("admin2_group_order_detail", args=(group_order.pk,)),
                     ),
-                    EMAIL_FROM,
-                    [EMAIL_ORDER_ADMIN],
+                    settings.EMAIL_FROM,
+                    [settings.EMAIL_ORDER_ADMIN],
                     fail_silently=False,
                 )
 
