@@ -7,6 +7,7 @@ from django import forms
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.utils.translation import gettext as _
 
 from .models import Component, Order
 
@@ -56,21 +57,6 @@ class OrderForm(forms.ModelForm):
             mx_record.parent()
         except NoParent:
             raise ValidationError(
-                f"Domain {domain} for email {email} has no MX record."
+                _("Domain {domain} for email {email} has no MX record.").format(domain=domain, email=email)
             )
-
-        # SMTP lib setup (use debug level for full output)
-        server = SMTP()
-        server.set_debuglevel(0)
-
-        # SMTP Conversation
-        server.connect(mx_record.to_text())
-        server.helo(settings.EMAIL_HOST)
-        server.mail(settings.EMAIL_FROM)
-        code, message = server.rcpt(email)
-        server.quit()
-
-        if code != 250:
-            raise ValidationError(
-                f"Domain {domain} for email {email} is not a valid mail server."
-            )
+        return email
