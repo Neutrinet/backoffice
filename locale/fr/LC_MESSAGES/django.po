@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 12:32+0000\n"
+"POT-Creation-Date: 2025-06-23 12:42+0000\n"
 "PO-Revision-Date: 2025-06-23 14:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -57,22 +57,22 @@ msgid "Unknown content"
 msgstr "Contenu inconnu"
 
 #: ordering/forms.py:59
-#, fuzzy, python-brace-format
+#, fuzzy, python-format
 #| msgid "Domain %s for email %s has no MX record."
 msgid ""
-"Domain {domain} for email {email} could not be resolved:\n"
-"{error}"
+"Domain %(domain)s for email %(email)s could not be resolved:\n"
+"%(error)s"
 msgstr ""
-"Le nom de domaine {domain} de l'adresse mail {email} n'a pas pu être "
+"Le nom de domaine %(domain)s de l'adresse mail %(email)s n'a pas pu être "
 "résolu:\n"
-"{error}"
+"%(error)s"
 
 #: ordering/forms.py:66
-#, fuzzy, python-brace-format
+#, fuzzy, python-format
 #| msgid "Domain %s for email %s has no MX record."
-msgid "Domain {domain} for email {email} has no MX record."
+msgid "Domain %(domain)s for email %(email)s has no MX record."
 msgstr ""
-"Le nom de domaine {domain} de l'adresse mail {email} n'a pas "
+"Le nom de domaine %(domain)s de l'adresse mail %(email)s n'a pas "
 "d'enregistrement MX."
 
 #: ordering/models.py:11
@@ -100,10 +100,10 @@ msgid "Done"
 msgstr "Terminée"
 
 #: ordering/models.py:55
-#, fuzzy, python-brace-format
+#, fuzzy, python-format
 #| msgid "Group Order #%s %s"
-msgid "Group Order #{number} {date}"
-msgstr "Commande groupée #{number} {date}"
+msgid "Group Order #%(number)s %(date)s"
+msgstr "Commande groupée #%(number)s %(date)s"
 
 #: ordering/models.py:122
 msgid "Nickname (optional)"
@@ -181,10 +181,10 @@ msgid "Has been given order"
 msgstr "A reçu sa commande"
 
 #: ordering/models.py:204
-#, fuzzy, python-brace-format
+#, fuzzy, python-format
 #| msgid "order #%s for %s made %s days ago"
-msgid "order #{number} for {name} made {days} days ago"
-msgstr "Commande #{number} pour {name} faite il y a {days} jours"
+msgid "order #%(number)s for %(name)s made %(days)s days ago"
+msgstr "Commande #%(number)s pour %(name)s faite il y a %(days)s jours"
 
 #: ordering/templates/email.txt:3
 #, python-format
