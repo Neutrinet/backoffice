@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-23 12:42+0000\n"
-"PO-Revision-Date: 2025-06-23 14:35+0200\n"
+"PO-Revision-Date: 2025-06-23 14:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -57,8 +57,7 @@ msgid "Unknown content"
 msgstr "Contenu inconnu"
 
 #: ordering/forms.py:59
-#, fuzzy, python-format
-#| msgid "Domain %s for email %s has no MX record."
+#, python-format
 msgid ""
 "Domain %(domain)s for email %(email)s could not be resolved:\n"
 "%(error)s"
@@ -68,8 +67,7 @@ msgstr ""
 "%(error)s"
 
 #: ordering/forms.py:66
-#, fuzzy, python-format
-#| msgid "Domain %s for email %s has no MX record."
+#, python-format
 msgid "Domain %(domain)s for email %(email)s has no MX record."
 msgstr ""
 "Le nom de domaine %(domain)s de l'adresse mail %(email)s n'a pas "
@@ -100,8 +98,7 @@ msgid "Done"
 msgstr "Terminée"
 
 #: ordering/models.py:55
-#, fuzzy, python-format
-#| msgid "Group Order #%s %s"
+#, python-format
 msgid "Group Order #%(number)s %(date)s"
 msgstr "Commande groupée #%(number)s %(date)s"
 
@@ -181,8 +178,7 @@ msgid "Has been given order"
 msgstr "A reçu sa commande"
 
 #: ordering/models.py:204
-#, fuzzy, python-format
-#| msgid "order #%s for %s made %s days ago"
+#, python-format
 msgid "order #%(number)s for %(name)s made %(days)s days ago"
 msgstr "Commande #%(number)s pour %(name)s faite il y a %(days)s jours"
 
@@ -491,41 +487,6 @@ msgstr ""
 "          "
 
 #: ordering/templates/home.haml:134
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "              <dt>\n"
-#| "                Bank\n"
-#| "              </dt>\n"
-#| "              <dd>\n"
-#| "                ING\n"
-#| "              </dd>\n"
-#| "              <dt>\n"
-#| "                Name\n"
-#| "              </dt>\n"
-#| "              <dd>\n"
-#| "                Neutrinet ASBL\n"
-#| "              </dd>\n"
-#| "              <dt>\n"
-#| "                Communication\n"
-#| "              </dt>\n"
-#| "              <dd>\n"
-#| "                for example: order X of first name last name (nick)\n"
-#| "              </dd>\n"
-#| "              <dt>\n"
-#| "                IBAN\n"
-#| "              </dt>\n"
-#| "              <dd>\n"
-#| "                BE52 6528 3497 8409\n"
-#| "              </dd>\n"
-#| "              <dt>\n"
-#| "                BIC\n"
-#| "              </dt>\n"
-#| "              <dd>\n"
-#| "                BBRUBEBB\n"
-#| "\n"
-#| "              </dd>\n"
-#| "            "
 msgid ""
 "\n"
 "              <dt>\n"
