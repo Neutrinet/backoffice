@@ -12,9 +12,17 @@ en_formats.DATE_FORMAT = "Y-m-d"
 
 class MovementAdmin(VersionAdmin):
     fieldsets = (
-        (None, {
-            "fields": (("date", "amount"), ("title", "kind"), ("comment",), ("bank_id",))
-        }),
+        (
+            None,
+            {
+                "fields": (
+                    ("date", "amount"),
+                    ("title", "kind"),
+                    ("comment",),
+                    ("bank_id",),
+                )
+            },
+        ),
     )
 
     list_display = ("date", "title_column", "credit_column", "debit_column")
@@ -41,8 +49,8 @@ class MovementAdmin(VersionAdmin):
     title_column.short_description = "Title"
 
     admin_views = (
-       ('Neutrinet Public Accounting Page', '/accounts'),
-       ('Upload Record Bank CSV ', '/accounts/upload_record_bank_csv'),
+        ("Neutrinet Public Accounting Page", "/accounts"),
+        ("Upload Record Bank CSV ", "/accounts/upload_record_bank_csv"),
     )
 
 

@@ -9,8 +9,12 @@ register = template.Library()
 
 
 def sum_movements(**kwargs):
-    credit = Movement.objects.filter(kind="credit", **kwargs).aggregate(Sum("amount"))["amount__sum"]
-    debit =  Movement.objects.filter(kind="debit", **kwargs).aggregate(Sum("amount"))["amount__sum"]
+    credit = Movement.objects.filter(kind="credit", **kwargs).aggregate(Sum("amount"))[
+        "amount__sum"
+    ]
+    debit = Movement.objects.filter(kind="debit", **kwargs).aggregate(Sum("amount"))[
+        "amount__sum"
+    ]
 
     if credit is None:
         credit = 0
@@ -19,6 +23,7 @@ def sum_movements(**kwargs):
         debit = 0
 
     return credit - debit
+
 
 @register.simple_tag
 def previous_year_sold(year):

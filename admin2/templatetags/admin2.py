@@ -19,7 +19,9 @@ def total_payed(orders):
     if orders.filter(has_payed=True).count() == 0:
         return 0
 
-    return orders.filter(price_payed__isnull=False).aggregate(Sum('price_payed'))["price_payed__sum"]
+    return orders.filter(price_payed__isnull=False).aggregate(Sum("price_payed"))[
+        "price_payed__sum"
+    ]
 
 
 @register.simple_tag
@@ -28,9 +30,15 @@ def total_addition_from_free_price(orders):
         return 0
 
     orders = orders.filter(has_payed=True)
-    real_price__sum = orders.filter(price_payed__isnull=False).aggregate(Sum('real_price'))["real_price__sum"]
-    estimated_price__sum = orders.filter(price_payed__isnull=False).aggregate(Sum('estimated_price'))["estimated_price__sum"]
-    price_payed__sum = orders.filter(price_payed__isnull=False).aggregate(Sum('price_payed'))["price_payed__sum"]
+    real_price__sum = orders.filter(price_payed__isnull=False).aggregate(
+        Sum("real_price")
+    )["real_price__sum"]
+    estimated_price__sum = orders.filter(price_payed__isnull=False).aggregate(
+        Sum("estimated_price")
+    )["estimated_price__sum"]
+    price_payed__sum = orders.filter(price_payed__isnull=False).aggregate(
+        Sum("price_payed")
+    )["price_payed__sum"]
 
     if price_payed__sum is None and estimated_price__sum is None:
         return 0
@@ -42,12 +50,16 @@ def total_addition_from_free_price(orders):
 
 @register.simple_tag
 def count_in_current_group_order(component, orders):
-    return component.componentorder_set.filter(order__in=orders).aggregate(Sum('number'))['number__sum']
+    return component.componentorder_set.filter(order__in=orders).aggregate(
+        Sum("number")
+    )["number__sum"]
 
 
 @register.simple_tag
 def prices_in_current_group_order(component, orders):
-    prices = set([x.price for x in component.componentorder_set.filter(order__in=orders)])
+    prices = set(
+        [x.price for x in component.componentorder_set.filter(order__in=orders)]
+    )
     if len(prices) == 1:
         for i in prices:
             return i

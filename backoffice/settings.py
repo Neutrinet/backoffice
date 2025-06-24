@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=j)0i$4*#n)eafu5#*rz5lg__se8)7$2fi*1=&1@(^^xmet&w@'
+SECRET_KEY = "=j)0i$4*#n)eafu5#*rz5lg__se8)7$2fi*1=&1@(^^xmet&w@"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,90 +32,88 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'bootstrap3',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django_extensions',
-    'reversion',
-    'ordering',
-    'members',
-    'accounts',
-    'admin2',
-    'hamlpy',
+    "bootstrap3",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django_extensions",
+    "reversion",
+    "ordering",
+    "members",
+    "accounts",
+    "admin2",
+    "hamlpy",
 )
 
 MIDDLEWARE = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'reversion.middleware.RevisionMiddleware'
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "reversion.middleware.RevisionMiddleware",
 )
 
-ROOT_URLCONF = 'backoffice.urls'
+ROOT_URLCONF = "backoffice.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
-            'loaders': [
-                'hamlpy.template.loaders.HamlPyFilesystemLoader',
-                'hamlpy.template.loaders.HamlPyAppDirectoriesLoader',
-                'django.template.loaders.filesystem.Loader',
-                'django.template.loaders.app_directories.Loader',
+            "loaders": [
+                "hamlpy.template.loaders.HamlPyFilesystemLoader",
+                "hamlpy.template.loaders.HamlPyAppDirectoriesLoader",
+                "django.template.loaders.filesystem.Loader",
+                "django.template.loaders.app_directories.Loader",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'backoffice.wsgi.application'
+WSGI_APPLICATION = "backoffice.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'backoffice',
-        'USER': getpass.getuser(),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "backoffice",
+        "USER": getpass.getuser(),
     }
 }
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 LANGUAGES = (
-    ('en', 'English'),
-    ('fr', 'French'),
-    ('nl', 'Dutch'),
+    ("en", "English"),
+    ("fr", "French"),
+    ("nl", "Dutch"),
 )
 
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, "locale"),
-)
+LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 
 USE_I18N = True
 
@@ -127,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
 try:
     from .settings_local import *
