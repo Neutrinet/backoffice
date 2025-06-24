@@ -1,10 +1,11 @@
 import re
+
 from django import template
 from django.conf import settings
 
-
-numeric_test = re.compile("^\d+$")
+numeric_test = re.compile(r"^\d+$")
 register = template.Library()
+
 
 @register.filter
 def get_field(entry, field):
@@ -27,6 +28,9 @@ def only_existing(fields_list, entry):
 
 @register.filter
 def only_modified(new, old):
-    for i in filter(lambda x: x.name not in ("id", "added_on", "last_modified"), new.object._meta.fields):
+    for i in filter(
+        lambda x: x.name not in ("id", "added_on", "last_modified"),
+        new.object._meta.fields,
+    ):
         if new.field_dict[i.name] != old.field_dict[i.name]:
             yield i
