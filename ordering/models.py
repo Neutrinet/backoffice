@@ -52,7 +52,10 @@ class GroupOrder(models.Model):
                 days=31
             )
 
-        return _("Group Order #%(number)s %(date)s") % {"number": number, "date": next_month.strftime("%B %Y")}
+        return _("Group Order #%(number)s %(date)s") % {
+            "number": number,
+            "date": next_month.strftime("%B %Y"),
+        }
 
     @classmethod
     def close_deadline_passed_grouper_order(klass):
