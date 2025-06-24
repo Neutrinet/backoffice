@@ -10,10 +10,11 @@ nl_to_fr = {
     "Ref. v/d verrichting": "R\xe9f\xe9rence de l'op\xe9ration",
     "Datum v. verrichting": "Date d'op\xe9ration",
     "Bedrag v/d verrichting": "Montant de l'op\xe9ration",
-    "Naam v/d tegenpartij :": 'Nom de la contrepartie :',
-    "Mededeling 1 :": 'Communication 1 :',
-    "Rekening tegenpartij": 'Compte de contrepartie',
+    "Naam v/d tegenpartij :": "Nom de la contrepartie :",
+    "Mededeling 1 :": "Communication 1 :",
+    "Rekening tegenpartij": "Compte de contrepartie",
 }
+
 
 def fr_or_nl(entry, key):
     if key in entry:
@@ -31,12 +32,21 @@ def handle_recordbank_csv(csv_file):
     }
 
     with transaction.atomic():
-        for entry in csv.DictReader(StringIO("\r\n".join(csv_file.read().split("\n")[1:]) + "\r\n"), delimiter=";"):
+        for entry in csv.DictReader(
+            StringIO("\r\n".join(csv_file.read().split("\n")[1:]) + "\r\n"),
+            delimiter=";",
+        ):
             bank_id = fr_or_nl(entry, "Ref. v/d verrichting")[0:16]
             movement = Movement()
             movement.bank_id = bank_id
-            movement.date = datetime.strptime(fr_or_nl(entry, "Datum v. verrichting"), "%d-%m-%Y").date()
-            movement.amount = float(fr_or_nl(entry, "Bedrag v/d verrichting").replace(".", "").replace(",", "."))
+            movement.date = datetime.strptime(
+                fr_or_nl(entry, "Datum v. verrichting"), "%d-%m-%Y"
+            ).date()
+            movement.amount = float(
+                fr_or_nl(entry, "Bedrag v/d verrichting")
+                .replace(".", "")
+                .replace(",", ".")
+            )
 
             if movement.amount < 0:
                 movement.kind = "debit"
@@ -48,7 +58,10 @@ def handle_recordbank_csv(csv_file):
             else:
                 movement.kind = "credit"
 
-            movement.comment = "From: %s\nCommunication: '%s'" % (fr_or_nl(entry, "Naam v/d tegenpartij :"), fr_or_nl(entry, "Mededeling 1 :"))
+            movement.comment = "From: %s\nCommunication: '%s'" % (
+                fr_or_nl(entry, "Naam v/d tegenpartij :"),
+                fr_or_nl(entry, "Mededeling 1 :"),
+            )
 
             movement.title = "FIXME"
 
@@ -60,15 +73,28 @@ def handle_recordbank_csv(csv_file):
                     if title:
                         movement.title = title
                         movement.save()
-                        for_report["guessed_title"].append((movement, fr_or_nl(entry, "Mededeling 1 :"), fr_or_nl(entry, "Naam v/d tegenpartij :")))
+                        for_report["guessed_title"].append(
+                            (
+                                movement,
+                                fr_or_nl(entry, "Mededeling 1 :"),
+                                fr_or_nl(entry, "Naam v/d tegenpartij :"),
+                            )
+                        )
 
                 for_report["skip_because_already_imported"].append(movement)
                 continue
 
-            movement_that_might_be_the_same = Movement.objects.filter(date=movement.date, amount=movement.amount, kind=movement.kind, bank_id__isnull=True)
+            movement_that_might_be_the_same = Movement.objects.filter(
+                date=movement.date,
+                amount=movement.amount,
+                kind=movement.kind,
+                bank_id__isnull=True,
+            )
 
             if movement_that_might_be_the_same.exists():
-                for_report["movement_that_might_be_the_same"].append((movement, movement_that_might_be_the_same[0]))
+                for_report["movement_that_might_be_the_same"].append(
+                    (movement, movement_that_might_be_the_same[0])
+                )
                 continue
 
             title = guess_title(movement, entry)
@@ -77,7 +103,13 @@ def handle_recordbank_csv(csv_file):
                 for_report["need_title"].append(movement)
             else:
                 movement.title = title
-                for_report["guessed_title"].append((movement, fr_or_nl(entry, "Mededeling 1 :"), fr_or_nl(entry, "Naam v/d tegenpartij :")))
+                for_report["guessed_title"].append(
+                    (
+                        movement,
+                        fr_or_nl(entry, "Mededeling 1 :"),
+                        fr_or_nl(entry, "Naam v/d tegenpartij :"),
+                    )
+                )
 
             movement.save()
 
@@ -85,25 +117,47 @@ def handle_recordbank_csv(csv_file):
 
 
 def guess_title(movement, entry):
-    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "BE52 6528 3497 8409":
+    if (
+        movement.kind == "debit"
+        and fr_or_nl(entry, "Rekening tegenpartij") == "BE52 6528 3497 8409"
+    ):
         return "Frais Bancaires"
 
-    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij").strip() == "":
+    if (
+        movement.kind == "debit"
+        and fr_or_nl(entry, "Rekening tegenpartij").strip() == ""
+    ):
         return "Frais Bancaires"
 
-    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "GB24 MIDL 4005 1570 5243 70":
+    if (
+        movement.kind == "debit"
+        and fr_or_nl(entry, "Rekening tegenpartij") == "GB24 MIDL 4005 1570 5243 70"
+    ):
         return "Commande Olimex UK"
 
-    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "LU96 0030 8787 9307 0000":
+    if (
+        movement.kind == "debit"
+        and fr_or_nl(entry, "Rekening tegenpartij") == "LU96 0030 8787 9307 0000"
+    ):
         return "Facture GANDI"
 
-    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "NL51 INGB 0004 4900 08":
+    if (
+        movement.kind == "debit"
+        and fr_or_nl(entry, "Rekening tegenpartij") == "NL51 INGB 0004 4900 08"
+    ):
         return "Frais serveur i3D"
 
-    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "BE48 6792 0055 0227":
+    if (
+        movement.kind == "debit"
+        and fr_or_nl(entry, "Rekening tegenpartij") == "BE48 6792 0055 0227"
+    ):
         return "Frais status moniteur"
 
-    if movement.kind == "debit" and fr_or_nl(entry, "Rekening tegenpartij") == "FR76 1027 8060 3100 0204 5230 163":
+    if (
+        movement.kind == "debit"
+        and fr_or_nl(entry, "Rekening tegenpartij")
+        == "FR76 1027 8060 3100 0204 5230 163"
+    ):
         return "Facture Gitoyen"
 
     if movement.kind == "debit":
@@ -125,7 +179,11 @@ def guess_title(movement, entry):
     if movement.amount == 25:
         return "Cotisation"
 
-    if "cube order" in title.lower() or "order" in title.lower() or "brique" in title.lower():
+    if (
+        "cube order" in title.lower()
+        or "order" in title.lower()
+        or "brique" in title.lower()
+    ):
         return "Commande de Brique Internet"
 
     if 60 <= movement.amount <= 80:

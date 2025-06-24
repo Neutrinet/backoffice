@@ -1,16 +1,15 @@
+from datetime import date, datetime, timedelta
 from decimal import Decimal
-from datetime import datetime, date, timedelta
 
-from django.db import models, transaction
-from django.utils.translation import gettext_lazy as _
-from django.urls import reverse
 from django.core.mail import send_mail
-
+from django.db import models, transaction
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 COUNTRIES = (
-    ('be', _('Belgium')),
-    ('nl', _('Netherlands')),
-    ('lu', _('Luxembourg')),
+    ("be", _("Belgium")),
+    ("nl", _("Netherlands")),
+    ("lu", _("Luxembourg")),
 )
 
 
@@ -18,9 +17,9 @@ class GroupOrder(models.Model):
     launched_on = models.DateTimeField(auto_now_add=True)
 
     group_order_state = (
-        ('open', _('Open')),
-        ('close', _('Close')),
-        ('done', _('Done')),
+        ("open", _("Open")),
+        ("close", _("Close")),
+        ("done", _("Done")),
     )
 
     name = models.CharField(max_length=255)
@@ -48,22 +47,31 @@ class GroupOrder(models.Model):
             today = date.today()
             next_month = today.replace(day=1) + timedelta(days=31)
         else:
-            next_month = group_orders.first().deadline.replace(day=1) + timedelta(days=31)
+            next_month = group_orders.first().deadline.replace(day=1) + timedelta(
+                days=31
+            )
 
         return _("Group Order #%s %s") % (number, next_month.strftime("%B %Y"))
 
     @classmethod
     def close_deadline_passed_grouper_order(klass):
-        for group_order in GroupOrder.objects.filter(deadline__isnull=False, deadline__lt=date.today(), state="open"):
+        for group_order in GroupOrder.objects.filter(
+            deadline__isnull=False, deadline__lt=date.today(), state="open"
+        ):
             with transaction.atomic():
                 group_order.state = "close"
                 group_order.save()
 
                 send_mail(
-                    u'[cube order] deadline for %s expired' % group_order,
-                    u'Hello,\n\nJust an email to inform you that the %s deadline (%s) has experied.\nGo there for the details: %s\n\n<3\n\nPS: I was too lazy to write a better mail.' % (group_order, group_order.deadline, reverse('admin2_group_order_detail', args=(group_order.pk,))),
-                    'noreplay@neutrinet.be',
-                    ['cube@neutrinet.be'],
+                    "[cube order] deadline for %s expired" % group_order,
+                    "Hello,\n\nJust an email to inform you that the %s deadline (%s) has experied.\nGo there for the details: %s\n\n<3\n\nPS: I was too lazy to write a better mail."
+                    % (
+                        group_order,
+                        group_order.deadline,
+                        reverse("admin2_group_order_detail", args=(group_order.pk,)),
+                    ),
+                    "noreplay@neutrinet.be",
+                    ["cube@neutrinet.be"],
                     fail_silently=False,
                 )
 
@@ -102,42 +110,86 @@ class GroupOrder(models.Model):
 class Order(models.Model):
     made_on = models.DateTimeField(auto_now_add=True)
 
-    group_order = models.ForeignKey(GroupOrder, on_delete=models.CASCADE, null=True, blank=True)
+    group_order = models.ForeignKey(
+        GroupOrder, on_delete=models.CASCADE, null=True, blank=True
+    )
 
-    nick = models.CharField(max_length=255, null=True, blank=True, verbose_name=_("Nickname (optional)"), help_text=_("We may know you better by your nickname than your civil name :-)"))
+    nick = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_("Nickname (optional)"),
+        help_text=_("We may know you better by your nickname than your civil name :-)"),
+    )
     first_name = models.CharField(max_length=255, verbose_name=_("First name"))
     last_name = models.CharField(max_length=255, verbose_name=_("Last name"))
 
-    email = models.EmailField(help_text=_("We will never send you unwanted emails. You will only receive a copy of your order, and further information about it."))
+    email = models.EmailField(
+        help_text=_(
+            "We will never send you unwanted emails. You will only receive a copy of your order, and further information about it."
+        )
+    )
 
-    wants_vpn = models.BooleanField(default=False, verbose_name=_("I want to subscribe to the Neutrinet's VPN service and become a member of Neutrinet ASBL/VZW"))
-    wants_to_install_everything_himself = models.BooleanField(default=False, verbose_name=_("Do not configure my Cube for me, I want to do it by myself"))
+    wants_vpn = models.BooleanField(
+        default=False,
+        verbose_name=_(
+            "I want to subscribe to the Neutrinet's VPN service and become a member of Neutrinet ASBL/VZW"
+        ),
+    )
+    wants_to_install_everything_himself = models.BooleanField(
+        default=False,
+        verbose_name=_("Do not configure my Cube for me, I want to do it by myself"),
+    )
 
     # domain
-    wants_neutrinet_to_renew_the_domain = models.BooleanField(default=False, verbose_name=_("I want my domain to be renewed automatically every year."), help_text=_("It is a common mistake to forget to renew a domain name every year. Check this box if you want Neutrinet to do it for you."))
-    domain_name = models.CharField(max_length=255, blank=True, null=False, verbose_name=_("Domain name"))
+    wants_neutrinet_to_renew_the_domain = models.BooleanField(
+        default=False,
+        verbose_name=_("I want my domain to be renewed automatically every year."),
+        help_text=_(
+            "It is a common mistake to forget to renew a domain name every year. Check this box if you want Neutrinet to do it for you."
+        ),
+    )
+    domain_name = models.CharField(
+        max_length=255, blank=True, null=False, verbose_name=_("Domain name")
+    )
 
     # needed if the user wants the vpn
     street = models.CharField(max_length=255, null=True, blank=True)
     postal_code = models.CharField(max_length=255, null=True, blank=True)
     town = models.CharField(max_length=255, null=True, blank=True)
     birthplace = models.CharField(max_length=255, null=True, blank=True)
-    country = models.CharField(max_length=2, choices=COUNTRIES, null=True, blank=True, help_text=_("If you do not see your country of living on this list, please <a href='http://db.ffdn.org'>find another ISP closer to you</a>. If you want to choose Neutrinet anyway, please indicate your country of living in the comment section below."))
-    birth_date = models.DateField(null=True, blank=True, help_text=_("Format: dd/mm/yyyy"))
+    country = models.CharField(
+        max_length=2,
+        choices=COUNTRIES,
+        null=True,
+        blank=True,
+        help_text=_(
+            "If you do not see your country of living on this list, please <a href='http://db.ffdn.org'>find another ISP closer to you</a>. If you want to choose Neutrinet anyway, please indicate your country of living in the comment section below."
+        ),
+    )
+    birth_date = models.DateField(
+        null=True, blank=True, help_text=_("Format: dd/mm/yyyy")
+    )
 
     # private
     has_payed = models.BooleanField(default=False)
     we_have_received_the_order = models.BooleanField(default=False)
-    member_has_been_give_order = models.BooleanField(default=False, verbose_name=_("Has been given order"))
+    member_has_been_give_order = models.BooleanField(
+        default=False, verbose_name=_("Has been given order")
+    )
     has_a_working_cube = models.BooleanField(default=False)
     private_comment = models.TextField(null=True, blank=True)
 
-    components = models.ManyToManyField('Component', through='ComponentOrder')
+    components = models.ManyToManyField("Component", through="ComponentOrder")
 
     estimated_price = models.DecimalField(max_digits=10, decimal_places=2)
-    real_price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)
+    real_price = models.DecimalField(
+        null=True, blank=True, max_digits=10, decimal_places=2
+    )
     # member is invited to add more if he wants to
-    price_payed = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)
+    price_payed = models.DecimalField(
+        null=True, blank=True, max_digits=10, decimal_places=2
+    )
 
     comment = models.TextField(null=True, blank=True)
 
@@ -148,7 +200,15 @@ class Order(models.Model):
         return self.has_a_working_cube or self.wants_to_install_everything_himself
 
     def __str__(self):
-        return _("order #%s for %s made %s days ago") % (self.id, "%s %s" % (self.first_name, self.last_name) if not self.nick else "%s %s (%s)" % (self.first_name, self.last_name, self.nick), (datetime.now() - self.made_on.replace(tzinfo=None)).days)
+        return _("order #%s for %s made %s days ago") % (
+            self.id,
+            (
+                "%s %s" % (self.first_name, self.last_name)
+                if not self.nick
+                else "%s %s (%s)" % (self.first_name, self.last_name, self.nick)
+            ),
+            (datetime.now() - self.made_on.replace(tzinfo=None)).days,
+        )
 
     def save(self, *args, **kwargs):
         if self.group_order is None:
@@ -171,15 +231,19 @@ class Order(models.Model):
             super(Order, self).save(*args, **kwargs)
 
     class Meta:
-        ordering = ['-group_order', '-id']
+        ordering = ["-group_order", "-id"]
 
 
 class Component(models.Model):
     reference = models.CharField(max_length=255)
     full_name = models.CharField(max_length=255, null=True, blank=True)
-    current_price = models.DecimalField(max_digits=10, decimal_places=2)  # price costing right now (default is for ordering >= 10)
+    current_price = models.DecimalField(
+        max_digits=10, decimal_places=2
+    )  # price costing right now (default is for ordering >= 10)
     url = models.URLField()
-    estimated_shipment_time = models.PositiveSmallIntegerField(null=True, blank=True, help_text="in days")
+    estimated_shipment_time = models.PositiveSmallIntegerField(
+        null=True, blank=True, help_text="in days"
+    )
     in_default_pack = models.BooleanField(default=False)
     available = models.BooleanField(default=True)
 
@@ -187,20 +251,31 @@ class Component(models.Model):
 
     @property
     def provider(self):
-        return self.url.split("//")[1].split("/")[0].replace("www.", "").replace(".com", "")
+        return (
+            self.url.split("//")[1]
+            .split("/")[0]
+            .replace("www.", "")
+            .replace(".com", "")
+        )
 
     def display_with_url(self):
         return '<a href="%s">%s</a>' % (self.url, self)
 
     def __str__(self):
-        return self.reference if not self.full_name else "%s (%s)" % (self.full_name, self.reference)
+        return (
+            self.reference
+            if not self.full_name
+            else "%s (%s)" % (self.full_name, self.reference)
+        )
 
 
 class ComponentOrder(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     component = models.ForeignKey(Component, on_delete=models.CASCADE)
     number = models.PositiveIntegerField(default=1)
-    paid_price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)  # effectivly paid price
+    paid_price = models.DecimalField(
+        null=True, blank=True, max_digits=10, decimal_places=2
+    )  # effectivly paid price
     received = models.PositiveIntegerField(default=0)
 
     def not_received(self):
