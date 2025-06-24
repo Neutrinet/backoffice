@@ -1,11 +1,8 @@
-from smtplib import SMTP
-
 from dns.exception import DNSException
 from dns.name import NoParent
 from dns.resolver import resolve
 
 from django import forms
-from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.utils.translation import gettext as _
