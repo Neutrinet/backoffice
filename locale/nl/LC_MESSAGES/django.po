@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 12:42+0000\n"
+"POT-Creation-Date: 2025-06-25 18:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr ""
 msgid "Unknown content"
 msgstr ""
 
-#: ordering/forms.py:59
+#: ordering/forms.py:57
 #, python-format
 msgid ""
 "Domain %(domain)s for email %(email)s could not be resolved:\n"
@@ -66,6 +66,13 @@ msgstr ""
 #: ordering/forms.py:66
 #, python-format
 msgid "Domain %(domain)s for email %(email)s has no MX record."
+msgstr ""
+
+#: ordering/forms.py:85
+#, python-format
+msgid ""
+"Estimated price doesn't match current price: %(estimated_price)s != "
+"%(current_price)s"
 msgstr ""
 
 #: ordering/models.py:11
@@ -97,53 +104,53 @@ msgstr ""
 msgid "Group Order #%(number)s %(date)s"
 msgstr ""
 
-#: ordering/models.py:122
+#: ordering/models.py:125
 msgid "Nickname (optional)"
 msgstr ""
 
-#: ordering/models.py:123
+#: ordering/models.py:126
 msgid "We may know you better by your nickname than your civil name :-)"
 msgstr ""
 
-#: ordering/models.py:125
+#: ordering/models.py:128
 msgid "First name"
 msgstr ""
 
-#: ordering/models.py:126
+#: ordering/models.py:129
 msgid "Last name"
 msgstr ""
 
-#: ordering/models.py:130
+#: ordering/models.py:133
 msgid ""
 "We will never send you unwanted emails. You will only receive a copy of your "
 "order, and further information about it."
 msgstr ""
 
-#: ordering/models.py:137
+#: ordering/models.py:140
 msgid ""
 "I want to subscribe to the Neutrinet's VPN service and become a member of "
 "Neutrinet ASBL/VZW"
 msgstr ""
 
-#: ordering/models.py:142
+#: ordering/models.py:145
 msgid "Do not configure my Cube for me, I want to do it by myself"
 msgstr ""
 
-#: ordering/models.py:148
+#: ordering/models.py:151
 msgid "I want my domain to be renewed automatically every year."
 msgstr ""
 
-#: ordering/models.py:150
+#: ordering/models.py:153
 msgid ""
 "It is a common mistake to forget to renew a domain name every year. Check "
 "this box if you want Neutrinet to do it for you."
 msgstr ""
 
-#: ordering/models.py:154
+#: ordering/models.py:157
 msgid "Domain name"
 msgstr ""
 
-#: ordering/models.py:168
+#: ordering/models.py:171
 msgid ""
 "If you do not see your country of living on this list, please <a "
 "href='http://db.ffdn.org'>find another ISP closer to you</a>. If you want to "
@@ -151,15 +158,15 @@ msgid ""
 "comment section below."
 msgstr ""
 
-#: ordering/models.py:172
+#: ordering/models.py:175
 msgid "Format: dd/mm/yyyy"
 msgstr ""
 
-#: ordering/models.py:179
+#: ordering/models.py:182
 msgid "Has been given order"
 msgstr ""
 
-#: ordering/models.py:204
+#: ordering/models.py:207
 #, python-format
 msgid "order #%(number)s for %(name)s made %(days)s days ago"
 msgstr ""

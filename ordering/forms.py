@@ -67,3 +67,25 @@ class OrderForm(forms.ModelForm):
                 % {"domain": domain, "email": email}
             )
         return email
+
+    def clean(self):
+        estimated_price = self.cleaned_data["estimated_price"]
+
+        shipment_price = 3
+        price = shipment_price
+        for component in Component.objects.filter(available=True):
+            component_field = "component_%s_number" % component.id
+            if component_field in self.cleaned_data:
+                price += self.cleaned_data[component_field] * component.current_price
+        price = round(price)
+
+        if abs(estimated_price - price) > 1:
+            self._errors["estimated_price"] = [
+                _(
+                    "Estimated price doesn't match current price: %(estimated_price)s != %(current_price)s"
+                )
+                % {"estimated_price": estimated_price, "current_price": price}
+            ]
+            del self.cleaned_data["estimated_price"]
+
+        return self.cleaned_data

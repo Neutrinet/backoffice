@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 12:42+0000\n"
+"POT-Creation-Date: 2025-06-25 18:51+0000\n"
 "PO-Revision-Date: 2025-06-23 14:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -56,7 +56,7 @@ msgstr "Aucun disponible"
 msgid "Unknown content"
 msgstr "Contenu inconnu"
 
-#: ordering/forms.py:59
+#: ordering/forms.py:57
 #, python-format
 msgid ""
 "Domain %(domain)s for email %(email)s could not be resolved:\n"
@@ -72,6 +72,13 @@ msgid "Domain %(domain)s for email %(email)s has no MX record."
 msgstr ""
 "Le nom de domaine %(domain)s de l'adresse mail %(email)s n'a pas "
 "d'enregistrement MX."
+
+#: ordering/forms.py:85
+#, python-format
+msgid ""
+"Estimated price doesn't match current price: %(estimated_price)s != "
+"%(current_price)s"
+msgstr "Le prix estimé ne correspond pas au prix actuel : %(estimated_price)s != %(current_price)s"
 
 #: ordering/models.py:11
 msgid "Belgium"
@@ -102,25 +109,25 @@ msgstr "Terminée"
 msgid "Group Order #%(number)s %(date)s"
 msgstr "Commande groupée #%(number)s %(date)s"
 
-#: ordering/models.py:122
+#: ordering/models.py:125
 msgid "Nickname (optional)"
 msgstr "Pseudo (optionnel)"
 
-#: ordering/models.py:123
+#: ordering/models.py:126
 msgid "We may know you better by your nickname than your civil name :-)"
 msgstr ""
 "Il est possible que nous vous connaissions mieux via votre pseudo que votre "
 "nom civil :-)"
 
-#: ordering/models.py:125
+#: ordering/models.py:128
 msgid "First name"
 msgstr "Prénom"
 
-#: ordering/models.py:126
+#: ordering/models.py:129
 msgid "Last name"
 msgstr "Nom"
 
-#: ordering/models.py:130
+#: ordering/models.py:133
 msgid ""
 "We will never send you unwanted emails. You will only receive a copy of your "
 "order, and further information about it."
@@ -128,7 +135,7 @@ msgstr ""
 "Nous ne vous enverrons jamais de courriels indésirables. Vous recevrez "
 "uniquement une copie de votre commande et de son suivi."
 
-#: ordering/models.py:137
+#: ordering/models.py:140
 msgid ""
 "I want to subscribe to the Neutrinet's VPN service and become a member of "
 "Neutrinet ASBL/VZW"
@@ -136,16 +143,16 @@ msgstr ""
 "Je veux prendre un abonnement VPN chez Neutrinet et donc également devenir "
 "membre de l'ASBL Neutrinet"
 
-#: ordering/models.py:142
+#: ordering/models.py:145
 msgid "Do not configure my Cube for me, I want to do it by myself"
 msgstr "Ne configurez pas ma Brique, je veux tout faire moi même."
 
-#: ordering/models.py:148
+#: ordering/models.py:151
 msgid "I want my domain to be renewed automatically every year."
 msgstr ""
 "Je veux que mon nom de domaine soit renouvelé automatiquement tout les ans."
 
-#: ordering/models.py:150
+#: ordering/models.py:153
 msgid ""
 "It is a common mistake to forget to renew a domain name every year. Check "
 "this box if you want Neutrinet to do it for you."
@@ -153,11 +160,11 @@ msgstr ""
 "Il est courant d’oublier de renouveler son nom de domaine chaque année. "
 "Sélectionnez cette option si vous voulez que Neutrinet le fasse pour vous."
 
-#: ordering/models.py:154
+#: ordering/models.py:157
 msgid "Domain name"
 msgstr "Nom de domaine"
 
-#: ordering/models.py:168
+#: ordering/models.py:171
 msgid ""
 "If you do not see your country of living on this list, please <a "
 "href='http://db.ffdn.org'>find another ISP closer to you</a>. If you want to "
@@ -169,15 +176,15 @@ msgstr ""
 "a>. Si vous voulez quand même choisir Neutrinet, indiquez votre pays de "
 "résidence en commentaire dans la section prévue pour cela plus bas."
 
-#: ordering/models.py:172
+#: ordering/models.py:175
 msgid "Format: dd/mm/yyyy"
 msgstr "Format : jj/mm/aaaa"
 
-#: ordering/models.py:179
+#: ordering/models.py:182
 msgid "Has been given order"
 msgstr "A reçu sa commande"
 
-#: ordering/models.py:204
+#: ordering/models.py:207
 #, python-format
 msgid "order #%(number)s for %(name)s made %(days)s days ago"
 msgstr "Commande #%(number)s pour %(name)s faite il y a %(days)s jours"
