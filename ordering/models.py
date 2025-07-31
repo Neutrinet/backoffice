@@ -1,6 +1,7 @@
 from datetime import date, datetime, timedelta
 from decimal import Decimal
 
+from django.conf import settings
 from django.core.mail import send_mail
 from django.db import models, transaction
 from django.urls import reverse
@@ -51,7 +52,10 @@ class GroupOrder(models.Model):
                 days=31
             )
 
-        return _("Group Order #%s %s") % (number, next_month.strftime("%B %Y"))
+        return _("Group Order #%(number)s %(date)s") % {
+            "number": number,
+            "date": next_month.strftime("%B %Y"),
+        }
 
     @classmethod
     def close_deadline_passed_grouper_order(klass):
@@ -64,14 +68,14 @@ class GroupOrder(models.Model):
 
                 send_mail(
                     "[cube order] deadline for %s expired" % group_order,
-                    "Hello,\n\nJust an email to inform you that the %s deadline (%s) has experied.\nGo there for the details: %s\n\n<3\n\nPS: I was too lazy to write a better mail."
+                    "Hello,\n\nJust an email to inform you that the %s deadline (%s) has expired.\nGo there for the details: %s\n\n<3\n\nPS: I was too lazy to write a better mail."
                     % (
                         group_order,
                         group_order.deadline,
                         reverse("admin2_group_order_detail", args=(group_order.pk,)),
                     ),
-                    "noreplay@neutrinet.be",
-                    ["cube@neutrinet.be"],
+                    settings.EMAIL_FROM,
+                    [settings.EMAIL_ORDER_ADMIN],
                     fail_silently=False,
                 )
 
@@ -200,15 +204,15 @@ class Order(models.Model):
         return self.has_a_working_cube or self.wants_to_install_everything_himself
 
     def __str__(self):
-        return _("order #%s for %s made %s days ago") % (
-            self.id,
-            (
+        return _("order #%(number)s for %(name)s made %(days)s days ago") % {
+            "number": self.id,
+            "name": (
                 "%s %s" % (self.first_name, self.last_name)
                 if not self.nick
                 else "%s %s (%s)" % (self.first_name, self.last_name, self.nick)
             ),
-            (datetime.now() - self.made_on.replace(tzinfo=None)).days,
-        )
+            "days": (datetime.now() - self.made_on.replace(tzinfo=None)).days,
+        }
 
     def save(self, *args, **kwargs):
         if self.group_order is None:

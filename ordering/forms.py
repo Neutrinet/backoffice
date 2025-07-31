@@ -1,4 +1,11 @@
+from dns.exception import DNSException
+from dns.name import NoParent
+from dns.resolver import resolve
+
 from django import forms
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+from django.utils.translation import gettext as _
 
 from .models import Component, Order
 
@@ -35,3 +42,50 @@ class OrderForm(forms.ModelForm):
             "estimated_price",  # I should add it myself I think
             "comment",
         )
+
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+
+        validate_email(email)
+
+        username, domain = email.split("@")
+        try:
+            records = resolve(domain, "MX")
+        except DNSException as e:
+            raise ValidationError(
+                _(
+                    "Domain %(domain)s for email %(email)s could not be resolved:\n%(error)s"
+                )
+                % {"domain": domain, "email": email, "error": str(e)}
+            )
+        mx_record = records[0].exchange
+        try:
+            mx_record.parent()
+        except NoParent:
+            raise ValidationError(
+                _("Domain %(domain)s for email %(email)s has no MX record.")
+                % {"domain": domain, "email": email}
+            )
+        return email
+
+    def clean(self):
+        estimated_price = self.cleaned_data["estimated_price"]
+
+        shipment_price = 3
+        price = shipment_price
+        for component in Component.objects.filter(available=True):
+            component_field = "component_%s_number" % component.id
+            if component_field in self.cleaned_data:
+                price += self.cleaned_data[component_field] * component.current_price
+        price = round(price)
+
+        if abs(estimated_price - price) > 1:
+            self._errors["estimated_price"] = [
+                _(
+                    "Estimated price doesn't match current price: %(estimated_price)s != %(current_price)s"
+                )
+                % {"estimated_price": estimated_price, "current_price": price}
+            ]
+            del self.cleaned_data["estimated_price"]
+
+        return self.cleaned_data

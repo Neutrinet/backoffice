@@ -7,3 +7,4 @@ django-pdb
 django-reversion~=5.1
 gunicorn
 psycopg2
+dnspython

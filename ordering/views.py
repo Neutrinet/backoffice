@@ -1,4 +1,5 @@
-from django.core.mail import send_mail
+from django.conf import settings
+from django.core.mail import EmailMessage
 from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -72,15 +73,16 @@ def make_order(request):
                     number=form.cleaned_data["component_%d_number" % component.id],
                 )
 
-    send_mail(
+    mail = EmailMessage(
         _("[Neutrinet] Order #%s for one or more Internet Cube") % order.id,
         get_template("email.txt").render({"order": order}),
-        "cube@neutrinet.be",
+        settings.EMAIL_FROM,
         [order.email],
-        fail_silently=False,
+        reply_to=[settings.EMAIL_ORDER_ADMIN],
     )
+    mail.send(fail_silently=False)
 
-    send_mail(
+    mail = EmailMessage(
         "[cube order] Order #%s by %s %s (%s)"
         % (
             order.id,
@@ -89,10 +91,11 @@ def make_order(request):
             order.nick if order.nick else "no nick",
         ),
         get_template("admin_email.txt").render({"order": order}),
-        "backoffice@neutrinet.be",
-        ["hub-cube@neutrinet.be"],
-        fail_silently=False,
+        settings.EMAIL_FROM,
+        [settings.EMAIL_ORDER_ADMIN],
+        reply_to=[order.email],
     )
+    mail.send(fail_silently=False)
 
     return HttpResponseRedirect(reverse("success"))
 

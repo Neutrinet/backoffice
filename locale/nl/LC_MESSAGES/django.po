@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-27 20:29+0000\n"
+"POT-Creation-Date: 2025-06-25 18:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,6 +56,25 @@ msgstr ""
 msgid "Unknown content"
 msgstr ""
 
+#: ordering/forms.py:57
+#, python-format
+msgid ""
+"Domain %(domain)s for email %(email)s could not be resolved:\n"
+"%(error)s"
+msgstr ""
+
+#: ordering/forms.py:66
+#, python-format
+msgid "Domain %(domain)s for email %(email)s has no MX record."
+msgstr ""
+
+#: ordering/forms.py:85
+#, python-format
+msgid ""
+"Estimated price doesn't match current price: %(estimated_price)s != "
+"%(current_price)s"
+msgstr ""
+
 #: ordering/models.py:11
 msgid "Belgium"
 msgstr ""
@@ -80,58 +99,58 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: ordering/models.py:53
+#: ordering/models.py:55
 #, python-format
-msgid "Group Order #%s %s"
+msgid "Group Order #%(number)s %(date)s"
 msgstr ""
 
-#: ordering/models.py:107
+#: ordering/models.py:125
 msgid "Nickname (optional)"
 msgstr ""
 
-#: ordering/models.py:107
+#: ordering/models.py:126
 msgid "We may know you better by your nickname than your civil name :-)"
 msgstr ""
 
-#: ordering/models.py:108
+#: ordering/models.py:128
 msgid "First name"
 msgstr ""
 
-#: ordering/models.py:109
+#: ordering/models.py:129
 msgid "Last name"
 msgstr ""
 
-#: ordering/models.py:111
+#: ordering/models.py:133
 msgid ""
 "We will never send you unwanted emails. You will only receive a copy of your "
 "order, and further information about it."
 msgstr ""
 
-#: ordering/models.py:113
+#: ordering/models.py:140
 msgid ""
 "I want to subscribe to the Neutrinet's VPN service and become a member of "
 "Neutrinet ASBL/VZW"
 msgstr ""
 
-#: ordering/models.py:114
+#: ordering/models.py:145
 msgid "Do not configure my Cube for me, I want to do it by myself"
 msgstr ""
 
-#: ordering/models.py:117
+#: ordering/models.py:151
 msgid "I want my domain to be renewed automatically every year."
 msgstr ""
 
-#: ordering/models.py:117
+#: ordering/models.py:153
 msgid ""
 "It is a common mistake to forget to renew a domain name every year. Check "
 "this box if you want Neutrinet to do it for you."
 msgstr ""
 
-#: ordering/models.py:118
+#: ordering/models.py:157
 msgid "Domain name"
 msgstr ""
 
-#: ordering/models.py:125
+#: ordering/models.py:171
 msgid ""
 "If you do not see your country of living on this list, please <a "
 "href='http://db.ffdn.org'>find another ISP closer to you</a>. If you want to "
@@ -139,17 +158,17 @@ msgid ""
 "comment section below."
 msgstr ""
 
-#: ordering/models.py:126
+#: ordering/models.py:175
 msgid "Format: dd/mm/yyyy"
 msgstr ""
 
-#: ordering/models.py:131
+#: ordering/models.py:182
 msgid "Has been given order"
 msgstr ""
 
-#: ordering/models.py:151
+#: ordering/models.py:207
 #, python-format
-msgid "order #%s for %s made %s days ago"
+msgid "order #%(number)s for %(name)s made %(days)s days ago"
 msgstr ""
 
 #: ordering/templates/email.txt:3
@@ -394,44 +413,43 @@ msgid ""
 "              </dt>\n"
 "              <dd>\n"
 "                BBRUBEBB\n"
-"\n"
 "              </dd>\n"
 "            "
 msgstr ""
 
-#: ordering/templates/order.haml:6 ordering/templates/order.haml:38
+#: ordering/templates/order.haml:6 ordering/templates/order.haml:35
 msgid "Neutrinet Cube Ordering Form"
 msgstr ""
 
-#: ordering/templates/order.haml:47
+#: ordering/templates/order.haml:44
 msgid "You have made some mistakes, please correct them."
 msgstr ""
 
-#: ordering/templates/order.haml:53
+#: ordering/templates/order.haml:50
 msgid "Contact information"
 msgstr ""
 
-#: ordering/templates/order.haml:77
+#: ordering/templates/order.haml:74
 msgid "Preferences"
 msgstr ""
 
-#: ordering/templates/order.haml:85
+#: ordering/templates/order.haml:82
 msgid "Subscribe to a Neutrinet VPN (recommended)"
 msgstr ""
 
-#: ordering/templates/order.haml:90
+#: ordering/templates/order.haml:87
 msgid ""
 "You do not need to fill this section if you already have a VPN subscription."
 msgstr ""
 
-#: ordering/templates/order.haml:95
+#: ordering/templates/order.haml:92
 msgid ""
 "You will need a VPN connection if you want your Cube to work in a <i>plug'n "
 "play</i> fashion. It is stongly recommended to use one, unless you know what "
 "you are doing."
 msgstr ""
 
-#: ordering/templates/order.haml:99
+#: ordering/templates/order.haml:96
 msgid ""
 "Technically, the VPN connection will encrypt all your Cube's traffic, making "
 "it unreadable to your current <abbr title='Internet Service Provider'>ISP</"
@@ -439,7 +457,7 @@ msgid ""
 "reachable wherever you install it (roughly like a mobile phone number)."
 msgstr ""
 
-#: ordering/templates/order.haml:105
+#: ordering/templates/order.haml:102
 msgid ""
 "Please note that Neutrinet is a non-profit ASBL/VZW. Therefore, by "
 "subscribing to the VPN service, you will become a <b>member</b> of "
@@ -447,7 +465,7 @@ msgid ""
 "future of Neutrinet. You will not be a customer, you will be Neutrinet."
 msgstr ""
 
-#: ordering/templates/order.haml:109
+#: ordering/templates/order.haml:106
 msgid ""
 "<b>You are free to consider how much your VPN subscription is worth</b>, and "
 "how much you want to pay for it. We strongly recommend you to pay at least "
@@ -457,79 +475,79 @@ msgid ""
 "support is really appreciated :-)"
 msgstr ""
 
-#: ordering/templates/order.haml:114
+#: ordering/templates/order.haml:111
 msgid ""
 "If you want to run multiple Cubes at the same time, you will need multiple "
 "VPN subscriptions."
 msgstr ""
 
-#: ordering/templates/order.haml:123
+#: ordering/templates/order.haml:120
 msgid ""
 "The Belgium Telecom laws and our ASBL/VZW status requires us to ask you the "
 "following personal informations. It will obviously not be selled nor leaked."
 msgstr ""
 
-#: ordering/templates/order.haml:144
+#: ordering/templates/order.haml:141
 msgid "Register a domain name (recommended)"
 msgstr ""
 
-#: ordering/templates/order.haml:149
+#: ordering/templates/order.haml:146
 msgid ""
 "You do not need to fill this section if you already have registered domain "
 "name."
 msgstr ""
 
-#: ordering/templates/order.haml:154
+#: ordering/templates/order.haml:151
 msgid ""
 "Your Cube will be associated to a domain name. It will enable you to receive "
 "emails at addresses like <b>you@your-domain.org</b> and to have your Cube "
 "accessible from <b>https://your-domain.org</b>."
 msgstr ""
 
-#: ordering/templates/order.haml:158
+#: ordering/templates/order.haml:155
 msgid ""
-"By default, we can provide you a domain name for free ending with <i>.nohost."
-"me</i>, but if you want a domain name of your own (ending with <i>.be</i>, "
-"<i>.net</i> or <i>.org</i> for example), it will add an extra 1€ to your VPN "
-"subscription monthly fee."
+"By default, we can provide you a domain name for free ending with "
+"<i>.nohost.me</i>, but if you want a domain name of your own (ending with "
+"<i>.be</i>, <i>.net</i> or <i>.org</i> for example), it will add an extra 1€ "
+"to your VPN subscription monthly fee."
 msgstr ""
 
-#: ordering/templates/order.haml:162
+#: ordering/templates/order.haml:159
 msgid ""
 "The domain name will be registered at <a href='https://gandi.net'>Gandi.net</"
 "a>. Also, <b>please ensure that the domain name you want is available there</"
 "b>."
 msgstr ""
 
-#: ordering/templates/order.haml:171
+#: ordering/templates/order.haml:168
 msgid "Choose your components (required)"
 msgstr ""
 
-#: ordering/templates/order.haml:175
+#: ordering/templates/order.haml:172
 msgid "Prices below <b>include VAT</b> unlike those on Olimex.com."
 msgstr ""
 
-#: ordering/templates/order.haml:181
+#: ordering/templates/order.haml:178
 msgid "Default components of the Cube"
 msgstr ""
 
-#: ordering/templates/order.haml:186 ordering/templates/order.haml:222
+#: ordering/templates/order.haml:183 ordering/templates/order.haml:219
 msgid "Quantity"
 msgstr ""
 
-#: ordering/templates/order.haml:189 ordering/templates/order.haml:225
+#: ordering/templates/order.haml:186 ordering/templates/order.haml:222
 msgid "Name"
 msgstr ""
 
-#: ordering/templates/order.haml:192 ordering/templates/order.haml:228
+#: ordering/templates/order.haml:189 ordering/templates/order.haml:225
 msgid "Price"
 msgstr ""
 
-#: ordering/templates/order.haml:217
+#: ordering/templates/order.haml:214
 msgid "Extra components"
 msgstr ""
 
-#: ordering/templates/order.haml:251
+#: ordering/templates/order.haml:248
 msgid ""
 "\n"
 "            <b>\n"
@@ -544,24 +562,25 @@ msgid ""
 "          "
 msgstr ""
 
-#: ordering/templates/order.haml:269
+#: ordering/templates/order.haml:266
 msgid ""
 "If you wish to cancel your order in the mean time, please contact us "
 "immediately at <a href='mailto:cube@neutrinet.be'>cube@neutrinet.be</a>."
 msgstr ""
 
-#: ordering/templates/order.haml:276
+#: ordering/templates/order.haml:273
 msgid "Leave a comment (optional)"
 msgstr ""
 
-#: ordering/templates/order.haml:291
+#: ordering/templates/order.haml:288
 msgid ""
 "If you have any question or if you want to modify your order, please contact "
-"us as soon as you can at <a href='mailto:cube@neutrinet.be'>cube@neutrinet."
-"be</a> or on <i>irc.freenode.net#neutrinet</i>."
+"us as soon as you can at <a "
+"href='mailto:cube@neutrinet.be'>cube@neutrinet.be</a> or on "
+"<i>irc.freenode.net#neutrinet</i>."
 msgstr ""
 
-#: ordering/templates/order.haml:297
+#: ordering/templates/order.haml:294
 msgid ""
 "Please remember that we are humans and volunteers. We do not make any "
 "profit, we help you as much as we can and we do it on our spare time because "
@@ -578,7 +597,7 @@ msgstr ""
 msgid "Go back to the front page"
 msgstr ""
 
-#: ordering/views.py:57
+#: ordering/views.py:77
 #, python-format
 msgid "[Neutrinet] Order #%s for one or more Internet Cube"
 msgstr ""
